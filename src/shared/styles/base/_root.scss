@@ -1,0 +1,29 @@
+@use '../abstracts/variables' as v;
+:root {
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+
+  --radius-sm:   #{v.$radius-sm};
+  --radius-md:   #{v.$radius-md};
+  --radius-lg:   #{v.$radius-lg};
+  --radius-xl:   #{v.$radius-xl};
+  --radius-full: #{v.$radius-full};
+
+  --space-1: #{v.$space-1};
+  --space-2: #{v.$space-2};
+  --space-3: #{v.$space-3};
+  --space-4: #{v.$space-4};
+  --space-6: #{v.$space-6};
+  --space-8: #{v.$space-8};
+
+  --transition-fast:   #{v.$transition-fast};
+  --transition-normal: #{v.$transition-normal};
+
+  --z-modal: #{v.$z-modal};
+  --z-toast: #{v.$z-toast};
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}

@@ -1,0 +1,58 @@
+{
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-recess-order"],
+  "rules": {
+    "declaration-no-important": [true, { "severity": "warning" }],
+    "selector-max-id": 0,
+    "max-nesting-depth": 3,
+    "color-no-hex": [
+      true,
+      {
+        "message": "Use tokens from abstracts or CSS variables instead of hex literals",
+        "severity": "warning"
+      }
+    ],
+    "selector-class-pattern": null,
+    "scss/at-use-no-unnamespaced": null,
+    "scss/load-no-partial-leading-underscore": null,
+    "scss/at-import-partial-extension": null,
+    "scss/no-global-function-names": null,
+    "no-descending-specificity": null,
+    "media-feature-range-notation": "prefix",
+    "alpha-value-notation": "number"
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.scss"],
+      "excludedFiles": ["src/shared/styles/base/**"],
+      "rules": {
+        "declaration-property-value-disallowed-list": [
+          {
+            "/.*/": [
+              "/var\\(--yellow-/",
+              "/var\\(--gray-/",
+              "/var\\(--blue-/",
+              "/var\\(--violet-/",
+              "/var\\(--red-/",
+              "/var\\(--cyan-/"
+            ]
+          },
+          {
+            "message": "Raw palette tokens (var(--blue-9), var(--gray-12), ...) are forbidden outside src/shared/styles/base/. Use semantic tokens (var(--color-accent-9), var(--color-fg), ...) from _semantic-tokens.scss.",
+            "severity": "error"
+          }
+        ]
+      }
+    }
+  ],
+  "ignoreFiles": [
+    "node_modules/**",
+    ".next/**",
+    "out/**",
+    "coverage/**",
+    "src/shared/styles/abstracts/**",
+    "src/shared/styles/base/_root.scss",
+    "src/shared/styles/base/_reset.scss",
+    "src/shared/styles/base/palette/**",
+    "src/shared/styles/globals.scss"
+  ]
+}

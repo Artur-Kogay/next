@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, typecheck, test, build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_PUBLIC_API_URL: https://jsonplaceholder.typicode.com
+      NEXT_PUBLIC_APP_ENV: production
+      NEXT_PUBLIC_SITE_URL: http://localhost:3000
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Get Yarn cache directory
+        id: yarn-cache-dir
+        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
+
+      - name: Cache Yarn + Next
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ steps.yarn-cache-dir.outputs.dir }}
+            .yarn/cache
+            .next/cache
+          key: ${{ runner.os }}-yarn-next-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-next-
+
+      - name: Install
+        run: yarn install --immutable
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Lint styles
+        run: yarn lint:styles
+
+      - name: Typecheck
+        run: yarn typecheck
+
+      - name: Unit tests
+        run: yarn test --run
+
+      - name: Build
+        run: yarn build

@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+coverage
+playwright-report
+test-results
+.yarn
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+next-env.d.ts

@@ -1,0 +1,25 @@
+{
+  "common": {
+    "appName": "Client Web",
+    "loading": "Loading…",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "switchTheme": "Toggle theme",
+    "switchLocale": "Switch language",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System"
+  },
+  "home": {
+    "title": "Welcome",
+    "subtitle": "FSD + Next.js 15 + React 19 scaffold",
+    "description": "This is a minimal demo page used to verify the toolchain. UI components will be built in a separate task.",
+    "postsTitle": "Sample posts (TanStack Query)",
+    "counter": "Counter (Jotai)",
+    "increment": "Increment"
+  },
+  "metadata": {
+    "title": "Client Web",
+    "description": "Next.js 15 + React 19 + FSD scaffold"
+  }
+}
