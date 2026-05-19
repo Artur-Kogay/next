@@ -18,12 +18,19 @@
     "scss/no-global-function-names": null,
     "no-descending-specificity": null,
     "media-feature-range-notation": "prefix",
-    "alpha-value-notation": "number"
+    "alpha-value-notation": "number",
+    "custom-property-empty-line-before": null
   },
   "overrides": [
     {
-      "files": ["src/**/*.scss"],
-      "excludedFiles": ["src/shared/styles/base/**"],
+      "files": [
+        "src/app/**/*.scss",
+        "src/views/**/*.scss",
+        "src/widgets/**/*.scss",
+        "src/features/**/*.scss",
+        "src/entities/**/*.scss",
+        "src/shared/ui/**/*.scss"
+      ],
       "rules": {
         "declaration-property-value-disallowed-list": [
           {

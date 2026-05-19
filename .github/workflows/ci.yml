@@ -15,7 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      NEXT_PUBLIC_API_URL: https://jsonplaceholder.typicode.com
+      NEXT_PUBLIC_BASE_API_URL: https://api.showgo.tj
+      NEXT_PUBLIC_IP_API_URL: https://api.showgo.tj
+      NEXT_PUBLIC_COUNTRY_CODE: tj
+      NEXT_PUBLIC_APP_NAME: showgotj
       NEXT_PUBLIC_APP_ENV: production
       NEXT_PUBLIC_SITE_URL: http://localhost:3000
 
@@ -26,27 +29,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
+          cache: yarn
 
-      - name: Enable corepack
-        run: corepack enable
+      - name: Activate Yarn (classic) via corepack
+        run: |
+          corepack enable
+          corepack prepare yarn@1.22.22 --activate
 
-      - name: Get Yarn cache directory
-        id: yarn-cache-dir
-        run: echo "dir=$(yarn config get cacheFolder)" >> $GITHUB_OUTPUT
-
-      - name: Cache Yarn + Next
+      - name: Cache Next build
         uses: actions/cache@v4
         with:
-          path: |
-            ${{ steps.yarn-cache-dir.outputs.dir }}
-            .yarn/cache
-            .next/cache
-          key: ${{ runner.os }}-yarn-next-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-next-
+          path: .next/cache
+          key: ${{ runner.os }}-next-${{ hashFiles('yarn.lock') }}
+          restore-keys: ${{ runner.os }}-next-
 
       - name: Install
-        run: yarn install --immutable
+        run: yarn install --frozen-lockfile
 
       - name: Lint
         run: yarn lint

@@ -1,6 +1,6 @@
 # client-web-v2
 
-Каркас фронтенд-проекта: **Next.js 15 (App Router) + React 19 + TypeScript + FSD + Jotai + TanStack Query + next-intl + SCSS Modules**.
+Каркас фронтенд-проекта: **Next.js 16 (App Router) + React 19 + TypeScript + FSD + Jotai + TanStack Query + next-intl 4 + SCSS Modules**.
 
 UI-kit и конкретные продуктовые страницы **не входят** в этот скоуп — здесь только инфраструктура.
 
@@ -8,33 +8,33 @@ UI-kit и конкретные продуктовые страницы **не в
 
 ## Стек
 
-| Слой | Технология |
-| --- | --- |
-| Фреймворк | Next.js 15 (App Router, RSC) |
-| Язык | TypeScript 5.6 (strict) |
-| React | 19 |
-| Архитектура | Feature-Sliced Design 2.1 |
-| Client state | Jotai 2 |
-| Server state | TanStack Query 5 |
-| HTTP | ofetch |
-| Валидация | Zod |
-| Формы | React Hook Form + zod resolver |
-| Стили | SCSS Modules (Dart Sass) |
-| i18n | next-intl |
-| Пакетный менеджер | Yarn 4 (Berry, `node-modules` linker) |
-| Линтинг | ESLint 9 flat config + boundaries, Stylelint 16 |
-| Форматер | Prettier 3 |
-| Git hooks | Husky + lint-staged + commitlint |
-| Тесты | Vitest + RTL, Playwright |
+| Слой              | Технология                                      |
+| ----------------- | ----------------------------------------------- |
+| Фреймворк         | Next.js 16 (App Router, RSC)                    |
+| Язык              | TypeScript 5.6 (strict)                         |
+| React             | 19                                              |
+| Архитектура       | Feature-Sliced Design 2.1                       |
+| Client state      | Jotai 2                                         |
+| Server state      | TanStack Query 5                                |
+| HTTP              | ofetch                                          |
+| Валидация         | Zod                                             |
+| Формы             | React Hook Form + zod resolver                  |
+| Стили             | SCSS Modules (Dart Sass)                        |
+| i18n              | next-intl 4                                     |
+| Пакетный менеджер | Yarn 1.22.22 (classic)                          |
+| Линтинг           | ESLint 9 flat config + boundaries, Stylelint 16 |
+| Форматер          | Prettier 3                                      |
+| Git hooks         | Husky + lint-staged + commitlint                |
+| Тесты             | Vitest + RTL, Playwright                        |
 
 ---
 
 ## Быстрый старт
 
 ```bash
-# Активировать Yarn 4 (один раз)
+# Активировать Yarn 1.22.22 (один раз — пакетный менеджер пинится через corepack)
 corepack enable
-corepack prepare yarn@stable --activate
+corepack prepare yarn@1.22.22 --activate
 
 # Установить зависимости
 yarn install
@@ -53,23 +53,23 @@ yarn dev
 
 ## Скрипты
 
-| Команда | Что делает |
-| --- | --- |
-| `yarn dev` | dev-сервер Next |
-| `yarn build` | production-сборка |
-| `yarn start` | запуск production-сборки |
-| `yarn lint` | ESLint |
-| `yarn lint:fix` | ESLint с автофиксами |
-| `yarn lint:styles` | Stylelint |
-| `yarn lint:styles:fix` | Stylelint с автофиксами |
-| `yarn typecheck` | `tsc --noEmit` |
-| `yarn format` | Prettier для всего репо |
-| `yarn test` | Vitest |
-| `yarn test:watch` | Vitest в watch |
-| `yarn test:coverage` | покрытие Vitest |
-| `yarn e2e` | Playwright |
-| `yarn e2e:ui` | Playwright в UI-режиме |
-| `yarn analyze` | bundle analyzer (`ANALYZE=true next build`) |
+| Команда                | Что делает                                  |
+| ---------------------- | ------------------------------------------- |
+| `yarn dev`             | dev-сервер Next                             |
+| `yarn build`           | production-сборка                           |
+| `yarn start`           | запуск production-сборки                    |
+| `yarn lint`            | ESLint                                      |
+| `yarn lint:fix`        | ESLint с автофиксами                        |
+| `yarn lint:styles`     | Stylelint                                   |
+| `yarn lint:styles:fix` | Stylelint с автофиксами                     |
+| `yarn typecheck`       | `tsc --noEmit`                              |
+| `yarn format`          | Prettier для всего репо                     |
+| `yarn test`            | Vitest                                      |
+| `yarn test:watch`      | Vitest в watch                              |
+| `yarn test:coverage`   | покрытие Vitest                             |
+| `yarn e2e`             | Playwright                                  |
+| `yarn e2e:ui`          | Playwright в UI-режиме                      |
+| `yarn analyze`         | bundle analyzer (`ANALYZE=true next build`) |
 
 ---
 
@@ -134,8 +134,8 @@ features/<name>/
   @use 'abstracts' as *;
 
   .root {
-    padding: $space-4;             // SCSS-переменная (compile-time)
-    color: var(--color-fg);        // семантическая CSS-переменная (runtime)
+    padding: $space-4; // SCSS-переменная (compile-time)
+    color: var(--color-fg); // семантическая CSS-переменная (runtime)
 
     @include media-up('md') {
       padding: $space-6;
@@ -176,10 +176,14 @@ features/<name>/
 
 ```scss
 /* ❌ Сырой токен палитры в компоненте */
-.button { color: var(--blue-9); }
+.button {
+  color: var(--blue-9);
+}
 
 /* ✅ Семантический токен */
-.button { color: var(--color-accent-9); }
+.button {
+  color: var(--color-accent-9);
+}
 ```
 
 Stylelint падает на использовании `var(--{yellow|gray|blue|violet|red|cyan}-*)` вне `src/shared/styles/base/`.
@@ -189,7 +193,7 @@ Stylelint падает на использовании `var(--{yellow|gray|blue|
 Поменять один маппинг в `base/_semantic-tokens.scss`:
 
 ```scss
---color-accent-9: var(--violet-9);   /* было: var(--blue-9) */
+--color-accent-9: var(--violet-9); /* было: var(--blue-9) */
 ```
 
 …и так для всех `--color-accent-*` (12 ступеней + 12 alpha + 4 служебных). Палитра уже включает шесть готовых шкал.

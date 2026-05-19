@@ -49,12 +49,12 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
-      { protocol: 'https', hostname: 'jsonplaceholder.typicode.com' },
+      { protocol: 'https', hostname: 'api.showgo.tj' },
     ],
   },
 
   sassOptions: {
-    includePaths: [path.join(__dirname, 'src/shared/styles')],
+    loadPaths: [path.join(__dirname, 'src/shared/styles')],
     api: 'modern-compiler',
   },
 
