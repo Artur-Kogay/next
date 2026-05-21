@@ -1,0 +1,77 @@
+@use 'abstracts' as *;
+
+.root {
+  position: relative;
+  z-index: var(--z-modal);
+  height: var(--header-h);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: $space-4;
+  align-items: center;
+  max-width: 1280px;
+  height: 100%;
+  padding: 0 $space-4;
+  margin: 0 auto;
+
+  @include media-up('md') {
+    padding: 0 $space-6;
+  }
+
+  // На мобиле .searchSlot скрыт (display: none), grid схлопывается до двух
+  // элементов в колонках "auto 1fr". Чтобы кнопки прижались к правому краю —
+  // переключаемся на flex со space-between.
+  @include media-down('md') {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-fg);
+}
+
+.searchSlot {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+
+  // На мобиле поиск переезжает под хедер (MobileSearch widget).
+  @include media-down('md') {
+    display: none;
+  }
+}
+
+.actions {
+  display: inline-flex;
+  gap: $space-2;
+  align-items: center;
+}
+
+.phone {
+  display: inline-flex;
+  gap: $space-1;
+  align-items: center;
+  height: 36px;
+  padding: 0 $space-3;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-fg-muted);
+  white-space: nowrap;
+  border-radius: var(--radius-lg);
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-fg);
+  }
+
+  @include media-down('lg') {
+    display: none;
+  }
+}

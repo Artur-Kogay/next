@@ -1,0 +1,72 @@
+@use 'abstracts' as *;
+
+.wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  gap: $space-3;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullScreen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: var(--color-bg);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  background: color-mix(in srgb, var(--color-bg) 70%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.spinner {
+  position: relative;
+  display: inline-block;
+  aspect-ratio: 1;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    var(--color-accent-9) 270deg,
+    transparent 360deg
+  );
+  border-radius: 50%;
+  mask: radial-gradient(circle, transparent 58%, #000 60%);
+  animation: snake-spin 0.9s linear infinite;
+}
+
+.size_sm {
+  width: 20px;
+}
+
+.size_md {
+  width: 40px;
+}
+
+.size_lg {
+  width: 64px;
+}
+
+.label {
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}
+
+@keyframes snake-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2s;
+  }
+}

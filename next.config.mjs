@@ -49,6 +49,8 @@ const nextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
+      { protocol: 'https', hostname: 'gateway.kassir.kg' },
+      { protocol: 'https', hostname: 'api.showgo.uz' },
       { protocol: 'https', hostname: 'api.showgo.tj' },
     ],
   },

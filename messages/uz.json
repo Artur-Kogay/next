@@ -1,0 +1,239 @@
+{
+  "common": {
+    "phone-placeholder": "Telefon raqamingizni kiriting",
+    "phone": "Telefon raqami",
+    "confirm": "Tasdiqlash",
+    "cancel": "Bekor qilish",
+    "continue": "Davom etish",
+    "name": "Ism",
+    "email": "Elektron pochta",
+    "last-name": "Familiya",
+    "save": "Saqlash",
+    "count": "{count} dona",
+    "duration": "{minutes} daqiqa",
+    "buy": "Sotib olish"
+  },
+
+  "payments": {
+    "not_enabled": "Hozircha to‘lov amalga oshirib bo‘lmaydi, boshqa to‘lov usulini tanlang",
+    "mbank-title": "Mbank orqali to‘lov",
+    "mbank-code-placeholder": "4 xonali tasdiqlash kodini kiriting",
+    "kompanion-code-placeholder": "6 xonali tasdiqlash kodini kiriting",
+    "send-code": "SMS orqali kod yuborish",
+    "confirm-code": "Kod tasdiqlash",
+    "payment-timer": "To‘lov uchun qolgan vaqt: {seconds} soniya",
+    "phone-format-error": "Telefon raqami formati noto‘g‘ri!",
+    "code-format-error": "Tasdiqlash kodi noto‘g‘ri!",
+    "optima-confirm-order": "Buyurtma muvaffaqiyatli yaratildi. Optima 24 ilovasida To‘lovlar => Internet do‘konlar => kassir.kg bo‘limiga o‘ting, buyurtma raqamini kiriting va to‘lovni amalga oshiring",
+    "optima-title": "Optima24 orqali to‘lov",
+    "finish": "To‘lov qildim",
+    "odengi-title": "O!Dengi orqali to‘lov",
+    "pay": "To‘lash",
+    "odengi-confirm-order": "Buyurtma muvaffaqiyatli yaratildi. O!Dengi ilovasi orqali to‘lovni tasdiqlang yoki QR kodni skanerlang va so‘ng pastdagi tugmani bosing",
+    "visa-title": "Visa kartalari orqali to‘lov",
+    "uzum": "Uzum",
+    "tbank": "TBank",
+    "demir": "Оплата через карты",
+    "elcart-title": "Elcart kartalari orqali to‘lov",
+    "megapay-title": "Megapay orqali to‘lov",
+    "bakai-code-placeholder": "5 xonali tasdiqlash kodini kiriting",
+    "bakai-title": "Bakai orqali to‘lov",
+    "register": "Ro‘yxatdan o‘tish",
+    "free-title": "Chiptalarni olish",
+    "elsom-title": "Elsom orqali to‘lov",
+    "elsom-confirm-order": "Buyurtma muvaffaqiyatli yaratildi. Elsom ilovasi orqali to‘lovni tasdiqlang va so‘ng pastdagi tugmani bosing"
+  },
+
+  "profile": {
+    "orders": "Mening chiptalarim",
+    "cards": "Mening kartalarim",
+    "profileData": "Shaxsiy ma’lumotlar",
+    "exit": "Akkauntdan chiqish",
+    "card-number": "Karta raqami",
+    "binding-phone": "Kartaga bog‘langan telefon raqami",
+    "expire-date": "Kartaning amal qilish muddati",
+    "input-otp": "Bir martalik kodni kiriting",
+    "trust": "Tasdiqlashsiz foydalanish mumkin",
+    "new-otp": "Yangi kodni {seconds} soniyadan so‘ng so‘rash mumkin.",
+    "new-otp-request": "Yangi kodni olish",
+    "save-card": "Kartani saqlash",
+    "expire-date-placeholder": "YY/MM",
+    "add-card": "Karta qo‘shish",
+    "cant-refund": "Bu tadbir bekor qilinmagan. Agar chiptalarni qaytarishni xohlasangiz, qo‘llab-quvvatlash xizmatiga murojaat qiling",
+    "download": "Yuklab olish",
+    "show-receipt": "Chekni ko‘rsatish",
+    "receipt-progress": "Chek tadbir tugagandan so‘ng shakllantiriladi. Tadbir bekor qilinsa, mablag‘ avtomatik tarzda qaytariladi.",
+    "ticket": "Chipta",
+    "order-number": "Buyurtma raqami",
+    "date": "Tadbir sanasi",
+    "address": "Manzil",
+    "place": "Tadbir joyi",
+    "price": "Narxi",
+    "ticket-number": "Chipta raqami",
+    "discount": "Chegirma",
+    "successfull-orders": "Muvaffaqiyatli",
+    "pending-orders": "Kutilmoqda",
+    "email-placeholder": "Elektron pochta manzilini kiriting",
+    "name-placeholder": "Ismingizni kiriting",
+    "last-name-placeholder": "Familiyangizni kiriting",
+    "birthday-placeholder": "Tug‘ilgan sanangizni kiriting",
+    "birthday": "Tug‘ilgan sana",
+    "gender": "Jinsi",
+    "male": "Erkak",
+    "female": "Ayol",
+    "lucky-ticket": "Omadli chipta",
+    "lucky-modal-title": "Sizda omadli chipta bor!",
+    "lucky-modal-desc": "Siz Omadli chipta egasiga aylandingiz! Sovrinni olish uchun biz bilan +996 700 266 933 (WhatsApp) raqami orqali bog'laning",
+    "lucky-modal-button": "WhatsApp orqali yozish"
+  },
+
+  "meta-data": {
+    "uz": {
+      "title": "Qulay chipta operatori ShowGo.uz",
+      "description": "Bizning ilovamiz sizning qulayligingiz uchun ishlab chiqilgan. Bir necha bosish orqali konsertlar, teatrlar va sport tadbirlariga chiptalar qo‘lingizda bo‘ladi!"
+    },
+    "kg": {
+      "title": "Milliy chipta operatori Kassir.kg",
+      "description": "Bizning ilovamiz sizning qulayligingiz uchun ishlab chiqilgan. Bir necha bosish orqali konsertlar, teatrlar va sport tadbirlariga chiptalar qo‘lingizda bo‘ladi!"
+    },
+    "tj": {
+      "title": "Qulay chipta operatori ShowGo.tj",
+      "description": "Bizning ilovamiz sizning qulayligingiz uchun ishlab chiqilgan. Bir necha bosish orqali konsertlar, teatrlar va sport tadbirlariga chiptalar qo‘lingizda bo‘ladi!"
+    }
+  },
+
+  "main-page": {
+    "price-from": "{price} dan boshlab",
+    "free": "Bepul",
+    "buy": "Sotib olish",
+    "sold-out": "Barcha chiptalar sotildi"
+  },
+
+  "auth": {
+    "agree": "Men shartlarga roziman",
+    "send-otp": "Kod yuborish",
+    "input-otp": "Bir martalik kodni kiriting"
+  },
+
+  "errors": {
+    "phone": "Telefon raqami noto‘g‘ri"
+  },
+
+  "not-found": {
+    "category": "Bu toifada tadbirlar topilmadi",
+    "cards": "Saqlangan kartalar mavjud emas",
+    "orders": "Buyurtmalar mavjud emas",
+    "title": "Bunday sahifa topilmadi",
+    "go-home": "Bosh sahifaga"
+  },
+  "event": {
+    "price": "Narxi",
+    "address": "Tadbir joyi",
+    "date": "Sana",
+    "tickets-count": "Chipta soni",
+    "duration": "Davomiyligi",
+    "lang": "Til",
+    "share": "Ulashish:",
+    "dates": "Sanalar:",
+    "select-seat": "O‘rindiq tanlash",
+    "out-tickets": "Chiptalar sotilgan, boshqa sanani tanlang",
+    "out-tickets-no-session": "Chiptalar sotilgan",
+    "refund-rule": "Tadbirdan oldin 3 kun ichida almashtirish va qaytarish mumkin emas.",
+    "refund-label": "Qaytish cheklovlari",
+    "sold-out": "Barcha chiptalar sotildi"
+  },
+  "event-status": {
+    "awaiting": "Aniqlashtirilmoqda",
+    "inactive": "Sotuv yakunlandi",
+    "free": "O‘rindiq tanlash",
+    "closed": "Sotuv yakunlandi"
+  },
+  "adds": {
+    "title": "Konsert chiptalarini bron qilish endi cho‘ntagingizda",
+    "description": "Ilovamiz sizning qulayligingiz uchun ishlab chiqilgan. Bir necha bosish bilan konsert, teatr, sport tadbirlariga chiptalarni qo‘lga kiritasiz!"
+  },
+  "footer": {
+    "name": "Ismingizni kiriting",
+    "email": "E-mail manzilingizni kiriting",
+    "title": "So‘nggi tadbirlardan xabardor bo‘ling",
+    "subscribe": "Obuna bo‘lish",
+    "aboutCompany": "Kompaniya haqida",
+    "public": "Ommaviy oferta",
+    "organizeshion": "Tashkilotchilar uchun",
+    "logo": "Logotiplar",
+    "howBuy": "Qanday sotib olish?",
+    "purchaseinstructions": "Sotib olish bo‘yicha ko‘rsatma",
+    "question": "Tez-tez so‘raladigan savollar (FAQ) va javoblar",
+    "questionfooter": "Savollar va javoblar",
+    "etickets": "Elektron chiptalar",
+    "foydalanishShartlari": "Foydalanish shartlari",
+    "roots": "Qaytarish qoidalari",
+    "ticketDelivery": "Chiptalarni yetkazib berish",
+    "subscribeUs": "Bizga obuna bo‘ling",
+    "contacts": "Aloqa",
+    "address": "Bishkek shahri, Isanova ko‘chasi 105/3",
+    "ticketOnline": "Onlayn chipta",
+    "controlPanel": "Boshqaruv paneli",
+    "changeCountry": "Mamlakatni o‘zgartirish",
+    "refund": "Qaytarish",
+    "exchange": "Almashtirish"
+  },
+  "organizers": {
+    "buisnessApp": "Tashkilotchilar uchun biznes ilovasi, chipta nazorati va sotuv tahlili",
+    "optimization": "Bizning biznes ilovamiz yordamida ish faoliyatingizni optimallashtiring! Endi siz maxsus ilovani yuklab olib, kirishda chiptalarni nazorat qilishni soddalashtirishingiz va undan foydalanish bo‘yicha zarur ko‘rsatmalarni olishingiz mumkin. Bu ilova chiptalarni tekshirish jarayonini xatosiz va samarali qiladi.",
+    "youCan": "Bizning biznes ilovamiz nafaqat kirish chiptalarini nazorat qilishga yordam beradi, balki sotuvlar bo‘yicha qimmatli tahlillarni ham taqdim etadi. Siz sotilgan chiptalar haqidagi ma'lumotlarni kuzatib borishingiz va tahlil qilishingiz mumkin, bu esa kelajakda yanada asosli qarorlar qabul qilishingizga yordam beradi. Qaysi tadbirlar eng mashhur ekanligini, qaysi marketing strategiyalari samarali ekanligini bilib oling va eng yaxshi natijalarga erishish uchun harakatlaringizni optimallashtiring.",
+    "success": "Tadbirlaringizni samarali boshqarish va chiptalarni nazorat qilish muvaffaqiyatingiz uchun muhim omil ekanligini tushunamiz. Shuning uchun bizning biznes ilovamiz sizning ehtiyojlaringiz va talablaringizni hisobga olgan holda ishlab chiqilgan. Tadbirlaringizni tashkil qilishni yaxshilash va biznesingiz samaradorligini oshirish imkoniyatini qo‘ldan boy bermang.",
+    "download": "Ilovamizni bugunoq yuklab oling va chiptalarni nazorat qilish va sotuvlarni tahlil qilish uchun uning afzalliklaridan foydalanishni boshlang. Biz bu siz va sizning biznesingiz uchun ajralmas vosita bo‘lishiga ishonamiz.",
+    "downloadPDF": "Ilovadan foydalanish bo‘yicha ko‘rsatmani yuklab olish"
+  },
+  "footerpages": {
+    "dowloadguidy": "PDF formatidagi ko‘rsatmani yuklab olish",
+    "downloadCommercial": "Tijorat taklifini yuklab olish",
+    "organizersManagers": "Tashkilotchilar va menejerlar uchun",
+    "howbuystep1": "CHIPTALAR SOTIB OLISH QOIDALARI QADAMMA-QADAM KO‘RSATMA",
+    "howbuystep2": "TADBIRNI TANLANG",
+    "howbuystep3": "SANANI TANLANG VA SOTIB OLISH TUGMASINI BOSING",
+    "howbuystep4": "KERAKLI O‘RINDIQNI TANLANG",
+    "howbuystep5": "TO‘LOVGA O‘TING VA MA’LUMOTLARNI TO‘LDIRING",
+    "howbuystep6": "ELEKTRON CHIPTA EMAIL MANZILINGIZGA YUBORILADI",
+    "howbuystep7": "Elektron chipta shuningdek shaxsiy kabinetingizda ham paydo bo‘ladi",
+    "howbuystep8": "ELEKTRON CHIPTANI (TELEFONDA YOKI CHOP ETILGAN HOLDA) KIRISHDA NAZORATCHIGA KO‘RSATING",
+    "logotipsstep1": "Afisha blokini tasdiqlash",
+    "logotipsstep2": "Afishalarni chop etishdan oldin, har bir tadbir afishasidagi blokni marketing bo‘limi va loyiha menejeri bilan kelishish zarur.",
+    "logotipsstep3": "Afishaning JPEG formatidagi maketini tasdiqlash uchun iltimos, uni quyidagi manzilga yuboring",
+    "logotipsstep4": "Afishaning tasdiqlangani faqat yozma tasdiq olgandan so‘ng hisoblanadi.",
+    "logotipsstep5": "Agar bloklar, logotiplar yoki tashqi reklama uchun rekvizitlar joylashuvi uchun nostandart o‘lchamlar talab qilinsa, iltimos, quyidagi manzilga elektron pochta orqali murojaat qiling"
+  },
+  "cart-modal": {
+    "basket": "Savatcha",
+    "empty": "Savatchangiz bo‘sh",
+    "will-be": "Bu yerda siz bron qilgan chiptalar paydo bo‘ladi",
+    "go-home": "Bosh sahifaga",
+    "total": "Umumiy to‘lov: {price}",
+    "purchase": "Buyurtma berish",
+    "clear-basket": "Savatchani tozalash"
+  },
+  "basket": {
+    "costumer": "Buyurtmachi",
+    "full-name": "To‘liq ismi",
+    "fill-fields": "Yuqoridagi maydonlarni to‘ldiring (majburiy emas). <b>To‘lovdan so‘ng chiptalar shaxsiy kabinetingizda paydo bo‘ladi</b>",
+    "agree": "Buyurtmani to‘lab, siz",
+    "rules": "Chipta foydalanish qoidalari",
+    "choose-method": "To‘lov usulini tanlang",
+    "fill-promo": "Promokodni kiriting (agar mavjud bo‘lsa)",
+    "apply": "Qo‘llash",
+    "checkout": "Buyurtmani rasmiylashtirish",
+    "refund-rule": "Tadbirdan oldin 3 kun ichida almashtirish va qaytarish mumkin emas.",
+    "tickets": {
+      "quantity": "Jami chiptalar: {count}",
+      "price": "Narxi: {price}",
+      "to-pay": "To‘lovga: {price}",
+      "service-fee": "Har bir chipta uchun xizmat haqi: {serviceFee}",
+      "with-service-fee": "xizmat haqi bilan",
+      "discount": "Chegirma: {discount}"
+    }
+  },
+  "order": {
+    "tickets-left": "Chipta soni: {quantity}"
+  }
+}

@@ -1,5 +1,7 @@
+import { Loader } from '@/shared/ui';
+
 const Loading = () => {
-  return <p>Loading…</p>;
+  return <Loader fullScreen size="lg" ariaLabel="Loading" />;
 };
 
 export default Loading;

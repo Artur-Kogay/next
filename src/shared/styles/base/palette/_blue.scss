@@ -113,14 +113,23 @@
   --blue-a11: color(display-p3 0.49 0.72 1);
   --blue-a12: color(display-p3 0.788 0.898 0.99);
 }
+
 :root,
-:root[data-theme='light'] { @include blue-light; }
-:root[data-theme='dark']  { @include blue-dark; }
+:root[data-theme='light'] {
+  @include blue-light;
+}
+:root[data-theme='dark'] {
+  @include blue-dark;
+}
 
 @supports (color: color(display-p3 1 1 1)) {
   @media (color-gamut: p3) {
     :root,
-    :root[data-theme='light'] { @include blue-light-p3; }
-    :root[data-theme='dark']  { @include blue-dark-p3; }
+    :root[data-theme='light'] {
+      @include blue-light-p3;
+    }
+    :root[data-theme='dark'] {
+      @include blue-dark-p3;
+    }
   }
 }

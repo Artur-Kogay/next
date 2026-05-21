@@ -1,0 +1,100 @@
+@use 'abstracts' as *;
+
+.root {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+
+.field {
+  display: flex;
+  gap: $space-2;
+  align-items: center;
+  height: 44px;
+  padding: 0 $space-3;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-fast);
+
+  &:focus-within {
+    border-color: var(--color-border-focus);
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-fg-muted);
+}
+
+.input {
+  width: 100%;
+  padding: 0;
+  font-size: $font-size-sm;
+  color: var(--color-fg);
+  background: transparent;
+  border: 0;
+  outline: 0;
+
+  &::placeholder {
+    color: var(--color-fg-subtle);
+  }
+}
+
+.clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--color-fg-muted);
+  background: transparent;
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+
+  &:hover {
+    color: var(--color-fg);
+    background: var(--color-bg-subtle);
+  }
+}
+
+.dropdown {
+  position: fixed;
+  inset: calc(var(--header-h) + 68px) 0 0;
+  z-index: var(--z-modal);
+  padding: $space-4;
+  overflow: auto;
+  background: var(--color-bg);
+
+  @include media-up('md') {
+    inset: calc(var(--header-h) + #{$space-2}) auto $space-2 50%;
+    width: min(calc(100vw - #{$space-8}), 1280px);
+    border-radius: var(--radius-lg);
+    transform: translateX(-50%);
+  }
+}
+
+.results {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $space-3;
+
+  @include media-up('sm') {
+    gap: $space-4;
+  }
+
+  @include media-up('md') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include media-up('lg') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.state {
+  padding: $space-4;
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+  text-align: center;
+}

@@ -1,0 +1,120 @@
+@use 'abstracts' as *;
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.2;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-bg-subtle), var(--color-panel));
+}
+
+// ХИТ-бейдж — компактнее.
+.pinBadge {
+  position: absolute;
+  top: $space-2;
+  left: $space-2;
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 6px;
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  color: var(--color-accent-contrast);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--color-accent-9);
+  border-radius: var(--radius-sm);
+}
+
+// Бейдж цены.
+// Mobile (по умолчанию): в потоке body слева под датой (align-self: flex-start).
+// Desktop (≥ md): абсолютно позиционируется на правый верх картинки.
+.priceBadge,
+.priceBadgeFree,
+.priceBadgeMuted {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  height: 22px;
+  padding: 0 $space-2;
+  margin-top: $space-1;
+  font-size: 11px;
+  font-weight: $font-weight-semibold;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+
+  @include media-up('md') {
+    position: absolute;
+    top: $space-2;
+    right: $space-2;
+    margin-top: 0;
+    backdrop-filter: blur(8px);
+  }
+}
+
+.priceBadge {
+  color: var(--color-fg);
+  background: color-mix(in srgb, var(--color-panel-solid) 92%, transparent);
+}
+
+.priceBadgeFree {
+  color: var(--color-accent-contrast);
+  background: var(--color-accent-9);
+}
+
+.priceBadgeMuted {
+  color: var(--color-fg-subtle);
+  background: color-mix(in srgb, var(--color-panel-solid) 92%, transparent);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  padding: $space-3 0;
+}
+
+.title {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: var(--color-fg);
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.date {
+  font-size: $font-size-sm;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg-muted);
+}
+
+.venue {
+  overflow: hidden;
+  font-size: $font-size-xs;
+  color: var(--color-fg-subtle);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

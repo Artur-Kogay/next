@@ -39,5 +39,5 @@
     "src/shared/types/**/*.d.ts",
     ".next/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules", ".next", "out", "coverage", "playwright-report"]
+  "exclude": ["node_modules", ".next", "out", "coverage", "playwright-report", "old"]
 }

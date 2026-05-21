@@ -6,11 +6,13 @@ import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 
-import { env } from '@/shared/config/env';
+import { brand, env } from '@/shared/config';
 import { routing } from '@/shared/i18n/routing';
 import { themeInitScript } from '@/shared/lib/theme-init-script';
 import { AppProviders } from '@/shared/providers/AppProviders';
 import { WebVitals } from '@/shared/providers/WebVitals';
+import { Footer } from '@/widgets/footer';
+import { Header, MobileSearch } from '@/widgets/header';
 
 import type { Metadata, Viewport } from 'next';
 
@@ -32,8 +34,7 @@ export const viewport: Viewport = {
   ],
 };
 
-export const generateStaticParams = () =>
-  routing.locales.map((locale) => ({ locale }));
+export const generateStaticParams = () => routing.locales.map((locale) => ({ locale }));
 
 interface LocaleLayoutProps {
   children: ReactNode;
@@ -46,15 +47,26 @@ export const generateMetadata = async ({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> => {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'metadata' });
+  const t = await getTranslations({ locale, namespace: 'meta-data' });
+
+  const FALLBACKS: Record<string, 'kg' | 'uz' | 'ru' | 'tj'> = {
+    tg: 'tj',
+    ky: 'kg',
+  };
+  const code = env.NEXT_PUBLIC_COUNTRY_CODE;
+  const metaKey = (FALLBACKS[code] ?? code) as 'kg' | 'uz' | 'ru' | 'tj';
+  const safeKey = ['kg', 'uz', 'ru', 'tj'].includes(metaKey) ? metaKey : 'kg';
+
+  const title = t(`${safeKey}.title`);
+  const description = t(`${safeKey}.description`);
 
   return {
     metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
     title: {
-      default: t('title'),
-      template: `%s — ${t('title')}`,
+      default: title,
+      template: `%s — ${brand.appName}`,
     },
-    description: t('description'),
+    description,
     alternates: {
       canonical: '/',
       languages: Object.fromEntries(
@@ -63,16 +75,16 @@ export const generateMetadata = async ({
     },
     openGraph: {
       type: 'website',
-      title: t('title'),
-      description: t('description'),
+      title,
+      description,
       url: env.NEXT_PUBLIC_SITE_URL,
-      siteName: t('title'),
+      siteName: brand.appName,
       locale,
     },
     twitter: {
       card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
+      title,
+      description,
     },
   };
 };
@@ -87,13 +99,23 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={inter.variable} suppressHydrationWarning>
+    <html
+      lang={locale}
+      data-accent={brand.accent}
+      className={inter.variable}
+      suppressHydrationWarning
+    >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <AppProviders>{children}</AppProviders>
+          <AppProviders>
+            <Header />
+            <MobileSearch />
+            <main>{children}</main>
+            <Footer />
+          </AppProviders>
         </NextIntlClientProvider>
         <WebVitals />
       </body>

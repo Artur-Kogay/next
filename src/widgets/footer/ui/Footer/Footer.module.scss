@@ -1,0 +1,126 @@
+@use 'abstracts' as *;
+
+.root {
+  margin-top: $space-10;
+  background: var(--color-bg-subtle);
+  border-top: 1px solid var(--color-border);
+}
+
+.inner {
+  max-width: 1280px;
+  padding: $space-10 $space-4 $space-6;
+  margin: 0 auto;
+
+  @include media-up('md') {
+    padding: $space-12 $space-6 $space-6;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $space-8;
+
+  @include media-up('md') {
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+  }
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.brandName {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-fg);
+  letter-spacing: -0.01em;
+}
+
+.tagline {
+  max-width: 320px;
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}
+
+.socials {
+  display: inline-flex;
+  gap: $space-2;
+}
+
+.socialBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  color: var(--color-fg);
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+
+  &:hover {
+    color: var(--color-accent-contrast);
+    background: var(--color-accent-9);
+    border-color: transparent;
+  }
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.colTitle {
+  margin: 0;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.link {
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-fg);
+  }
+}
+
+.contactItem {
+  display: inline-flex;
+  gap: $space-2;
+  align-items: flex-start;
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+
+  > svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+}
+
+.bottom {
+  padding-top: $space-6;
+  margin-top: $space-8;
+  font-size: $font-size-sm;
+  color: var(--color-fg-subtle);
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}

@@ -1,0 +1,11 @@
+@use 'abstracts' as *;
+
+.root {
+  width: auto;
+  height: 32px;
+  object-fit: contain;
+
+  @include media-up('md') {
+    height: 36px;
+  }
+}
