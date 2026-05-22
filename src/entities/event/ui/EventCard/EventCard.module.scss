@@ -27,7 +27,6 @@
   background: linear-gradient(135deg, var(--color-bg-subtle), var(--color-panel));
 }
 
-// ХИТ-бейдж — компактнее.
 .pinBadge {
   position: absolute;
   top: $space-2;
@@ -45,9 +44,6 @@
   border-radius: var(--radius-sm);
 }
 
-// Бейдж цены.
-// Mobile (по умолчанию): в потоке body слева под датой (align-self: flex-start).
-// Desktop (≥ md): абсолютно позиционируется на правый верх картинки.
 .priceBadge,
 .priceBadgeFree,
 .priceBadgeMuted {

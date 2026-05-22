@@ -42,9 +42,6 @@
     border-color var(--transition-fast),
     color var(--transition-fast);
 
-  // Hover применяем ТОЛЬКО на устройствах, которые реально умеют ховерить
-  // (мышь / трекпад). Иначе на тач-экранах `:hover` "залипает" после тапа
-  // и чип остаётся подсвеченным даже после того как scroll-spy выбрал другой.
   @media (hover: hover) {
     &:hover {
       color: var(--color-accent-contrast);

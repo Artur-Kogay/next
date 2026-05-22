@@ -8,3 +8,5 @@ export { logo } from './logo';
 export type { LogoConfig } from './logo';
 export { currency } from './currency';
 export type { CurrencyConfig } from './currency';
+export { COUNTRIES, COUNTRY_ALIASES } from './countries';
+export type { Country } from './countries';

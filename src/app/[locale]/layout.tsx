@@ -11,8 +11,6 @@ import { routing } from '@/shared/i18n/routing';
 import { themeInitScript } from '@/shared/lib/theme-init-script';
 import { AppProviders } from '@/shared/providers/AppProviders';
 import { WebVitals } from '@/shared/providers/WebVitals';
-import { Footer } from '@/widgets/footer';
-import { Header, MobileSearch } from '@/widgets/header';
 
 import type { Metadata, Viewport } from 'next';
 
@@ -110,12 +108,7 @@ const LocaleLayout = async ({ children, params }: LocaleLayoutProps) => {
       </head>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>
-          <AppProviders>
-            <Header />
-            <MobileSearch />
-            <main>{children}</main>
-            <Footer />
-          </AppProviders>
+          <AppProviders>{children}</AppProviders>
         </NextIntlClientProvider>
         <WebVitals />
       </body>

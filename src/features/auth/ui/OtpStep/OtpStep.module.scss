@@ -1,0 +1,93 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-fg);
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}
+
+.cells {
+  display: grid;
+  grid-template-columns: repeat(var(--otp-len, 6), 1fr);
+  gap: $space-2;
+
+  @include media-up('sm') {
+    gap: $space-3;
+  }
+}
+
+.cell {
+  width: 100%;
+  height: 56px;
+  padding: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg);
+  text-align: center;
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--transition-fast);
+
+  &:focus {
+    border-color: var(--color-accent-9);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.error {
+  padding: $space-3 $space-4;
+  font-size: $font-size-sm;
+  color: var(--color-danger-11);
+  background: var(--color-danger-surface);
+  border-radius: var(--radius-md);
+}
+
+.resend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $font-size-sm;
+}
+
+.timer {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg-muted);
+}
+
+.resendBtn {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-accent-11);
+  background: transparent;
+  transition: color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-accent-9);
+    }
+  }
+}

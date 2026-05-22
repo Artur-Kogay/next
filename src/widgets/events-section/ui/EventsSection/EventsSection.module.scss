@@ -37,9 +37,6 @@
     grid-template-columns: repeat(5, 1fr);
   }
 
-  // Мобила (< md): превращаем сетку в горизонтальную карусель со scroll-snap.
-  // Растягиваем grid за padding контейнера (margin -$space-4 + padding $space-4),
-  // чтобы карточки могли долистываться до самого края экрана.
   @include media-down('md') {
     display: flex;
     grid-template-columns: none;
@@ -52,8 +49,6 @@
   }
 }
 
-// Каждая карточка-карусель = фикс. ширина + snap-точка слева.
-// 40% даёт ~2.5 карточки в viewport (две полные + половина следующей).
 .grid > * {
   @include media-down('md') {
     flex: 0 0 40%;

@@ -22,9 +22,6 @@
     padding: 0 $space-6;
   }
 
-  // На мобиле .searchSlot скрыт (display: none), grid схлопывается до двух
-  // элементов в колонках "auto 1fr". Чтобы кнопки прижались к правому краю —
-  // переключаемся на flex со space-between.
   @include media-down('md') {
     display: flex;
     justify-content: space-between;
@@ -42,7 +39,6 @@
   justify-content: center;
   min-width: 0;
 
-  // На мобиле поиск переезжает под хедер (MobileSearch widget).
   @include media-down('md') {
     display: none;
   }

@@ -1,0 +1,97 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-fg);
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+  gap: $space-4;
+  align-items: center;
+  width: 100%;
+  padding: $space-3 $space-4;
+  text-align: left;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-bg-subtle);
+      border-color: var(--color-border-strong);
+    }
+  }
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-fg);
+}
+
+.itemBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.itemTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg);
+}
+
+.itemHint {
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}
+
+.arrow {
+  font-size: $font-size-xl;
+  color: var(--color-fg-subtle);
+}
+
+.state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}

@@ -1,6 +1,5 @@
 import { env } from './env';
 
-/** Доступные бренд-цвета. Каждый соответствует шкале в палитре. */
 export type AccentColor = 'blue' | 'orange' | 'violet' | 'red' | 'cyan' | 'yellow';
 
 export interface BrandConfig {

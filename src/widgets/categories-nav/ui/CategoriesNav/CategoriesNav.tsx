@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
 import { type Category } from '@/entities/category';
 import { Link, usePathname } from '@/shared/i18n/navigation';
@@ -12,12 +12,10 @@ interface CategoriesNavProps {
 }
 
 export const CategoriesNav = ({ categories }: CategoriesNavProps) => {
-  const visible = categories.filter((c) => c.last_sessions.length > 0);
+  const visible = useMemo(() => categories.filter((c) => c.last_sessions.length > 0), [categories]);
   const navRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
-  // Если зашли сразу на страницу категории — подтянем активный чип в центр
-  // горизонтальной полосы, чтобы пользователь видел его сразу.
   useEffect(() => {
     const chip = navRef.current?.querySelector<HTMLElement>('[aria-current="page"]');
     chip?.scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });

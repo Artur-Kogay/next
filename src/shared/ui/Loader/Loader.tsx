@@ -5,25 +5,18 @@ import styles from './Loader.module.scss';
 type LoaderSize = 'sm' | 'md' | 'lg';
 
 interface LoaderProps {
-  /** Размер спиннера. По умолчанию `md` (40px). */
   size?: LoaderSize;
-  /** Растянуть на весь viewport (для app/loading.tsx). */
+
   fullScreen?: boolean;
-  /** Растянуть на родителя (родитель должен быть position: relative). */
+
   overlay?: boolean;
-  /** Подпись под спиннером. */
+
   label?: string;
-  /** Aria-label, если визуальной подписи нет. */
+
   ariaLabel?: string;
   className?: string;
 }
 
-/**
- * Универсальный лоадер. Три режима:
- *   - inline:     `<Loader />` — занимает место по содержимому, центрирует себя.
- *   - overlay:    `<Loader overlay />` — `position: absolute`, накрывает родителя.
- *   - fullScreen: `<Loader fullScreen />` — `position: fixed`, накрывает весь экран.
- */
 export const Loader = ({
   size = 'md',
   fullScreen = false,

@@ -1,0 +1,90 @@
+@use 'abstracts' as *;
+
+.root {
+  position: relative;
+}
+
+.trigger {
+  display: inline-flex;
+  gap: $space-2;
+  align-items: center;
+  height: 100%;
+  padding: 0 $space-2 0 0;
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+
+  &:hover {
+    color: var(--color-fg);
+  }
+}
+
+.flag {
+  font-size: $font-size-xl;
+  line-height: 1;
+}
+
+.dial {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg);
+}
+
+.chevron {
+  color: var(--color-fg-muted);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + #{$space-2});
+  left: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  min-width: 240px;
+  max-height: 280px;
+  padding: $space-1;
+  margin: 0;
+  overflow: auto;
+  list-style: none;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+}
+
+.item {
+  display: flex;
+  gap: $space-3;
+  align-items: center;
+  width: 100%;
+  padding: $space-2 $space-3;
+  text-align: left;
+  background: transparent;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-bg-subtle);
+    }
+  }
+
+  &[aria-current='true'] {
+    background: var(--color-bg-subtle);
+  }
+}
+
+.itemName {
+  flex: 1;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--color-fg);
+}
+
+.itemDial {
+  font-size: $font-size-sm;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg-muted);
+}

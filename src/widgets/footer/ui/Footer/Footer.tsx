@@ -47,7 +47,7 @@ export const Footer = () => {
                   className={styles.socialBtn}
                   aria-label="Instagram"
                 >
-                  {/* lucide@1 dropped Instagram icon for trademark reasons — inline glyph */}
+                  {}
                   <svg
                     width={18}
                     height={18}

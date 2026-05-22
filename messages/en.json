@@ -130,7 +130,23 @@
   "auth": {
     "agree": "I agree with the terms",
     "send-otp": "Send code",
-    "input-otp": "Enter one-time code"
+    "input-otp": "Enter one-time code",
+    "phoneTitle": "Sign in",
+    "phoneSubtitle": "Enter your phone number, we will send a code",
+    "serviceTitle": "How to send the code?",
+    "serviceSubtitle": "The code will be sent to {phone}",
+    "serviceError": "Failed to load delivery methods",
+    "otpTitle": "Enter the code",
+    "otpSubtitle": "We sent you a verification code",
+    "otpInvalid": "Invalid code, please try again",
+    "otpResend": "Resend code",
+    "otpResendIn": "Request code again in {seconds} sec.",
+    "back": "Back",
+    "cancel": "Cancel",
+    "serviceHint": {
+      "telegram": "Telegram bot message",
+      "smspro": "SMS to your phone"
+    }
   },
   "errors": {
     "phone": "Invalid phone number"

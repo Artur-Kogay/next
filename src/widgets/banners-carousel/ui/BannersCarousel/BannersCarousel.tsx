@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import Image from 'next/image';
 
@@ -19,11 +19,16 @@ interface BannersCarouselProps {
 }
 
 export const BannersCarousel = ({ banners, variant = 'main' }: BannersCarouselProps) => {
-  const validBanners = banners.filter((b) => b.image_path);
+  const validBanners = useMemo(() => banners.filter((b) => b.image_path), [banners]);
+
+  const plugins = useMemo(
+    () => (validBanners.length > 1 ? [Autoplay({ delay: 4000, stopOnInteraction: false })] : []),
+    [validBanners.length],
+  );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: validBanners.length > 1, align: 'center' },
-    validBanners.length > 1 ? [Autoplay({ delay: 4000, stopOnInteraction: false })] : [],
+    plugins,
   );
 
   const [selectedIdx, setSelectedIdx] = useState(0);

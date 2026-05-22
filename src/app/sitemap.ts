@@ -1,4 +1,3 @@
-
 import { env } from '@/shared/config/env';
 import { routing } from '@/shared/i18n/routing';
 
@@ -11,7 +10,9 @@ const sitemap = (): MetadataRoute.Sitemap => {
   return paths.flatMap((path) =>
     routing.locales.map((locale) => {
       const url =
-        locale === routing.defaultLocale ? `${base}${path}` : `${base}/${locale}${path === '/' ? '' : path}`;
+        locale === routing.defaultLocale
+          ? `${base}${path}`
+          : `${base}/${locale}${path === '/' ? '' : path}`;
       return {
         url,
         lastModified: new Date(),

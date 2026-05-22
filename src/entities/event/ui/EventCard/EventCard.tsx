@@ -65,11 +65,7 @@ export const EventCard = ({ session, priority = false }: EventCardProps) => {
           {weekday}, {dayMonth} {time}
         </time>
 
-        {/*
-          На мобиле цена живёт здесь в потоке (слева под заголовком),
-          на десктопе — абсолютно позиционируется на правый верх картинки.
-          Один элемент — два режима через медиа-запрос.
-        */}
+        {}
         <span className={priceClass}>{priceLabel}</span>
       </div>
     </Link>

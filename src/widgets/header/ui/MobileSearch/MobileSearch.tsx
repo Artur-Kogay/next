@@ -6,10 +6,6 @@ import { SearchBar } from '@/features/search';
 
 import styles from './MobileSearch.module.scss';
 
-/**
- * Поисковая строка, которая на мобиле живёт отдельной полосой
- * между хедером и контентом. На десктопе скрыта (там поиск в хедере).
- */
 export const MobileSearch = () => {
   const t = useTranslations('common');
 

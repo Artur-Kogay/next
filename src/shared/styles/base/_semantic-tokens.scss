@@ -38,6 +38,7 @@
   --color-bg-subtle: var(--gray-2);
   --color-panel: var(--gray-2);
   --color-panel-solid: var(--gray-1);
+  --color-input: var(--gray-3);
   --color-border: var(--gray-6);
   --color-border-strong: var(--gray-7);
   --color-border-focus: var(--gray-8);
@@ -72,18 +73,23 @@
 :root[data-accent='blue'] {
   @include accent-scale('blue');
 }
+
 :root[data-accent='orange'] {
   @include accent-scale('orange');
 }
+
 :root[data-accent='violet'] {
   @include accent-scale('violet');
 }
+
 :root[data-accent='red'] {
   @include accent-scale('red');
 }
+
 :root[data-accent='cyan'] {
   @include accent-scale('cyan');
 }
+
 :root[data-accent='yellow'] {
   @include accent-scale('yellow');
 }

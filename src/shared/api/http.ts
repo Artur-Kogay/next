@@ -27,6 +27,23 @@ const API_VERSION = 'v1';
 const apiBase = `${env.NEXT_PUBLIC_BASE_API_URL.replace(/\/$/, '')}/${API_VERSION}`;
 const ipBase = `${env.NEXT_PUBLIC_IP_API_URL.replace(/\/$/, '')}/${API_VERSION}`;
 
+const getStoredToken = (): string | null => {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = window.localStorage.getItem('token');
+    if (!raw) return null;
+
+    try {
+      const parsed = JSON.parse(raw) as unknown;
+      return typeof parsed === 'string' ? parsed : null;
+    } catch {
+      return raw;
+    }
+  } catch {
+    return null;
+  }
+};
+
 export const http = ofetch.create({
   baseURL: apiBase,
   retry: 0,
@@ -34,9 +51,16 @@ export const http = ofetch.create({
     const headers = new Headers(options.headers);
     if (!headers.has('Accept')) headers.set('Accept', 'application/json');
     if (!headers.has('Country-Code')) headers.set('Country-Code', env.NEXT_PUBLIC_COUNTRY_CODE);
+    if (!headers.has('Authorization')) {
+      const token = getStoredToken();
+      if (token) headers.set('Authorization', `Bearer ${token}`);
+    }
     options.headers = headers;
   },
   onResponseError({ error, response }) {
+    if (response?.status === 401 && typeof window !== 'undefined') {
+      window.localStorage.removeItem('token');
+    }
     if (env.NEXT_PUBLIC_APP_ENV === 'development') {
       console.error('[http] request failed', response?.status, response?.url, error);
     }
