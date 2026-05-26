@@ -1,0 +1,133 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $space-6;
+}
+
+.tabs {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  padding: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include media-up('md') {
+    align-self: flex-start;
+    width: auto;
+    overflow-x: visible;
+  }
+}
+
+.tab {
+  flex: 1;
+  padding: $space-2 $space-4;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: $radius-md;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+
+  @include media-up('md') {
+    flex: initial;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-fg);
+      background: var(--color-bg-subtle);
+    }
+  }
+}
+
+.tabActive {
+  color: var(--color-accent-contrast);
+  background: var(--color-accent-9);
+  border-color: var(--color-accent-9);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-accent-contrast);
+      background: var(--color-accent-9);
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  align-items: center;
+  justify-content: center;
+  padding: $space-12 $space-6;
+  text-align: center;
+  background: var(--color-panel);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: $radius-xl;
+}
+
+.emptyIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  color: var(--color-accent-9);
+  background: var(--color-bg-subtle);
+  border-radius: $radius-full;
+}
+
+.emptyTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg);
+}
+
+.emptyHint {
+  max-width: 320px;
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}
+
+.emptyCta {
+  padding: $space-3 $space-6;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-accent-contrast);
+  cursor: pointer;
+  background: var(--color-accent-9);
+  border: 1px solid var(--color-accent-9);
+  border-radius: $radius-lg;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-accent-10);
+      border-color: var(--color-accent-10);
+    }
+  }
+}

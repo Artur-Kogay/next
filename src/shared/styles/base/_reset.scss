@@ -13,6 +13,10 @@ body {
   height: 100%;
 }
 
+body {
+  overflow-x: clip;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   -moz-tab-size: 4;

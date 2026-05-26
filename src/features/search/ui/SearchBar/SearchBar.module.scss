@@ -3,7 +3,10 @@
 .root {
   position: relative;
   width: 100%;
-  max-width: 520px;
+
+  @include media-up('md') {
+    max-width: 520px;
+  }
 }
 
 .field {

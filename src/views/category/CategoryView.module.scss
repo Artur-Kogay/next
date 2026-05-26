@@ -1,0 +1,73 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  max-width: 1280px;
+  padding: $space-3;
+  margin: 0 auto;
+  overflow: hidden;
+
+  @include media-up('md') {
+    gap: $space-6;
+    padding: $space-6;
+    overflow: visible;
+  }
+
+  @include media-up('lg') {
+    padding: $space-8;
+  }
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-fg);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  @include media-up('md') {
+    font-size: $font-size-3xl;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-3;
+
+  @include media-up('sm') {
+    gap: $space-4;
+  }
+
+  @include media-up('md') {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include media-up('lg') {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @include media-up('xl') {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  align-items: center;
+  justify-content: center;
+  padding: $space-12 $space-4;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--color-panel);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: 2px;
+}

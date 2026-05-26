@@ -1,0 +1,61 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  gap: 2px;
+  width: 100%;
+  padding: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.item {
+  display: inline-flex;
+  flex: 1;
+  flex-shrink: 0;
+  gap: $space-2;
+  align-items: center;
+  justify-content: center;
+  padding: $space-2 $space-3;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg-muted);
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: $radius-md;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-fg);
+      background: var(--color-bg-subtle);
+    }
+  }
+}
+
+.itemActive {
+  color: var(--color-accent-contrast);
+  background: var(--color-accent-9);
+  border-color: var(--color-accent-9);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-accent-contrast);
+      background: var(--color-accent-9);
+      border-color: var(--color-accent-9);
+    }
+  }
+}

@@ -1,0 +1,118 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  gap: $space-4;
+  align-items: center;
+  padding: $space-4 $space-5;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-xl;
+  transition: border-color var(--transition-fast);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-accent-11);
+  background: var(--color-accent-3);
+  border-radius: $radius-lg;
+}
+
+.iconDanger {
+  color: var(--color-danger-11);
+  background: var(--color-danger-3);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.title {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg);
+}
+
+.hint {
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}
+
+.aside {
+  flex-shrink: 0;
+}
+
+.button {
+  padding: $space-2 $space-4;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg);
+  cursor: pointer;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-bg-subtle);
+      border-color: var(--color-border-strong);
+    }
+  }
+}
+
+.buttonDanger {
+  color: var(--color-danger-11);
+  background: transparent;
+  border-color: var(--color-danger-3);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-danger-contrast);
+      background: var(--color-danger-9);
+      border-color: var(--color-danger-9);
+    }
+  }
+}
+
+.toggle {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  width: 44px;
+  height: 24px;
+  padding: 2px;
+  cursor: pointer;
+  background: var(--color-border-strong);
+  border: none;
+  border-radius: $radius-full;
+  transition: background var(--transition-fast);
+}
+
+.toggleOn {
+  background: var(--color-accent-9);
+}
+
+.toggleKnob {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background: var(--color-bg);
+  border-radius: $radius-full;
+  transition: transform var(--transition-fast);
+}
+
+.toggleOn .toggleKnob {
+  transform: translateX(20px);
+}

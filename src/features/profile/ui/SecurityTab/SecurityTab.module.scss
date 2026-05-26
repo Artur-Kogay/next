@@ -1,0 +1,21 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.groupTitle {
+  padding-bottom: $space-2;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg-muted);
+  text-transform: uppercase;
+}

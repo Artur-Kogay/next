@@ -3,9 +3,9 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: $space-6;
+  gap: $space-4;
   max-width: 1280px;
-  padding: $space-4 $space-4 0;
+  padding: $space-2 $space-3 0;
   margin: 0 auto;
 
   @include media-up('md') {
@@ -21,7 +21,11 @@
 .categoryBlock {
   display: flex;
   flex-direction: column;
-  gap: $space-4;
+  gap: $space-3;
+
+  @include media-up('md') {
+    gap: $space-4;
+  }
 }
 
 .categoryStrip {

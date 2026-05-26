@@ -6,6 +6,7 @@ import { getPopular } from '@/entities/event/server';
 import { BannersCarousel } from '@/widgets/banners-carousel';
 import { CategoriesNav } from '@/widgets/categories-nav';
 import { EventsSection } from '@/widgets/events-section';
+import { MobileSearch } from '@/widgets/header';
 
 import styles from './HomeView.module.scss';
 
@@ -24,6 +25,8 @@ export const HomeView = async ({ locale }: HomeViewProps) => {
   const visibleCategories = categories.filter((c) => c.last_sessions.length > 0);
   return (
     <div className={styles.root}>
+      <MobileSearch />
+
       {banners.length > 0 ? (
         <section className={styles.hero}>
           <BannersCarousel banners={banners} />

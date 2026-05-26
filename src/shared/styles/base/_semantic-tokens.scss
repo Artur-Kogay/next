@@ -70,6 +70,12 @@
   --color-focus-ring: var(--color-accent-8);
 }
 
+:root[data-theme='light'] {
+  --color-panel: var(--gray-3);
+  --color-bg-subtle: var(--gray-3);
+  --color-input: var(--gray-4);
+}
+
 :root[data-accent='blue'] {
   @include accent-scale('blue');
 }

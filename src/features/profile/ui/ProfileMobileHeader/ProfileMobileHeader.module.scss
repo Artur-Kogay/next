@@ -1,0 +1,62 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  gap: $space-3;
+  align-items: center;
+  padding: $space-3;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-xl;
+
+  @include media-up('sm') {
+    padding: $space-4;
+  }
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  overflow: hidden;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  line-height: $line-height-tight;
+  color: var(--color-fg);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.phone {
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}
+
+.logout {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-danger-11);
+  cursor: pointer;
+  background: var(--color-danger-3);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast);
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-danger-contrast);
+      background: var(--color-danger-9);
+    }
+  }
+}

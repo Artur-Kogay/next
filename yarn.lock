@@ -5004,6 +5004,11 @@ qified@^0.10.1:
   dependencies:
     hookified "^2.1.1"
 
+qr.js@0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
+  integrity sha512-c4iYnWb+k2E+vYpRimHqSu575b1/wKl4XFeJGpFmrJQz5I88v9aY2czh7s0w36srfCM1sXgC/xpoJz5dJfq+OQ==
+
 queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
@@ -5064,6 +5069,14 @@ react-number-format@^5.4.3:
   version "5.4.5"
   resolved "https://registry.yarnpkg.com/react-number-format/-/react-number-format-5.4.5.tgz#5855f2ae4e4153e6231d3a36b635c38be6824c8a"
   integrity sha512-y8O2yHHj3w0aE9XO8d2BCcUOOdQTRSVq+WIuMlLVucAm5XNjJAy+BoOJiuQMldVYVOKTMyvVNfnbl2Oqp+YxGw==
+
+react-qr-code@^2.0.21:
+  version "2.0.21"
+  resolved "https://registry.yarnpkg.com/react-qr-code/-/react-qr-code-2.0.21.tgz#286baa517037911bca299af8c20a86a4e117c0a8"
+  integrity sha512-xaywjo0eaF4S3LOz6ns5eoPbM2E+q9HYl4VATYpxK4bBniOhQ9noY2RJ9G4SnZFhUwzx63FUT6KdHzfKgUwyuQ==
+  dependencies:
+    prop-types "^15.8.1"
+    qr.js "0.0.0"
 
 react-refresh@^0.17.0:
   version "0.17.0"
