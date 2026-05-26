@@ -13,7 +13,7 @@ import { fullPhone } from '@/shared/lib';
 import styles from './AuthFlow.module.scss';
 import { useSendOtp, useVerifyOtp } from '../../api/client';
 import { type SmsService } from '../../api/schemas';
-import { tokenAtom } from '../../model/atoms';
+import { tokenAtom, userIdAtom } from '../../model/atoms';
 import { useAuthFlow } from '../../model/useAuthFlow';
 import { OtpStep } from '../OtpStep/OtpStep';
 import { PhoneStep } from '../PhoneStep/PhoneStep';
@@ -29,6 +29,7 @@ export const AuthFlow = ({ onSuccess, cancelHref = '/' }: AuthFlowProps) => {
 
   const flow = useAuthFlow();
   const setToken = useSetAtom(tokenAtom);
+  const setUserId = useSetAtom(userIdAtom);
   const sendOtp = useSendOtp();
   const verifyOtp = useVerifyOtp();
 
@@ -72,12 +73,13 @@ export const AuthFlow = ({ onSuccess, cancelHref = '/' }: AuthFlowProps) => {
           sms_service_code: flow.service.code,
         });
         setToken(result.token);
+        if (result.user_id != null) setUserId(String(result.user_id));
         onSuccess();
       } catch {
         setOtpError(t('otpInvalid'));
       }
     },
-    [flow.service, phoneFull, verifyOtp, setToken, onSuccess, t],
+    [flow.service, phoneFull, verifyOtp, setToken, setUserId, onSuccess, t],
   );
 
   const handleResend = useCallback(() => {

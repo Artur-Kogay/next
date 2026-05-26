@@ -94,3 +94,6 @@ export const apiCall = async <T>(request: () => Promise<T>): Promise<T> => {
     throw normalizeError(error as FetchError);
   }
 };
+
+export const unwrapPayload = (raw: unknown): unknown =>
+  typeof raw === 'object' && raw !== null && 'payload' in raw ? raw.payload : raw;

@@ -1,11 +1,8 @@
 import 'server-only';
 
-import { httpWithLocale } from '@/shared/api/http';
+import { httpWithLocale, unwrapPayload } from '@/shared/api/http';
 
 import { categoriesSchema, type Category } from './schemas';
-
-const unwrap = (raw: unknown): unknown =>
-  typeof raw === 'object' && raw !== null && 'payload' in raw ? raw.payload : raw;
 
 const sortSessions = <T extends Category['last_sessions'][number]>(items: T[]) =>
   items
@@ -18,7 +15,7 @@ export const getCategories = async (locale: string): Promise<Category[]> => {
     const raw = await httpWithLocale(locale)<unknown>('/category', {
       query: { _with_data: 'banners,last_sessions' },
     });
-    const list = categoriesSchema.parse(unwrap(raw));
+    const list = categoriesSchema.parse(unwrapPayload(raw));
     return list.map((c) => ({ ...c, last_sessions: sortSessions(c.last_sessions) }));
   } catch {
     return [];

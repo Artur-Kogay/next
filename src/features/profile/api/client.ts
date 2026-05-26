@@ -2,7 +2,7 @@
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
-import { apiCall, http } from '@/shared/api';
+import { apiCall, http, unwrapPayload } from '@/shared/api';
 
 import { profileKeys } from './keys';
 import {
@@ -14,9 +14,6 @@ import {
   type UpdateProfileInput,
 } from './schemas';
 
-const unwrap = (raw: unknown): unknown =>
-  typeof raw === 'object' && raw !== null && 'payload' in raw ? raw.payload : raw;
-
 export const useProfileData = (enabled = true) =>
   useQuery<ProfileResponse>({
     queryKey: profileKeys.me(),
@@ -24,7 +21,7 @@ export const useProfileData = (enabled = true) =>
     queryFn: () =>
       apiCall(async () => {
         const raw = await http<unknown>('/user');
-        return profileSchema.parse(unwrap(raw));
+        return profileSchema.parse(unwrapPayload(raw));
       }),
     staleTime: 60_000,
   });
@@ -49,12 +46,8 @@ export const useOrders = (status: 'completed' | 'pending_for_payment', enabled =
     queryFn: () =>
       apiCall(async () => {
         const raw = await http<unknown>('/order', { query: { status } });
-        const payload = unwrap(raw) ?? [];
-        console.log(`[profile/orders] status=${status}`, { raw, payload });
+        const payload = unwrapPayload(raw) ?? [];
         const parsed = ordersListSchema.safeParse(payload);
-        if (!parsed.success) {
-          console.error(`[profile/orders] Zod error for status=${status}`, parsed.error.issues);
-        }
         return parsed.success ? parsed.data : [];
       }),
     staleTime: 30_000,

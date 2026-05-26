@@ -9,6 +9,7 @@ import { cn } from '@/shared/lib';
 
 import styles from './ProfileDataTab.module.scss';
 import { useUpdateProfile } from '../../api/client';
+import { splitName } from '../../lib/helpers';
 import { ProfileAvatar } from '../ProfileAvatar/ProfileAvatar';
 
 import type { Gender, ProfileResponse } from '../../api/schemas';
@@ -16,12 +17,6 @@ import type { Gender, ProfileResponse } from '../../api/schemas';
 interface ProfileDataTabProps {
   user: ProfileResponse;
 }
-
-const splitName = (full: string | null | undefined): { first: string; last: string } => {
-  const parts = (full ?? '').trim().split(/\s+/).filter(Boolean);
-  if (parts.length === 0) return { first: '', last: '' };
-  return { first: parts[0] ?? '', last: parts.slice(1).join(' ') };
-};
 
 const isoToDateInput = (raw: string | null | undefined): string => {
   if (!raw) return '';

@@ -1,3 +1,4 @@
+import { COUNTRY_ALIASES } from './countries';
 import { env } from './env';
 
 export interface CurrencyConfig {
@@ -12,13 +13,9 @@ const BY_COUNTRY: Record<string, CurrencyConfig> = {
   uz: { code: 'UZS', label: 'сум' },
 };
 
-const ALIASES: Record<string, string> = {
-  tg: 'tj',
-};
-
 const pick = (): CurrencyConfig => {
   const code = env.NEXT_PUBLIC_COUNTRY_CODE;
-  const resolved = ALIASES[code] ?? code;
+  const resolved = COUNTRY_ALIASES[code] ?? code;
   return BY_COUNTRY[resolved] ?? BY_COUNTRY.kg!;
 };
 

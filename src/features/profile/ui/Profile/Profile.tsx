@@ -11,6 +11,7 @@ import { Loader } from '@/shared/ui';
 
 import styles from './Profile.module.scss';
 import { useOrders, useProfileData } from '../../api/client';
+import { splitName } from '../../lib/helpers';
 import { type ProfileTab } from '../../model/tabs';
 import { NotificationsTab } from '../NotificationsTab/NotificationsTab';
 import { ProfileDataTab } from '../ProfileDataTab/ProfileDataTab';
@@ -18,12 +19,6 @@ import { ProfileMobileHeader } from '../ProfileMobileHeader/ProfileMobileHeader'
 import { ProfileMobileTabs } from '../ProfileMobileTabs/ProfileMobileTabs';
 import { SecurityTab } from '../SecurityTab/SecurityTab';
 import { TicketsTab } from '../TicketsTab/TicketsTab';
-
-const splitName = (full: string | null | undefined): { first: string; last: string } => {
-  const parts = (full ?? '').trim().split(/\s+/).filter(Boolean);
-  if (parts.length === 0) return { first: '', last: '' };
-  return { first: parts[0] ?? '', last: parts.slice(1).join(' ') };
-};
 
 export const Profile = () => {
   const t = useTranslations('profile');

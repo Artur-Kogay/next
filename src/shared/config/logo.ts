@@ -1,3 +1,4 @@
+import { COUNTRY_ALIASES } from './countries';
 import { env } from './env';
 
 export interface LogoConfig {
@@ -26,11 +27,6 @@ const LOGOS_BY_COUNTRY: Record<string, LogoConfig> = {
     width: 160,
     height: 40,
   },
-};
-
-const COUNTRY_ALIASES: Record<string, string> = {
-  tg: 'tj',
-  ky: 'kg',
 };
 
 const pickLogo = (): LogoConfig => {

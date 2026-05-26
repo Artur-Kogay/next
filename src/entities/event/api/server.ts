@@ -1,18 +1,15 @@
 import 'server-only';
 
-import { httpWithLocale } from '@/shared/api/http';
+import { httpWithLocale, unwrapPayload } from '@/shared/api/http';
 
 import { sessionListSchema, type SessionListItem } from './schemas';
 
 const PINNED_EVENT_IDS: number[] = [];
 
-const unwrap = (raw: unknown): unknown =>
-  typeof raw === 'object' && raw !== null && 'payload' in raw ? raw.payload : raw;
-
 export const getPopular = async (locale: string): Promise<SessionListItem[]> => {
   try {
     const raw = await httpWithLocale(locale)<unknown>('/session/popular');
-    const list = sessionListSchema.parse(unwrap(raw));
+    const list = sessionListSchema.parse(unwrapPayload(raw));
     return list.slice().sort((a, b) => {
       const ai = PINNED_EVENT_IDS.indexOf(a.event.id);
       const bi = PINNED_EVENT_IDS.indexOf(b.event.id);
@@ -38,7 +35,7 @@ export const searchSessionsServer = async (
     const raw = await httpWithLocale(locale)<unknown>('/session', {
       query: { query },
     });
-    return sessionListSchema.parse(unwrap(raw));
+    return sessionListSchema.parse(unwrapPayload(raw));
   } catch {
     return [];
   }

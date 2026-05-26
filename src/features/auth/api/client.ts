@@ -2,7 +2,7 @@
 
 import { useMutation, useQuery } from '@tanstack/react-query';
 
-import { apiCall, http } from '@/shared/api';
+import { apiCall, http, unwrapPayload } from '@/shared/api';
 
 import { authKeys } from './keys';
 import {
@@ -12,16 +12,13 @@ import {
   type SmsService,
 } from './schemas';
 
-const unwrap = (raw: unknown): unknown =>
-  typeof raw === 'object' && raw !== null && 'payload' in raw ? raw.payload : raw;
-
 export const useSmsServices = () =>
   useQuery<SmsService[]>({
     queryKey: authKeys.smsServices(),
     queryFn: () =>
       apiCall(async () => {
         const raw = await http<unknown>('/sms/services');
-        const list = smsServicesSchema.parse(unwrap(raw));
+        const list = smsServicesSchema.parse(unwrapPayload(raw));
         return list.filter((s) => s.is_enabled);
       }),
     staleTime: 5 * 60_000,

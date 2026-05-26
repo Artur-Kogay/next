@@ -65,7 +65,6 @@ export const EventCard = ({ session, priority = false }: EventCardProps) => {
           {weekday}, {dayMonth} {time}
         </time>
 
-        {}
         <span className={priceClass}>{priceLabel}</span>
       </div>
     </Link>
