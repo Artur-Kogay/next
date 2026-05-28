@@ -6,7 +6,7 @@ import withBundleAnalyzerFactory from '@next/bundle-analyzer';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const withNextIntl = createNextIntlPlugin('./src/shared/i18n/request.ts');
+const withNextIntl = createNextIntlPlugin('./src/shared/lib/i18n/request.ts');
 
 const withBundleAnalyzer = withBundleAnalyzerFactory({
   enabled: process.env.ANALYZE === 'true',

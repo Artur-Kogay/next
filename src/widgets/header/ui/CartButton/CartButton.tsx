@@ -4,22 +4,10 @@ import { ShoppingCart } from 'lucide-react';
 
 import styles from './CartButton.module.scss';
 
-interface CartButtonProps {
-  count?: number;
-}
-
-export const CartButton = ({ count = 0 }: CartButtonProps) => {
-  const onClick = () => {};
-
+export const CartButton = () => {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={styles.root}
-      aria-label={`Cart${count > 0 ? ` (${count})` : ''}`}
-    >
+    <button type="button" className={styles.root} aria-label="Cart">
       <ShoppingCart size={18} aria-hidden />
-      {count > 0 ? <span className={styles.badge}>{count}</span> : null}
     </button>
   );
 };

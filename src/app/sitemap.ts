@@ -1,5 +1,5 @@
 import { env } from '@/shared/config/env';
-import { routing } from '@/shared/i18n/routing';
+import { routing } from '@/shared/lib/i18n/routing';
 
 import type { MetadataRoute } from 'next';
 

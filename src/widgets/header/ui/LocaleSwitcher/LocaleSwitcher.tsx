@@ -5,9 +5,9 @@ import { useRef, useState } from 'react';
 import { Globe } from 'lucide-react';
 import { useLocale } from 'next-intl';
 
-import { Link, usePathname } from '@/shared/i18n/navigation';
-import { routing } from '@/shared/i18n/routing';
 import { useClickOutside } from '@/shared/lib';
+import { Link, usePathname } from '@/shared/lib/i18n/navigation';
+import { routing } from '@/shared/lib/i18n/routing';
 
 import styles from './LocaleSwitcher.module.scss';
 

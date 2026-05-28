@@ -13,3 +13,13 @@ export const userIdAtom = atomWithStorage<string | null>(USER_ID_KEY, null, unde
 });
 
 export const isAuthAtom = atom((get) => get(tokenAtom) !== null);
+
+export const getOrCreateUserUuid = (): string => {
+  if (typeof window === 'undefined') return '';
+  let id = window.localStorage.getItem(USER_ID_KEY);
+  if (!id) {
+    id = crypto.randomUUID();
+    window.localStorage.setItem(USER_ID_KEY, id);
+  }
+  return id;
+};

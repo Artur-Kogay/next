@@ -41,6 +41,150 @@ input[type='search'] {
   display: none;
 }
 
+/* Scheme / seat map */
+
+.scheme-container {
+  width: 100%;
+  height: 100%;
+}
+
+.scheme-container svg {
+  width: 100%;
+  height: 100%;
+}
+
+.scheme-container svg text tspan {
+  pointer-events: none;
+}
+
+.scheme-container,
+.scheme-container-sector {
+  width: 100%;
+  height: 100%;
+
+  .enabled,
+  .booked {
+    cursor: pointer !important;
+  }
+
+  .disabled {
+    cursor: default !important;
+
+    .box {
+      fill: #b5b5b5 !important;
+      stroke: #b5b5b5 !important;
+    }
+
+    .text {
+      fill: white !important;
+    }
+  }
+
+  .booked {
+    .box {
+      fill: #f92d2d !important;
+      stroke: white !important;
+    }
+
+    .text {
+      fill: white !important;
+    }
+  }
+
+  g[id^='seat_'],
+  g[id^='area_'] {
+    fill: none;
+    cursor: not-allowed;
+
+    .box {
+      fill: #b5b5b5;
+      stroke: #b5b5b5;
+    }
+
+    .text {
+      fill: white;
+    }
+  }
+}
+
+[data-theme='light'] {
+  .row {
+    fill: black !important;
+  }
+
+  #rows g path {
+    stroke: black;
+    stroke-width: 1px;
+  }
+
+  #rows g text {
+    fill: black;
+    font-weight: 700;
+  }
+
+  .title {
+    fill: black !important;
+  }
+
+  #scene-line {
+    stroke: black !important;
+  }
+}
+
+[data-theme='dark'] {
+  .row {
+    fill: white !important;
+  }
+
+  #rows g text {
+    fill: white;
+    font-weight: 700;
+  }
+
+  #rows g path {
+    stroke: white;
+    stroke-width: 1px;
+  }
+
+  .title {
+    fill: white !important;
+  }
+
+  #scene-line {
+    stroke: white !important;
+  }
+}
+
+.title {
+  pointer-events: none;
+}
+
+.disabledSector {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.disabledSectorImportant {
+  opacity: 0.3;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.disabledEsbo {
+  cursor: default !important;
+
+  text {
+    fill: white !important;
+  }
+
+  path,
+  rect {
+    fill: #b5b5b5 !important;
+    stroke: white !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

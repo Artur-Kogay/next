@@ -1,0 +1,262 @@
+@use 'abstracts' as *;
+
+.container {
+  max-width: 1100px;
+  padding: 32px 16px 64px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.eventTitle {
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 800;
+  color: var(--color-fg);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-fg-muted);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex: 0 1 340px;
+  flex-direction: column;
+  max-width: 360px;
+  overflow: hidden;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.cardSelected {
+  background: var(--color-accent-a2);
+  border-color: var(--color-accent-9);
+}
+
+.top {
+  padding: 24px 22px 18px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--color-accent-a3), transparent);
+}
+
+.topColored {
+  background-image: none;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-fg);
+}
+
+.left {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  padding: 5px 13px;
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-fg-muted);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+.leftDot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent-9);
+  border-radius: 50%;
+}
+
+.soldOut {
+  color: var(--color-danger-11);
+
+  .leftDot {
+    background: var(--color-danger-9);
+  }
+}
+
+.desc {
+  padding: 16px 22px 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--color-fg-muted);
+
+  p,
+  ul,
+  ol,
+  li {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.clamped {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.toggle {
+  display: block;
+  width: 100%;
+  padding: 8px 22px 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-accent-11);
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+
+  &:hover {
+    opacity: 0.75;
+  }
+}
+
+.perforation {
+  position: relative;
+  margin: 22px 18px 0;
+  border-top: 2px dashed var(--color-border);
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    content: '';
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::before {
+    left: -27px;
+  }
+
+  &::after {
+    right: -27px;
+  }
+}
+
+.footer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px 22px;
+}
+
+.priceWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.priceLabel {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-fg-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-fg);
+  letter-spacing: -0.01em;
+}
+
+.priceCur {
+  margin-left: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-fg-muted);
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+.stepBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-fg);
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+
+  &:hover:not(:disabled) {
+    color: var(--color-accent-contrast);
+    background: var(--color-accent-9);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+}
+
+.count {
+  min-width: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-fg);
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px 12px 48px;
+  }
+
+  .grid {
+    gap: 16px;
+  }
+
+  .card {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .header {
+    margin-bottom: 24px;
+  }
+}

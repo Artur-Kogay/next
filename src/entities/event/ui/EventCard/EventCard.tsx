@@ -3,10 +3,11 @@ import Image from 'next/image';
 import { useFormatter, useTranslations } from 'next-intl';
 
 import { IMAGES_URL, currency } from '@/shared/config';
-import { Link } from '@/shared/i18n/navigation';
+import { Link } from '@/shared/lib/i18n/navigation';
 
 import styles from './EventCard.module.scss';
 import { type SessionListItem } from '../../api/schemas';
+import { getMaxDiscountPercent } from '../../lib/discounts';
 
 interface EventCardProps {
   session: SessionListItem;
@@ -37,6 +38,8 @@ export const EventCard = ({ session, priority = false }: EventCardProps) => {
   const dayMonth = format.dateTime(date, { day: 'numeric', month: 'long' });
   const time = format.dateTime(date, { hour: '2-digit', minute: '2-digit' });
 
+  const discountPercent = getMaxDiscountPercent(event.id);
+
   return (
     <Link href={`/session/${slug}`} className={styles.root}>
       <div className={styles.imageWrap}>
@@ -53,7 +56,12 @@ export const EventCard = ({ session, priority = false }: EventCardProps) => {
           <div className={styles.imagePlaceholder} aria-hidden />
         )}
 
-        {event.is_pinned ? <span className={styles.pinBadge}>{t('hit')}</span> : null}
+        <div className={styles.badges}>
+          {discountPercent != null ? (
+            <span className={styles.discountBadge}>−{discountPercent}%</span>
+          ) : null}
+          {event.is_pinned ? <span className={styles.pinBadge}>{t('hit')}</span> : null}
+        </div>
       </div>
 
       <div className={styles.body}>

@@ -5,11 +5,12 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 
 import Autoplay from 'embla-carousel-autoplay';
+import Fade from 'embla-carousel-fade';
 import useEmblaCarousel from 'embla-carousel-react';
 
 import { type Banner } from '@/entities/banner';
 import { BANNERS_URL } from '@/shared/config';
-import { Link } from '@/shared/i18n/navigation';
+import { Link } from '@/shared/lib/i18n/navigation';
 
 import styles from './BannersCarousel.module.scss';
 
@@ -22,7 +23,8 @@ export const BannersCarousel = ({ banners, variant = 'main' }: BannersCarouselPr
   const validBanners = useMemo(() => banners.filter((b) => b.image_path), [banners]);
 
   const plugins = useMemo(
-    () => (validBanners.length > 1 ? [Autoplay({ delay: 4000, stopOnInteraction: false })] : []),
+    () =>
+      validBanners.length > 1 ? [Fade(), Autoplay({ delay: 4000, stopOnInteraction: false })] : [],
     [validBanners.length],
   );
 
