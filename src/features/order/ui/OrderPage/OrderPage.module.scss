@@ -1,0 +1,13 @@
+@use 'abstracts' as *;
+
+.schemaWrapper {
+  position: relative;
+  width: 100vw;
+  height: 83dvh;
+}
+
+@media (max-width: 600px) {
+  .schemaWrapper {
+    height: 73dvh;
+  }
+}

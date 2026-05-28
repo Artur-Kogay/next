@@ -3,8 +3,8 @@
 import { useAtomValue } from 'jotai';
 import { User } from 'lucide-react';
 
-import { isAuthAtom } from '@/features/auth';
-import { usePathname, useRouter } from '@/shared/i18n/navigation';
+import { usePathname, useRouter } from '@/shared/lib/i18n/navigation';
+import { isAuthAtom } from '@/shared/model';
 
 import styles from './ProfileButton.module.scss';
 

@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 import { AuthFlow, sanitizeRedirect } from '@/features/auth';
-import { useRouter } from '@/shared/i18n/navigation';
+import { useRouter } from '@/shared/lib/i18n/navigation';
 
 import styles from './AuthView.module.scss';
 

@@ -2,7 +2,8 @@ import { Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { brand } from '@/shared/config';
-import { Link } from '@/shared/i18n/navigation';
+import { Link } from '@/shared/lib/i18n/navigation';
+import { ThemeToggle } from '@/shared/ui';
 
 import styles from './Footer.module.scss';
 
@@ -127,6 +128,9 @@ export const Footer = () => {
                 </a>
               </li>
             </ul>
+            <div className={styles.themeWrapper}>
+              <ThemeToggle />
+            </div>
           </div>
         </div>
 

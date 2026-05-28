@@ -5,8 +5,8 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { useTranslations } from 'next-intl';
 
-import { tokenAtom, userIdAtom } from '@/features/auth';
-import { useRouter } from '@/shared/i18n/navigation';
+import { useRouter } from '@/shared/lib/i18n/navigation';
+import { tokenAtom, userIdAtom } from '@/shared/model';
 import { Loader } from '@/shared/ui';
 
 import styles from './Profile.module.scss';

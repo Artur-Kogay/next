@@ -8,10 +8,10 @@ import { Map, Placemark, YMaps } from '@pbe/react-yandex-maps';
 import { CalendarDays, Clock, Globe, MapPin, Ticket } from 'lucide-react';
 import { useFormatter } from 'next-intl';
 
-import type { SessionDetail } from '@/entities/event';
+import { Discounts, getEventDiscounts, type SessionDetail } from '@/entities/event';
 import { currency, IMAGES_URL } from '@/shared/config';
-import { Link } from '@/shared/i18n/navigation';
 import { cn } from '@/shared/lib';
+import { Link } from '@/shared/lib/i18n/navigation';
 
 import styles from './SessionView.module.scss';
 
@@ -47,6 +47,8 @@ export const SessionView = ({ session }: SessionViewProps) => {
   const ageRestriction = session.event?.age_restriction;
   const language = session.language;
   const description = session.event?.description;
+
+  const discounts = getEventDiscounts(session.event?.id);
 
   const isSoldOut = session.left_tickets_count != null && session.left_tickets_count <= 0;
   const isInactive =
@@ -169,6 +171,8 @@ export const SessionView = ({ session }: SessionViewProps) => {
               {buyLabel}
             </Link>
           )}
+
+          <Discounts discounts={discounts} />
         </div>
       </section>
 

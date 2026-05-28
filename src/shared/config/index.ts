@@ -1,6 +1,6 @@
 export { env } from './env';
 export type { Env } from './env';
-export { ROUTES, BANNERS_URL, IMAGES_URL } from './routes';
+export { ROUTES, BANNERS_URL, IMAGES_URL, SCHEMES_URL } from './routes';
 export type { AppRoute } from './routes';
 export { brand } from './brand';
 export type { BrandConfig, AccentColor } from './brand';

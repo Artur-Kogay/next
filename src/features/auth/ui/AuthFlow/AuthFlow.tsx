@@ -7,13 +7,13 @@ import { ArrowLeft } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { type Country } from '@/shared/config';
-import { Link } from '@/shared/i18n/navigation';
 import { fullPhone } from '@/shared/lib';
+import { Link } from '@/shared/lib/i18n/navigation';
+import { tokenAtom, userIdAtom } from '@/shared/model';
 
 import styles from './AuthFlow.module.scss';
 import { useSendOtp, useVerifyOtp } from '../../api/client';
 import { type SmsService } from '../../api/schemas';
-import { tokenAtom, userIdAtom } from '../../model/atoms';
 import { useAuthFlow } from '../../model/useAuthFlow';
 import { OtpStep } from '../OtpStep/OtpStep';
 import { PhoneStep } from '../PhoneStep/PhoneStep';

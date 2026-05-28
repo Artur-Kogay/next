@@ -5,8 +5,7 @@ import { useTranslations } from 'next-intl';
 
 import { SearchBar } from '@/features/search';
 import { brand } from '@/shared/config';
-import { Link } from '@/shared/i18n/navigation';
-import { ThemeToggle } from '@/shared/ui';
+import { Link } from '@/shared/lib/i18n/navigation';
 
 import styles from './Header.module.scss';
 import { CartButton } from '../CartButton/CartButton';
@@ -34,7 +33,6 @@ export const Header = () => {
             <span>{brand.phone}</span>
           </a>
           <LocaleSwitcher />
-          <ThemeToggle />
           <CartButton />
           <ProfileButton />
         </div>
