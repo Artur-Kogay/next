@@ -6,13 +6,9 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/shared/lib';
 
 import styles from './ProfileMobileTabs.module.scss';
+import { ORDER, type ProfileMobileTabsProps } from './ProfileMobileTabs.types';
 
 import type { ProfileTab } from '../../model/tabs';
-
-interface ProfileMobileTabsProps {
-  active: ProfileTab;
-  onChange: (tab: ProfileTab) => void;
-}
 
 const ICONS: Record<ProfileTab, React.ReactNode> = {
   orders: <Ticket size={16} aria-hidden />,
@@ -20,8 +16,6 @@ const ICONS: Record<ProfileTab, React.ReactNode> = {
   security: <Shield size={16} aria-hidden />,
   notifications: <Bell size={16} aria-hidden />,
 };
-
-const ORDER: ProfileTab[] = ['orders', 'profileData'];
 
 export const ProfileMobileTabs = ({ active, onChange }: ProfileMobileTabsProps) => {
   const t = useTranslations('profile');

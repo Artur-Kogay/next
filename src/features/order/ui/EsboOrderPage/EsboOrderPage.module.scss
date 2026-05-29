@@ -1,0 +1,18 @@
+@use 'abstracts' as *;
+
+.schemaWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 83dvh;
+  padding-block: 16px 32px;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .schemaWrapper {
+    height: 73dvh;
+    padding-block: 12px 20px;
+  }
+}

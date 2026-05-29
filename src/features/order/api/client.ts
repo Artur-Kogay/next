@@ -5,37 +5,15 @@ import { useCallback } from 'react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
-import { http, unwrapPayload } from '@/shared/api/http';
-import { SCHEMES_URL, env } from '@/shared/config';
+import { basketKeys } from '@/entities/basket';
+import { http } from '@/shared/api/http';
+import { SCHEMES_URL } from '@/shared/config';
 import { getOrCreateUserUuid } from '@/shared/model';
 
 import { orderKeys } from './keys';
-import {
-  basketResponseSchema,
-  orderItemsResponseSchema,
-  type Basket,
-  type OrderItem,
-} from './schemas';
+import { orderItemsResponseSchema, type OrderItem } from './schemas';
 
-export const useBasket = () => {
-  return useQuery<Basket>({
-    queryKey: orderKeys.basket(),
-    queryFn: async () => {
-      const userUuid = getOrCreateUserUuid();
-      const raw = await http<unknown>('/basket', { query: { user_uuid: userUuid } });
-      const payload = unwrapPayload(raw);
-      const result = basketResponseSchema.safeParse({ payload });
-      if (!result.success) {
-        if (env.NEXT_PUBLIC_APP_ENV !== 'production') {
-          console.error('[useBasket] parse error', result.error.flatten(), payload);
-        }
-        return { basket: [], timer: 0 };
-      }
-      return result.data.payload;
-    },
-    refetchInterval: 10_000,
-  });
-};
+export { useBasket } from '@/entities/basket';
 
 export const useAddToBasket = () => {
   const qc = useQueryClient();
@@ -58,7 +36,7 @@ export const useAddToBasket = () => {
     },
     onSuccess: () => {
       toast.success('Билет добавлен в корзину');
-      void qc.invalidateQueries({ queryKey: orderKeys.basket() });
+      void qc.invalidateQueries({ queryKey: basketKeys.all });
     },
     onError: (err: unknown) => {
       const msg =
@@ -83,7 +61,7 @@ export const useRemoveFromBasket = () => {
     },
     onSuccess: () => {
       toast.success('Билет удален из корзины');
-      void qc.invalidateQueries({ queryKey: orderKeys.basket() });
+      void qc.invalidateQueries({ queryKey: basketKeys.all });
     },
     onError: () => {
       toast.error('Ошибка при удалении из корзины');
@@ -104,7 +82,7 @@ export const useClearBasket = () => {
     },
     onSuccess: () => {
       toast.success('Корзина очищена');
-      void qc.invalidateQueries({ queryKey: orderKeys.basket() });
+      void qc.invalidateQueries({ queryKey: basketKeys.all });
     },
     onError: () => {
       toast.error('Ошибка при очистке корзины');

@@ -9,26 +9,17 @@ import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 
 import { currency } from '@/shared/config';
 
-import { SectorSchemaEsboModal } from './SectorSchemaEsboModal';
+import styles from './EsboSchema.module.scss';
+import { type EsboSchemaProps } from './EsboSchema.types';
 import { getEsboAreaTooltip, getEsboSeatTooltip, renderColorEsbo } from '../../lib/esbo-utils';
 import { getClickedSector, getSchemePlace, hasMixedEventsInBasket } from '../../lib/schema-utils';
 import { selectedColorAtom } from '../../model/atoms';
 import { useEsboSeatToggle } from '../../model/useEsboSeatToggle';
-import { PriceChips } from '../Schema/PriceChips';
-import schemaStyles from '../Schema/Schema.module.scss';
-import { SideButtons } from '../Schema/SideButtons';
+import { PriceChips } from '../PriceChips/PriceChips';
+import { SectorSchemaEsboModal } from '../SectorSchemaEsboModal/SectorSchemaEsboModal';
+import { SideButtons } from '../SideButtons/SideButtons';
 
-import type { EsboPrice, EsboSeat } from '../../api/esbo-schemas';
-import type { BasketItem, OrderSession } from '../../api/schemas';
-import type { SectorState } from '../Schema/types';
-
-interface EsboSchemaProps {
-  item: OrderSession;
-  schemaHtml: string;
-  esboPricing: EsboPrice[];
-  esboSeats: EsboSeat[];
-  basket: BasketItem[];
-}
+import type { SectorState } from '../Schema/Schema.types';
 
 export const EsboSchema = ({
   item,
@@ -104,13 +95,13 @@ export const EsboSchema = ({
         onClose={closeSector}
       />
 
-      <div className={schemaStyles.wrapper}>
+      <div className={styles.wrapper}>
         <TransformWrapper minScale={0.8} initialScale={1} maxScale={8} centerZoomedOut centerOnInit>
           <SideButtons />
           {!currentSector && (
             <Tooltip
               id="seat-tooltip"
-              className={schemaStyles.tooltip}
+              className={styles.tooltip}
               render={({ activeAnchor }) => {
                 const text = getEsboSeatTooltip(
                   activeAnchor,
@@ -119,15 +110,15 @@ export const EsboSchema = ({
                   currency.label,
                 );
                 if (!text) return null;
-                return <span className={schemaStyles.tooltipText}>{text}</span>;
+                return <span className={styles.tooltipText}>{text}</span>;
               }}
             />
           )}
           <Tooltip
             id="area-tooltip"
-            className={schemaStyles.tooltip}
+            className={styles.tooltip}
             render={({ activeAnchor }) => (
-              <span className={schemaStyles.tooltipText}>
+              <span className={styles.tooltipText}>
                 {getEsboAreaTooltip(activeAnchor, currency.label)}
               </span>
             )}

@@ -1,0 +1,72 @@
+@use 'abstracts' as *;
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  align-items: center;
+  max-width: 420px;
+  padding: $space-8 $space-6;
+  text-align: center;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-xl;
+}
+
+.resultIcon {
+  color: var(--color-accent-11);
+}
+
+.resultIconSuccess {
+  color: var(--color-info-11);
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.resultTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-fg);
+}
+
+.resultText {
+  font-size: $font-size-sm;
+  line-height: $line-height-normal;
+  color: var(--color-fg-muted);
+}
+
+.qrImage {
+  width: 200px;
+  height: 200px;
+  padding: $space-3;
+  object-fit: contain;
+  background: $color-white;
+  border-radius: $radius-lg;
+}
+
+.resultBtn {
+  padding: $space-3 $space-8;
+  margin-top: $space-2;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-accent-contrast);
+  cursor: pointer;
+  background: var(--color-accent-9);
+  border: none;
+  border-radius: $radius-lg;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-accent-10);
+    }
+  }
+}

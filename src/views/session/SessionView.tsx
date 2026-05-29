@@ -8,16 +8,13 @@ import { Map, Placemark, YMaps } from '@pbe/react-yandex-maps';
 import { CalendarDays, Clock, Globe, MapPin, Ticket } from 'lucide-react';
 import { useFormatter } from 'next-intl';
 
-import { Discounts, getEventDiscounts, type SessionDetail } from '@/entities/event';
+import { Discounts, getEventDiscounts } from '@/entities/event';
 import { currency, IMAGES_URL } from '@/shared/config';
 import { cn } from '@/shared/lib';
 import { Link } from '@/shared/lib/i18n/navigation';
 
 import styles from './SessionView.module.scss';
-
-interface SessionViewProps {
-  session: SessionDetail;
-}
+import { type SessionViewProps } from './SessionView.types';
 
 const formatDuration = (raw: string | number | null | undefined): string | null => {
   if (raw == null) return null;

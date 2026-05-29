@@ -9,26 +9,13 @@ import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 
 import { currency } from '@/shared/config';
 
+import styles from './SectorSchemaEsboModal.module.scss';
+import { type SectorSchemaEsboModalProps } from './SectorSchemaEsboModal.types';
 import { useSectorSchemaHtml } from '../../api/client';
 import { getEsboSeatTooltip, renderColorEsbo } from '../../lib/esbo-utils';
 import { getSchemePlace } from '../../lib/schema-utils';
 import { selectedColorAtom } from '../../model/atoms';
 import { useEsboSeatToggle } from '../../model/useEsboSeatToggle';
-import schemaStyles from '../Schema/Schema.module.scss';
-
-import type { EsboPrice, EsboSeat } from '../../api/esbo-schemas';
-import type { BasketItem, OrderSession } from '../../api/schemas';
-import type { SectorState } from '../Schema/types';
-
-interface SectorSchemaEsboModalProps {
-  isOpen: boolean;
-  sector: SectorState | undefined;
-  item: OrderSession;
-  basket: BasketItem[];
-  esboSeats: EsboSeat[];
-  esboPricing: EsboPrice[];
-  onClose: () => void;
-}
 
 export function SectorSchemaEsboModal({
   isOpen,
@@ -86,21 +73,21 @@ export function SectorSchemaEsboModal({
   if (!isOpen) return null;
 
   return (
-    <div className={schemaStyles.sectorModal}>
+    <div className={styles.sectorModal}>
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-      <div className={schemaStyles.sectorOverlay} onClick={onClose} />
-      <div className={schemaStyles.sectorContent}>
-        <div className={schemaStyles.sectorHeader}>
-          <span className={schemaStyles.sectorTitle}>
+      <div className={styles.sectorOverlay} onClick={onClose} />
+      <div className={styles.sectorContent}>
+        <div className={styles.sectorHeader}>
+          <span className={styles.sectorTitle}>
             {sector?.title?.startsWith('Сектор') ? sector.title : `Сектор ${sector?.title}`}
           </span>
-          <button type="button" className={schemaStyles.sectorClose} onClick={onClose}>
+          <button type="button" className={styles.sectorClose} onClick={onClose}>
             <IoClose size={28} />
           </button>
         </div>
-        <div className={schemaStyles.sectorSchema}>
+        <div className={styles.sectorSchema}>
           {loading ? (
-            <div className={schemaStyles.sectorLoading}>Загрузка...</div>
+            <div className={styles.sectorLoading}>Загрузка...</div>
           ) : (
             <TransformWrapper minScale={0.8} initialScale={1} maxScale={8} centerOnInit>
               <TransformComponent
@@ -116,7 +103,7 @@ export function SectorSchemaEsboModal({
               </TransformComponent>
               <Tooltip
                 id="seat-tooltip"
-                className={schemaStyles.tooltip}
+                className={styles.tooltip}
                 render={({ activeAnchor }) => {
                   const text = getEsboSeatTooltip(
                     activeAnchor,
@@ -125,7 +112,7 @@ export function SectorSchemaEsboModal({
                     currency.label,
                   );
                   if (!text) return null;
-                  return <span className={schemaStyles.tooltipText}>{text}</span>;
+                  return <span className={styles.tooltipText}>{text}</span>;
                 }}
               />
             </TransformWrapper>

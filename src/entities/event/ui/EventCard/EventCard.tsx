@@ -6,13 +6,8 @@ import { IMAGES_URL, currency } from '@/shared/config';
 import { Link } from '@/shared/lib/i18n/navigation';
 
 import styles from './EventCard.module.scss';
-import { type SessionListItem } from '../../api/schemas';
+import { type EventCardProps } from './EventCard.types';
 import { getMaxDiscountPercent } from '../../lib/discounts';
-
-interface EventCardProps {
-  session: SessionListItem;
-  priority?: boolean;
-}
 
 export const EventCard = ({ session, priority = false }: EventCardProps) => {
   const t = useTranslations('main-page');

@@ -5,19 +5,12 @@ import { useMemo } from 'react';
 import { ChevronRight } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { type Country } from '@/shared/config';
 import { isHomeCountry } from '@/shared/lib';
 import { Loader } from '@/shared/ui';
 
 import styles from './SmsServiceStep.module.scss';
+import { HINT_KEY, PHONE_BASED_CODES, type SmsServiceStepProps } from './SmsServiceStep.types';
 import { useSmsServices } from '../../api/client';
-import { type SmsService } from '../../api/schemas';
-
-interface SmsServiceStepProps {
-  phone: string;
-  country: Country;
-  onSelect: (service: SmsService) => void;
-}
 
 const SERVICE_ICONS: Record<string, React.ReactNode> = {
   telegram: (
@@ -41,13 +34,6 @@ const SERVICE_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
 };
-
-const HINT_KEY: Record<string, 'telegram' | 'smspro'> = {
-  telegram: 'telegram',
-  smspro: 'smspro',
-};
-
-const PHONE_BASED_CODES = new Set(['smspro']);
 
 export const SmsServiceStep = ({ phone, country, onSelect }: SmsServiceStepProps) => {
   const t = useTranslations('auth');

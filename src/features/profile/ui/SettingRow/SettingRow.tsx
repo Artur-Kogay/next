@@ -1,20 +1,11 @@
 'use client';
 
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
 
 import { cn } from '@/shared/lib';
 
 import styles from './SettingRow.module.scss';
-
-interface SettingRowProps {
-  icon: ReactNode;
-  title: string;
-  hint: string;
-  variant?: 'default' | 'danger';
-  action?:
-    | { kind: 'button'; label: string; onClick?: () => void }
-    | { kind: 'toggle'; defaultOn?: boolean };
-}
+import { type SettingRowProps } from './SettingRow.types';
 
 export const SettingRow = ({ icon, title, hint, variant = 'default', action }: SettingRowProps) => {
   const [on, setOn] = useState(action?.kind === 'toggle' ? !!action.defaultOn : false);

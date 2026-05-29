@@ -3,14 +3,7 @@ import { useMemo } from 'react';
 import { cn } from '@/shared/lib';
 
 import styles from './ProfileAvatar.module.scss';
-
-interface ProfileAvatarProps {
-  firstName?: string;
-  lastName?: string;
-  email?: string;
-  size?: 'sm' | 'md' | 'lg';
-  className?: string;
-}
+import { type ProfileAvatarProps } from './ProfileAvatar.types';
 
 export const ProfileAvatar = ({
   firstName,

@@ -8,11 +8,7 @@ import { logo } from '@/shared/config';
 import { resolvedThemeAtom } from '@/shared/model/theme';
 
 import styles from './Logo.module.scss';
-
-interface LogoProps {
-  alt: string;
-  className?: string;
-}
+import { type LogoProps } from './Logo.types';
 
 export const Logo = ({ alt, className }: LogoProps) => {
   const theme = useAtomValue(resolvedThemeAtom);

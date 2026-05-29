@@ -1,0 +1,90 @@
+@use 'abstracts' as *;
+
+.ticketCard {
+  position: relative;
+  padding: 14px 44px 14px 14px;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.ticketEvent {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-fg);
+}
+
+.ticketName {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--color-fg-muted);
+}
+
+.ticketDate {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-accent-11);
+}
+
+.ticketPrice {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-fg);
+}
+
+.ticketPrices {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 10px;
+  margin-top: 10px;
+  border-top: 1px solid var(--color-border);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--color-fg-muted);
+}
+
+.priceRowTotal {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-fg);
+}
+
+.ticketDelete {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  color: var(--color-fg-muted);
+  cursor: pointer;
+  background: var(--color-bg-subtle);
+  border: none;
+  border-radius: 50%;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+
+  &:hover:not(:disabled) {
+    color: #fff;
+    background: #fb3c46;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

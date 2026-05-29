@@ -2,14 +2,10 @@
 
 import { useEffect, useMemo, useRef } from 'react';
 
-import { type Category } from '@/entities/category';
 import { Link, usePathname } from '@/shared/lib/i18n/navigation';
 
 import styles from './CategoriesNav.module.scss';
-
-interface CategoriesNavProps {
-  categories: Category[];
-}
+import { type CategoriesNavProps } from './CategoriesNav.types';
 
 export const CategoriesNav = ({ categories }: CategoriesNavProps) => {
   const visible = useMemo(() => categories.filter((c) => c.last_sessions.length > 0), [categories]);

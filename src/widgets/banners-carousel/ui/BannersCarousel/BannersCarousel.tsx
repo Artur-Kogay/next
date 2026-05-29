@@ -8,16 +8,11 @@ import Autoplay from 'embla-carousel-autoplay';
 import Fade from 'embla-carousel-fade';
 import useEmblaCarousel from 'embla-carousel-react';
 
-import { type Banner } from '@/entities/banner';
 import { BANNERS_URL } from '@/shared/config';
 import { Link } from '@/shared/lib/i18n/navigation';
 
 import styles from './BannersCarousel.module.scss';
-
-interface BannersCarouselProps {
-  banners: Banner[];
-  variant?: 'main' | 'strip';
-}
+import { type BannersCarouselProps } from './BannersCarousel.types';
 
 export const BannersCarousel = ({ banners, variant = 'main' }: BannersCarouselProps) => {
   const validBanners = useMemo(() => banners.filter((b) => b.image_path), [banners]);

@@ -4,15 +4,8 @@ import { LogOut } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import styles from './ProfileMobileHeader.module.scss';
+import { type ProfileMobileHeaderProps } from './ProfileMobileHeader.types';
 import { ProfileAvatar } from '../ProfileAvatar/ProfileAvatar';
-
-interface ProfileMobileHeaderProps {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  onLogout: () => void;
-}
 
 export const ProfileMobileHeader = ({
   firstName,

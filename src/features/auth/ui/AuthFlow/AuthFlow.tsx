@@ -12,17 +12,13 @@ import { Link } from '@/shared/lib/i18n/navigation';
 import { tokenAtom, userIdAtom } from '@/shared/model';
 
 import styles from './AuthFlow.module.scss';
+import { type AuthFlowProps } from './AuthFlow.types';
 import { useSendOtp, useVerifyOtp } from '../../api/client';
 import { type SmsService } from '../../api/schemas';
 import { useAuthFlow } from '../../model/useAuthFlow';
 import { OtpStep } from '../OtpStep/OtpStep';
 import { PhoneStep } from '../PhoneStep/PhoneStep';
 import { SmsServiceStep } from '../SmsServiceStep/SmsServiceStep';
-
-interface AuthFlowProps {
-  onSuccess: () => void;
-  cancelHref?: string;
-}
 
 export const AuthFlow = ({ onSuccess, cancelHref = '/' }: AuthFlowProps) => {
   const t = useTranslations('auth');

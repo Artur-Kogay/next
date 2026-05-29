@@ -1,21 +1,7 @@
 import { cn } from '@/shared/lib/cn';
 
 import styles from './Loader.module.scss';
-
-type LoaderSize = 'sm' | 'md' | 'lg';
-
-interface LoaderProps {
-  size?: LoaderSize;
-
-  fullScreen?: boolean;
-
-  overlay?: boolean;
-
-  label?: string;
-
-  ariaLabel?: string;
-  className?: string;
-}
+import { type LoaderProps } from './Loader.types';
 
 export const Loader = ({
   size = 'md',

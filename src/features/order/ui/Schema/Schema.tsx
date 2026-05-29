@@ -6,11 +6,8 @@ import { useAtomValue } from 'jotai';
 import toast from 'react-hot-toast';
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 
-import { PriceFilter } from './PriceFilter';
 import styles from './Schema.module.scss';
-import { SchemeTooltips } from './SchemeTooltips';
-import { SectorSchemaModal } from './SectorSchemaModal';
-import { SideButtons } from './SideButtons';
+import { type SchemaProps, type SectorState } from './Schema.types';
 import { useAddToBasket } from '../../api/client';
 import {
   filterSectorsByColor,
@@ -23,16 +20,10 @@ import {
 } from '../../lib/schema-utils';
 import { selectedColorAtom } from '../../model/atoms';
 import { useSeatToggle } from '../../model/useSeatToggle';
-
-import type { SectorState } from './types';
-import type { BasketItem, OrderItem, OrderSession } from '../../api/schemas';
-
-type SchemaProps = {
-  item: OrderSession;
-  orderItems: OrderItem[];
-  schemaHtml: string;
-  basket: BasketItem[];
-};
+import { PriceFilter } from '../PriceFilter/PriceFilter';
+import { SchemeTooltips } from '../SchemeTooltips/SchemeTooltips';
+import { SectorSchemaModal } from '../SectorSchemaModal/SectorSchemaModal';
+import { SideButtons } from '../SideButtons/SideButtons';
 
 export const Schema = ({ item, orderItems, schemaHtml, basket }: SchemaProps) => {
   const selectedColor = useAtomValue(selectedColorAtom);

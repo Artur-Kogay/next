@@ -6,24 +6,13 @@ import { useAtomValue } from 'jotai';
 import { IoClose } from 'react-icons/io5';
 import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
 
-import styles from './Schema.module.scss';
-import { SeatTooltip } from './SchemeTooltips';
+import styles from './SectorSchemaModal.module.scss';
+import { type SectorSchemaModalProps } from './SectorSchemaModal.types';
 import { useSectorSchemaHtml } from '../../api/client';
 import { getSchemePlace, renderColors } from '../../lib/schema-utils';
 import { selectedColorAtom } from '../../model/atoms';
 import { useSeatToggle } from '../../model/useSeatToggle';
-
-import type { SectorState } from './types';
-import type { BasketItem, OrderItem, OrderSession } from '../../api/schemas';
-
-type SectorSchemaModalProps = {
-  isOpen: boolean;
-  sector: SectorState | undefined;
-  item: OrderSession;
-  basket: BasketItem[];
-  orderItems: OrderItem[];
-  onClose: () => void;
-};
+import { SeatTooltip } from '../SeatTooltip/SeatTooltip';
 
 export function SectorSchemaModal({
   isOpen,

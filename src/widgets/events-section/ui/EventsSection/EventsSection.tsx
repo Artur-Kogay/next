@@ -1,13 +1,7 @@
-import { EventCard, type SessionListItem } from '@/entities/event';
+import { EventCard } from '@/entities/event';
 
 import styles from './EventsSection.module.scss';
-
-interface EventsSectionProps {
-  title: string;
-  sessions: SessionListItem[];
-  anchorId?: string;
-  priorityImages?: boolean;
-}
+import { type EventsSectionProps } from './EventsSection.types';
 
 export const EventsSection = ({
   title,

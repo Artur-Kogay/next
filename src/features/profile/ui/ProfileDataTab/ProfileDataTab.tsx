@@ -8,15 +8,12 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/shared/lib';
 
 import styles from './ProfileDataTab.module.scss';
+import { type ProfileDataTabProps } from './ProfileDataTab.types';
 import { useUpdateProfile } from '../../api/client';
 import { splitName } from '../../lib/helpers';
 import { ProfileAvatar } from '../ProfileAvatar/ProfileAvatar';
 
-import type { Gender, ProfileResponse } from '../../api/schemas';
-
-interface ProfileDataTabProps {
-  user: ProfileResponse;
-}
+import type { Gender } from '../../api/schemas';
 
 const isoToDateInput = (raw: string | null | undefined): string => {
   if (!raw) return '';

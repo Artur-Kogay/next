@@ -347,12 +347,6 @@ export const generateAreaTooltipText = (
   return `Осталось мест: ${leftTickets}`;
 };
 
-export const formatCartTimer = (seconds: number): string => {
-  const minutes = Math.floor(seconds / 60);
-  const remainingSeconds = seconds % 60;
-  return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
-};
-
 export const hasMixedEventsInBasket = (basket: BasketItem[], eventId: number): boolean =>
   basket.length > 0 && basket.some((t) => t.event?.id !== eventId);
 

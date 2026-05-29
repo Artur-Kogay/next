@@ -3,17 +3,11 @@
 import { useMemo } from 'react';
 
 import styles from './OrderPage.module.scss';
+import { type OrderPageProps } from './OrderPage.types';
 import { useBasket, useOrderItems } from '../../api/client';
 import { EntryTickets } from '../EntryTickets/EntryTickets';
 import { EventInfo } from '../EventInfo/EventInfo';
 import { Schema } from '../Schema/Schema';
-
-import type { OrderSession } from '../../api/schemas';
-
-type OrderPageProps = {
-  item: OrderSession;
-  schemaHtml: string;
-};
 
 export const OrderPage = ({ item, schemaHtml }: OrderPageProps) => {
   const { data: cart } = useBasket();

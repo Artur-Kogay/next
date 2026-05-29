@@ -11,14 +11,9 @@ import { cn } from '@/shared/lib';
 import { QrCode } from '@/shared/ui';
 
 import styles from './OrderCard.module.scss';
+import { type DisplayStatus, type OrderCardProps } from './OrderCard.types';
 
-import type { Order, OrderStatus, Ticket } from '../../api/schemas';
-
-interface OrderCardProps {
-  order: Order;
-}
-
-type DisplayStatus = 'paid' | 'pending' | 'refunded';
+import type { OrderStatus, Ticket } from '../../api/schemas';
 
 const mapStatus = (status: OrderStatus): DisplayStatus => {
   if (status === 'COMPLETED' || status === 'INVITATION') return 'paid';

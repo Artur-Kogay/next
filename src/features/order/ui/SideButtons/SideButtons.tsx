@@ -6,7 +6,7 @@ import { useControls } from 'react-zoom-pan-pinch';
 
 import { useRouter } from '@/shared/lib/i18n/navigation';
 
-import styles from './Schema.module.scss';
+import styles from './SideButtons.module.scss';
 
 export function SideButtons() {
   const router = useRouter();

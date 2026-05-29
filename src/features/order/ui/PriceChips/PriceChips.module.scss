@@ -1,0 +1,76 @@
+@use 'abstracts' as *;
+
+.priceFilter {
+  display: flex;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.priceFilterInner {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  margin: 0 auto;
+}
+
+.priceChip {
+  display: inline-flex;
+  flex-shrink: 0;
+  gap: 8px;
+  align-items: center;
+  height: 38px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-fg);
+  white-space: nowrap;
+  cursor: pointer;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-border-strong);
+  }
+}
+
+.priceChipActive {
+  color: var(--color-accent-12);
+  background: var(--color-accent-a3);
+  border-color: var(--color-accent-9);
+}
+
+.priceDot {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+@media (max-width: 500px) {
+  .priceFilterInner {
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .priceChip {
+    gap: 6px;
+    height: 34px;
+    padding: 0 13px;
+    font-size: 12px;
+  }
+
+  .priceDot {
+    width: 10px;
+    height: 10px;
+  }
+}

@@ -9,17 +9,8 @@ import { cn } from '@/shared/lib';
 import { Loader } from '@/shared/ui';
 
 import styles from './TicketsTab.module.scss';
+import { type Mode, type TicketsTabProps } from './TicketsTab.types';
 import { OrderCard } from '../OrderCard/OrderCard';
-
-import type { Order } from '../../api/schemas';
-
-interface TicketsTabProps {
-  upcoming: Order[];
-  past: Order[];
-  loading?: boolean;
-}
-
-type Mode = 'upcoming' | 'past';
 
 export const TicketsTab = ({ upcoming, past, loading }: TicketsTabProps) => {
   const t = useTranslations('profile');

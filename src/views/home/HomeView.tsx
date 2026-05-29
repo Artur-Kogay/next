@@ -9,10 +9,7 @@ import { EventsSection } from '@/widgets/events-section';
 import { MobileSearch } from '@/widgets/header';
 
 import styles from './HomeView.module.scss';
-
-interface HomeViewProps {
-  locale: string;
-}
+import { type HomeViewProps } from './HomeView.types';
 
 export const HomeView = async ({ locale }: HomeViewProps) => {
   const [banners, categories, popular, t] = await Promise.all([

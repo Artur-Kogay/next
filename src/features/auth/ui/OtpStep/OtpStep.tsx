@@ -14,15 +14,7 @@ import {
 import { useTranslations } from 'next-intl';
 
 import styles from './OtpStep.module.scss';
-
-interface OtpStepProps {
-  length?: number;
-  resendIn?: number;
-  onSubmit: (code: string) => void;
-  onResend: () => void;
-  error?: string | null;
-  loading?: boolean;
-}
+import { type OtpStepProps } from './OtpStep.types';
 
 export const OtpStep = ({
   length = 6,

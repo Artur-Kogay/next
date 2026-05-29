@@ -1,0 +1,231 @@
+@use 'abstracts' as *;
+
+.root {
+  width: 100%;
+  padding: $space-6 0 $space-12;
+}
+
+.container {
+  width: 100%;
+  max-width: 1120px;
+  padding: 0 $space-4;
+  margin: 0 auto;
+}
+
+.head {
+  display: flex;
+  gap: $space-3;
+  align-items: center;
+  margin-bottom: $space-6;
+}
+
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-fg);
+  cursor: pointer;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  transition: border-color $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      border-color: var(--color-border-strong);
+    }
+  }
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-fg);
+  letter-spacing: -0.02em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-5;
+
+  @include media-up('lg') {
+    grid-template-columns: minmax(0, 1.7fr) minmax(320px, 1fr);
+    align-items: start;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  min-width: 0;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  padding: $space-5;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-xl;
+
+  @include media-up('md') {
+    padding: $space-6;
+  }
+}
+
+.cardHead {
+  display: flex;
+  gap: $space-3;
+  align-items: center;
+}
+
+.step {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: var(--color-accent-contrast);
+  background: var(--color-accent-9);
+  border-radius: $radius-full;
+}
+
+.cardTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-4 $space-5;
+
+  @include media-up('md') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.fieldFull {
+  @include media-up('md') {
+    grid-column: 1 / -1;
+  }
+}
+
+.label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg-muted);
+}
+
+.inputWrap {
+  display: flex;
+  gap: $space-3;
+  align-items: center;
+  padding: 0 $space-4;
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  transition:
+    border-color $transition-fast,
+    background $transition-fast;
+
+  &:focus-within {
+    background: var(--color-bg);
+    border-color: var(--color-accent-9);
+  }
+}
+
+.inputIcon {
+  flex-shrink: 0;
+  color: var(--color-fg-subtle);
+}
+
+.input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: $space-3 0;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: var(--color-fg);
+  background: transparent;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-fg-subtle);
+  }
+
+  &:disabled {
+    color: var(--color-fg-muted);
+    cursor: not-allowed;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60dvh;
+  padding: $space-6 $space-4;
+}
+
+.notice {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  align-items: center;
+  max-width: 380px;
+  padding: $space-8 $space-6;
+  text-align: center;
+  background: var(--color-panel);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-xl;
+}
+
+.noticeIcon {
+  color: var(--color-fg-subtle);
+}
+
+.noticeTitle {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-fg);
+}
+
+.noticeText {
+  font-size: $font-size-sm;
+  color: var(--color-fg-muted);
+}
+
+.noticeBtn {
+  padding: $space-3 $space-8;
+  margin-top: $space-2;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-accent-contrast);
+  background: var(--color-accent-9);
+  border-radius: $radius-lg;
+  transition: background $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-accent-10);
+    }
+  }
+}

@@ -6,26 +6,7 @@ import { Link } from '@/shared/lib/i18n/navigation';
 import { ThemeToggle } from '@/shared/ui';
 
 import styles from './Footer.module.scss';
-
-const NAV_GROUPS = [
-  {
-    title: 'aboutCompany',
-    links: [
-      { href: '/about/company', labelKey: 'aboutCompany' },
-      { href: '/about/public_offer', labelKey: 'public' },
-      { href: '/about/organizations', labelKey: 'organizeshion' },
-    ],
-  },
-  {
-    title: 'howBuy',
-    links: [
-      { href: '/about/howtobuy', labelKey: 'purchaseinstructions' },
-      { href: '/about/faq', labelKey: 'questionfooter' },
-      { href: '/about/termsconditions', labelKey: 'foydalanishShartlari' },
-      { href: '/about/etickets', labelKey: 'etickets' },
-    ],
-  },
-] as const;
+import { NAV_GROUPS } from './Footer.types';
 
 export const Footer = () => {
   const t = useTranslations('footer');

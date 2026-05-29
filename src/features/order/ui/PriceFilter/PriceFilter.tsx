@@ -2,12 +2,11 @@
 
 import { useMemo } from 'react';
 
-import { PriceChips } from './PriceChips';
+import { type PriceFilterProps } from './PriceFilter.types';
 import { normalizePrices } from '../../lib/schema-utils';
+import { PriceChips } from '../PriceChips/PriceChips';
 
-import type { OrderItem, OrderSession } from '../../api/schemas';
-
-export function PriceFilter({ item, orderItems }: { item: OrderSession; orderItems: OrderItem[] }) {
+export function PriceFilter({ item, orderItems }: PriceFilterProps) {
   const prices = useMemo(() => normalizePrices(item, orderItems), [item, orderItems]);
 
   return <PriceChips prices={prices} />;

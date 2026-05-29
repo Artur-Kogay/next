@@ -4,12 +4,9 @@ import { useEffect } from 'react';
 
 import { useAtom } from 'jotai';
 
-import styles from './Schema.module.scss';
+import styles from './PriceChips.module.scss';
+import { type PriceChipsProps } from './PriceChips.types';
 import { selectedColorAtom } from '../../model/atoms';
-
-interface PriceChipsProps {
-  prices: { color: string; price: number }[];
-}
 
 export function PriceChips({ prices }: PriceChipsProps) {
   const [selectedColor, setSelectedColor] = useAtom(selectedColorAtom);

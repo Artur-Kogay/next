@@ -7,11 +7,7 @@ import { EventCard } from '@/entities/event';
 import { CategoriesNav } from '@/widgets/categories-nav';
 
 import styles from './CategoryView.module.scss';
-
-interface CategoryViewProps {
-  locale: string;
-  slug: string;
-}
+import { type CategoryViewProps } from './CategoryView.types';
 
 export const CategoryView = async ({ locale, slug }: CategoryViewProps) => {
   const [categories, t] = await Promise.all([

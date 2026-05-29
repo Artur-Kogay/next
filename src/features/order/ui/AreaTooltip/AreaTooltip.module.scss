@@ -1,0 +1,18 @@
+@use 'abstracts' as *;
+
+.tooltip {
+  z-index: 999 !important;
+  padding: 8px 14px !important;
+  font-size: 13px !important;
+  color: var(--color-fg) !important;
+  background: var(--color-panel) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 8px !important;
+  opacity: 1 !important;
+}
+
+.tooltipText {
+  display: block;
+  text-align: center;
+  white-space: pre-line;
+}

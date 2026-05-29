@@ -10,10 +10,7 @@ import { useClickOutside, useDebounce } from '@/shared/lib';
 import { Loader } from '@/shared/ui';
 
 import styles from './SearchBar.module.scss';
-
-interface SearchBarProps {
-  placeholder?: string;
-}
+import { type SearchBarProps } from './SearchBar.types';
 
 export const SearchBar = ({ placeholder }: SearchBarProps) => {
   const t = useTranslations('common');

@@ -8,13 +8,8 @@ import { type Country } from '@/shared/config';
 import { defaultCountry, formatPhone, isValidPhone, sanitizePhone } from '@/shared/lib';
 
 import styles from './PhoneStep.module.scss';
+import { type PhoneStepProps } from './PhoneStep.types';
 import { CountryPicker } from '../CountryPicker/CountryPicker';
-
-interface PhoneStepProps {
-  initialCountry?: Country;
-  initialDigits?: string;
-  onSubmit: (input: { country: Country; digits: string }) => void;
-}
 
 export const PhoneStep = ({ initialCountry, initialDigits = '', onSubmit }: PhoneStepProps) => {
   const t = useTranslations('auth');

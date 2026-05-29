@@ -5,11 +5,8 @@ import { Sparkles } from 'lucide-react';
 import { currency } from '@/shared/config';
 
 import styles from './Discounts.module.scss';
-import { getDiscountCondition, getDiscountText, type EventDiscount } from '../../lib/discounts';
-
-interface DiscountsProps {
-  discounts: EventDiscount[];
-}
+import { type DiscountsProps } from './Discounts.types';
+import { getDiscountCondition, getDiscountText } from '../../lib/discounts';
 
 export const Discounts = ({ discounts }: DiscountsProps) => {
   if (!discounts.length) return null;

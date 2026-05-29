@@ -2,12 +2,12 @@
 
 import { CalendarDays, MapPin } from 'lucide-react';
 
+import { formatSessionDateTime } from '@/shared/lib';
+
 import styles from './EventInfo.module.scss';
-import { formatSessionDateTime } from '../../lib/format';
+import { type EventInfoProps } from './EventInfo.types';
 
-import type { OrderSession } from '../../api/schemas';
-
-export const EventInfo = ({ item }: { item: OrderSession }) => {
+export const EventInfo = ({ item }: EventInfoProps) => {
   const date = item.date_time ? formatSessionDateTime(item.date_time) : null;
 
   return (

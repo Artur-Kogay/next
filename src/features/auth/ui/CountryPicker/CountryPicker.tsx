@@ -4,15 +4,11 @@ import { useRef, useState } from 'react';
 
 import { ChevronDown } from 'lucide-react';
 
-import { COUNTRIES, type Country } from '@/shared/config';
+import { COUNTRIES } from '@/shared/config';
 import { useClickOutside } from '@/shared/lib';
 
 import styles from './CountryPicker.module.scss';
-
-interface CountryPickerProps {
-  value: Country;
-  onChange: (country: Country) => void;
-}
+import { type CountryPickerProps } from './CountryPicker.types';
 
 export const CountryPicker = ({ value, onChange }: CountryPickerProps) => {
   const [open, setOpen] = useState(false);
