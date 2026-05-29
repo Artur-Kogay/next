@@ -6,7 +6,7 @@ export { brand } from './brand';
 export type { BrandConfig, AccentColor } from './brand';
 export { logo } from './logo';
 export type { LogoConfig } from './logo';
-export { currency } from './currency';
+export { currency, formatPrice } from './currency';
 export type { CurrencyConfig } from './currency';
 export { COUNTRIES, COUNTRY_ALIASES } from './countries';
 export type { Country } from './countries';

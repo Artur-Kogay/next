@@ -20,3 +20,5 @@ const pick = (): CurrencyConfig => {
 };
 
 export const currency: CurrencyConfig = pick();
+
+export const formatPrice = (value: number): string => `${value.toLocaleString()} ${currency.label}`;

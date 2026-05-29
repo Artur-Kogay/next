@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import styles from './OrderPage.module.scss';
 import { useBasket, useOrderItems } from '../../api/client';
 import { EntryTickets } from '../EntryTickets/EntryTickets';
+import { EventInfo } from '../EventInfo/EventInfo';
 import { Schema } from '../Schema/Schema';
 
 import type { OrderSession } from '../../api/schemas';
@@ -26,6 +27,7 @@ export const OrderPage = ({ item, schemaHtml }: OrderPageProps) => {
   if (hasSchema) {
     return (
       <div className={styles.schemaWrapper}>
+        <EventInfo item={item} />
         <Schema item={item} orderItems={items} schemaHtml={schemaHtml} basket={basket} />
       </div>
     );

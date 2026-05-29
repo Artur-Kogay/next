@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 
 import { useBasket } from '../../api/client';
 import { EsboSchema } from '../EsboSchema/EsboSchema';
+import { EventInfo } from '../EventInfo/EventInfo';
 import styles from '../OrderPage/OrderPage.module.scss';
 
 import type { EsboPrice, EsboSeat } from '../../api/esbo-schemas';
@@ -22,6 +23,7 @@ export const EsboOrderPage = ({ item, schemaHtml, esboPricing, esboSeats }: Esbo
 
   return (
     <div className={styles.schemaWrapper}>
+      <EventInfo item={item} />
       <EsboSchema
         item={item}
         schemaHtml={schemaHtml}

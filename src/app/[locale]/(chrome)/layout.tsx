@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react';
 
+import { CartDrawer } from '@/features/order';
 import { Footer } from '@/widgets/footer';
 import { Header } from '@/widgets/header';
 
@@ -11,11 +12,14 @@ interface ChromeLayoutProps {
 
 const ChromeLayout = ({ children }: ChromeLayoutProps) => {
   return (
-    <div className={styles.root}>
-      <Header />
-      <main className={styles.main}>{children}</main>
-      <Footer />
-    </div>
+    <>
+      <div className={styles.root}>
+        <Header />
+        <main className={styles.main}>{children}</main>
+        <Footer />
+      </div>
+      <CartDrawer />
+    </>
   );
 };
 
