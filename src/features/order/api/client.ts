@@ -6,7 +6,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 
 import { http, unwrapPayload } from '@/shared/api/http';
-import { SCHEMES_URL } from '@/shared/config';
+import { SCHEMES_URL, env } from '@/shared/config';
 import { getOrCreateUserUuid } from '@/shared/model';
 
 import { orderKeys } from './keys';
@@ -25,7 +25,12 @@ export const useBasket = () => {
       const raw = await http<unknown>('/basket', { query: { user_uuid: userUuid } });
       const payload = unwrapPayload(raw);
       const result = basketResponseSchema.safeParse({ payload });
-      if (!result.success) return { basket: [], timer: 0 };
+      if (!result.success) {
+        if (env.NEXT_PUBLIC_APP_ENV !== 'production') {
+          console.error('[useBasket] parse error', result.error.flatten(), payload);
+        }
+        return { basket: [], timer: 0 };
+      }
       return result.data.payload;
     },
     refetchInterval: 10_000,

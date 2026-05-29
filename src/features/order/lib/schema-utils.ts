@@ -352,3 +352,24 @@ export const formatCartTimer = (seconds: number): string => {
   const remainingSeconds = seconds % 60;
   return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
 };
+
+export const hasMixedEventsInBasket = (basket: BasketItem[], eventId: number): boolean =>
+  basket.length > 0 && basket.some((t) => t.event?.id !== eventId);
+
+export const getClickedSector = (
+  clicked: HTMLElement,
+  item: OrderSession,
+): { id: string; title: string } | null => {
+  if (!item.scheme?.sectors?.length) return null;
+
+  const id = clicked.parentElement?.id.startsWith('sector')
+    ? clicked.parentElement.id
+    : (clicked.parentElement?.parentElement?.id ?? '');
+
+  if (!id.startsWith('sector')) return null;
+
+  return {
+    id,
+    title: clicked.closest('g[id^="sector_"][data-title]')?.getAttribute('data-title') || '',
+  };
+};

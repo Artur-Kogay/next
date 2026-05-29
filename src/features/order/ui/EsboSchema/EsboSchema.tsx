@@ -11,7 +11,7 @@ import { currency } from '@/shared/config';
 
 import { SectorSchemaEsboModal } from './SectorSchemaEsboModal';
 import { getEsboAreaTooltip, getEsboSeatTooltip, renderColorEsbo } from '../../lib/esbo-utils';
-import { getSchemePlace } from '../../lib/schema-utils';
+import { getClickedSector, getSchemePlace, hasMixedEventsInBasket } from '../../lib/schema-utils';
 import { selectedColorAtom } from '../../model/atoms';
 import { useEsboSeatToggle } from '../../model/useEsboSeatToggle';
 import { PriceChips } from '../Schema/PriceChips';
@@ -68,24 +68,15 @@ export const EsboSchema = ({
     (ev: MouseEvent<HTMLDivElement>) => {
       const clicked = ev.target as HTMLElement;
 
-      if (basket.length && basket.some((t) => t.event?.id !== item.event.id)) {
+      if (hasMixedEventsInBasket(basket, item.event.id)) {
         toast.error('Вы не можете забронировать места из разных мероприятий');
         return;
       }
 
-      if (item.scheme?.sectors?.length) {
-        const id = clicked.parentElement?.id.startsWith('sector')
-          ? clicked.parentElement.id
-          : (clicked.parentElement?.parentElement?.id ?? '');
-
-        if (id.startsWith('sector')) {
-          setCurrentSector({
-            id,
-            title:
-              clicked.closest('g[id^="sector_"][data-title]')?.getAttribute('data-title') || '',
-          });
-          return;
-        }
+      const sector = getClickedSector(clicked, item);
+      if (sector) {
+        setCurrentSector(sector);
+        return;
       }
 
       const place = getSchemePlace(clicked);

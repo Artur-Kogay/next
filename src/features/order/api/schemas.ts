@@ -77,46 +77,54 @@ export const orderSessionResponseSchema = z.object({
   payload: orderSessionSchema,
 });
 
-const basketEventSchema = z.object({
-  id: z.number(),
-  title: z.string(),
-  is_free: z.boolean().nullable().optional(),
-});
+const basketEventSchema = z
+  .object({
+    id: z.coerce.number().optional(),
+    title: z.coerce.string().optional().default(''),
+    is_free: z.boolean().nullable().optional(),
+  })
+  .passthrough();
 
-const basketSessionSchema = z.object({
-  date_time: z.string(),
-});
+const basketSessionSchema = z
+  .object({
+    date_time: z.coerce.string().nullable().optional(),
+  })
+  .passthrough();
 
-const basketItemSchema = z.object({
-  id: z.number(),
-  title: z.string(),
-  price: z.number(),
-  service_fee: z.number(),
-  discount: z.number(),
-  ticket_type_id: z.number().nullable().optional(),
-  ticket_seat_id: z.number().nullable().optional(),
-  ticket_area_id: z.number().nullable().optional(),
-  event: basketEventSchema.nullable().optional(),
-  session: basketSessionSchema.nullable().optional(),
-  row: z.number().nullable().optional(),
-  outer_id: z.number().nullable().optional(),
-});
+const basketItemSchema = z
+  .object({
+    id: z.coerce.number(),
+    title: z.coerce.string().optional().default(''),
+    price: z.coerce.number().optional().default(0),
+    service_fee: z.coerce.number().optional().default(0),
+    discount: z.coerce.number().optional().default(0),
+    ticket_type_id: z.coerce.number().nullable().optional(),
+    ticket_seat_id: z.coerce.number().nullable().optional(),
+    ticket_area_id: z.coerce.number().nullable().optional(),
+    event: basketEventSchema.nullable().optional(),
+    session: basketSessionSchema.nullable().optional(),
+    row: z.coerce.number().nullable().optional(),
+    outer_id: z.coerce.number().nullable().optional(),
+  })
+  .passthrough();
 
 const basketSchema = z.object({
-  basket: z.array(basketItemSchema).default([]),
-  timer: z.number().default(0),
+  basket: z.array(basketItemSchema).catch([]),
+  timer: z.coerce.number().catch(0),
 });
 
 export const basketResponseSchema = z.object({
   payload: basketSchema,
 });
 
-const orderItemSchema = z.object({
-  id: z.number(),
-  html_id: z.string().nullable().optional(),
-  ticket_seat_id: z.number().nullable().optional(),
-  scheme_sector_id: z.number().nullable().optional(),
-});
+const orderItemSchema = z
+  .object({
+    id: z.coerce.number(),
+    html_id: z.coerce.string().nullable().optional(),
+    ticket_seat_id: z.coerce.number().nullable().optional(),
+    scheme_sector_id: z.coerce.number().nullable().optional(),
+  })
+  .passthrough();
 
 export const orderItemsResponseSchema = z.object({
   payload: z.object({

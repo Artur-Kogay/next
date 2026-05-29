@@ -14,8 +14,10 @@ import { SideButtons } from './SideButtons';
 import { useAddToBasket } from '../../api/client';
 import {
   filterSectorsByColor,
+  getClickedSector,
   getSchemePlace,
   getTrueSectors,
+  hasMixedEventsInBasket,
   hideSectorsWithoutPrice,
   renderColors,
 } from '../../lib/schema-utils';
@@ -102,24 +104,15 @@ export const Schema = ({ item, orderItems, schemaHtml, basket }: SchemaProps) =>
     (ev: MouseEvent<HTMLDivElement>) => {
       const clickedItem = ev.target as HTMLElement;
 
-      if (basket.length && basket.some((t) => t.event?.id !== item.event.id)) {
+      if (hasMixedEventsInBasket(basket, item.event.id)) {
         toast.error('Вы не можете забронировать места из разных мероприятий');
         return;
       }
 
-      if (item.scheme?.sectors?.length) {
-        const id = clickedItem.parentElement?.id.startsWith('sector')
-          ? clickedItem.parentElement.id
-          : (clickedItem.parentElement?.parentElement?.id ?? '');
-
-        if (id.startsWith('sector')) {
-          setCurrentSector({
-            id,
-            title:
-              clickedItem.closest('g[id^="sector_"][data-title]')?.getAttribute('data-title') || '',
-          });
-          return;
-        }
+      const sector = getClickedSector(clickedItem, item);
+      if (sector) {
+        setCurrentSector(sector);
+        return;
       }
 
       const place = getSchemePlace(clickedItem);

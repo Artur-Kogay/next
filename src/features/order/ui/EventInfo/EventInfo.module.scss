@@ -1,0 +1,49 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+  padding: 4px 16px 0;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(17px, 3vw, 22px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-fg);
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.metaItem {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-fg-muted);
+
+  svg {
+    color: var(--color-accent-11);
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 16px;
+  }
+
+  .metaItem {
+    font-size: 12px;
+  }
+}
