@@ -1,41 +1,71 @@
 'use client';
 
 import { CheckCircle2, Loader2, QrCode } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import styles from './PaymentResult.module.scss';
 import { type PaymentResultProps } from './PaymentResult.types';
+import { OtpForm } from '../OtpForm/OtpForm';
 
-export const PaymentResult = ({ state, onFinish }: PaymentResultProps) => {
+export const PaymentResult = ({
+  state,
+  onFinish,
+  onConfirmOtp,
+  confirmPending,
+  onExpire,
+  onCancel,
+}: PaymentResultProps) => {
+  const t = useTranslations('checkout');
+
   if (state.kind === 'redirecting') {
     return (
       <div className={styles.result}>
         <Loader2 size={40} className={`${styles.resultIcon} ${styles.spin}`} aria-hidden />
-        <h2 className={styles.resultTitle}>Перенаправление на оплату…</h2>
-        <p className={styles.resultText}>Не закрывайте страницу.</p>
+        <h2 className={styles.resultTitle}>{t('redirecting')}</h2>
+        <p className={styles.resultText}>{t('dont-close')}</p>
       </div>
     );
   }
 
   if (state.kind === 'qr') {
-    const src = state.qr.startsWith('data:') ? state.qr : `data:image/png;base64,${state.qr}`;
+    const src =
+      state.qr.startsWith('data:') || state.qr.startsWith('http')
+        ? state.qr
+        : `data:image/png;base64,${state.qr}`;
     return (
       <div className={styles.result}>
         <QrCode size={32} className={styles.resultIcon} aria-hidden />
-        <h2 className={styles.resultTitle}>Оплата по QR-коду</h2>
+        <h2 className={styles.resultTitle}>{t('qr-title')}</h2>
         {state.orderNumber ? (
           <p className={styles.resultText}>
-            Заказ №<b>{state.orderNumber}</b>
+            {t.rich('order-short', {
+              number: state.orderNumber,
+              b: (chunks) => <b>{chunks}</b>,
+            })}
           </p>
         ) : null}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt="QR код для оплаты" className={styles.qrImage} />
-        <p className={styles.resultText}>
-          Отсканируйте код в приложении банка. После оплаты нажмите кнопку ниже.
-        </p>
+        <img src={src} alt={t('qr-alt')} className={styles.qrImage} />
+        <p className={styles.resultText}>{t('qr-text')}</p>
         <button type="button" className={styles.resultBtn} onClick={onFinish}>
-          Я оплатил — к заказам
+          {t('paid-to-orders')}
         </button>
       </div>
+    );
+  }
+
+  if (state.kind === 'otp') {
+    return (
+      <OtpForm
+        phone={state.phone}
+        codeLength={state.codeLength}
+        timer={state.timer}
+        name={state.name}
+        confirmPending={confirmPending}
+        onConfirm={onConfirmOtp}
+        onExpire={onExpire}
+        onCancel={onCancel}
+      />
     );
   }
 
@@ -46,21 +76,18 @@ export const PaymentResult = ({ state, onFinish }: PaymentResultProps) => {
         className={`${styles.resultIcon} ${styles.resultIconSuccess}`}
         aria-hidden
       />
-      <h2 className={styles.resultTitle}>Заказ создан</h2>
+      <h2 className={styles.resultTitle}>{t('order-created')}</h2>
       {state.orderNumber ? (
         <p className={styles.resultText}>
-          Номер заказа: <b>{state.orderNumber}</b>
+          {t.rich('order-number', {
+            number: state.orderNumber,
+            b: (chunks) => <b>{chunks}</b>,
+          })}
         </p>
       ) : null}
-      {state.otpPhone ? (
-        <p className={styles.resultText}>
-          Подтвердите оплату кодом из SMS, отправленного на {state.otpPhone}.
-        </p>
-      ) : (
-        <p className={styles.resultText}>Билеты появятся в вашем профиле после оплаты.</p>
-      )}
+      <p className={styles.resultText}>{t('tickets-in-profile')}</p>
       <button type="button" className={styles.resultBtn} onClick={onFinish}>
-        Перейти к заказам
+        {t('to-orders')}
       </button>
     </div>
   );

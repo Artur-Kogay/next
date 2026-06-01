@@ -2,12 +2,15 @@
 
 import { useEffect, useMemo, useState } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { formatCartTimer } from '@/shared/lib';
 
 import styles from './Timer.module.scss';
 import { type TimerProps } from './Timer.types';
 
 export function Timer({ timer }: TimerProps) {
+  const t = useTranslations('cart-modal');
   const [timeLeft, setTimeLeft] = useState(timer);
 
   useEffect(() => {
@@ -30,7 +33,7 @@ export function Timer({ timer }: TimerProps) {
   return (
     <div className={styles.timerRow}>
       <div className={styles.timerInfo}>
-        <div className={styles.timerLabel}>Время до конца брони</div>
+        <div className={styles.timerLabel}>{t('booking-time')}</div>
         <div className={styles.progressBar}>
           <div className={styles.progressFill} style={{ width: `${percentage}%` }} />
         </div>

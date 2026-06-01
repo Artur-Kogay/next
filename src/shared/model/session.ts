@@ -20,7 +20,7 @@ const generateUuid = (): string => {
       return crypto.randomUUID();
     }
   } catch {
-    // crypto.randomUUID requires a secure context; fall through to the manual generator.
+    void 0;
   }
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0;

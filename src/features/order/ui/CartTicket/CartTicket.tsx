@@ -2,6 +2,7 @@
 
 import { useCallback } from 'react';
 
+import { useTranslations } from 'next-intl';
 import { IoClose } from 'react-icons/io5';
 
 import { formatPrice } from '@/shared/config/currency';
@@ -12,6 +13,7 @@ import { type CartTicketProps } from './CartTicket.types';
 import { useRemoveFromBasket } from '../../api/client';
 
 export function CartTicket({ ticket }: CartTicketProps) {
+  const t = useTranslations('cart-modal');
   const removeFromBasket = useRemoveFromBasket();
 
   const onDelete = useCallback(() => {
@@ -27,7 +29,7 @@ export function CartTicket({ ticket }: CartTicketProps) {
         className={styles.ticketDelete}
         onClick={onDelete}
         disabled={removeFromBasket.isPending}
-        aria-label="Удалить билет"
+        aria-label={t('remove-ticket')}
       >
         <IoClose size={16} />
       </button>
@@ -39,15 +41,15 @@ export function CartTicket({ ticket }: CartTicketProps) {
       {ticket.service_fee > 0 ? (
         <div className={styles.ticketPrices}>
           <div className={styles.priceRow}>
-            <span>Цена</span>
+            <span>{t('price')}</span>
             <span>{formatPrice(ticket.price)}</span>
           </div>
           <div className={styles.priceRow}>
-            <span>Сервисный сбор</span>
+            <span>{t('service-fee')}</span>
             <span>{formatPrice(ticket.service_fee)}</span>
           </div>
           <div className={styles.priceRowTotal}>
-            <span>Итого</span>
+            <span>{t('total-label')}</span>
             <span>{formatPrice(total)}</span>
           </div>
         </div>

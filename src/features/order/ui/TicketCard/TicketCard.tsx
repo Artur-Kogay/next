@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import toast from 'react-hot-toast';
 import { BiMinus, BiPlus } from 'react-icons/bi';
@@ -18,6 +18,14 @@ export function TicketCard({ ticket, item, basket }: TicketCardProps) {
 
   const [quantity, setQuantity] = useState(ticket.quantity);
   const [expanded, setExpanded] = useState(false);
+  const [overflowing, setOverflowing] = useState(false);
+  const descRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = descRef.current;
+    if (!el) return;
+    setOverflowing(el.scrollHeight > el.clientHeight + 1);
+  }, [ticket.description]);
 
   const inBasket = useMemo(
     () => basket.filter((b) => b.ticket_type_id === ticket.id),
@@ -96,12 +104,15 @@ export function TicketCard({ ticket, item, basket }: TicketCardProps) {
       {ticket.description && (
         <>
           <div
+            ref={descRef}
             className={`${styles.desc} ${!expanded ? styles.clamped : ''}`}
             dangerouslySetInnerHTML={{ __html: ticket.description }}
           />
-          <button type="button" className={styles.toggle} onClick={() => setExpanded((p) => !p)}>
-            {expanded ? 'Скрыть' : 'Подробнее'}
-          </button>
+          {overflowing ? (
+            <button type="button" className={styles.toggle} onClick={() => setExpanded((p) => !p)}>
+              {expanded ? 'Скрыть' : 'Подробнее'}
+            </button>
+          ) : null}
         </>
       )}
 

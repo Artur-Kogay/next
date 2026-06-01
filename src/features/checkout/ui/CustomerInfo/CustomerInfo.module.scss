@@ -1,0 +1,103 @@
+@use 'abstracts' as *;
+
+.fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-4 $space-5;
+
+  @include media-up('md') {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.fieldFull {
+  @include media-up('md') {
+    grid-column: 1 / -1;
+  }
+}
+
+.label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg-muted);
+}
+
+.inputWrap {
+  display: flex;
+  gap: $space-3;
+  align-items: center;
+  padding: 0 $space-4;
+  background: var(--color-input);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  transition:
+    border-color $transition-fast,
+    background $transition-fast;
+
+  &:focus-within {
+    background: var(--color-bg);
+    border-color: var(--color-accent-9);
+  }
+}
+
+.inputIcon {
+  flex-shrink: 0;
+  color: var(--color-fg-subtle);
+}
+
+.input {
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  padding: $space-3 0;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  color: var(--color-fg);
+  background: transparent;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-fg-subtle);
+  }
+}
+
+.genderRow {
+  display: flex;
+  gap: $space-2;
+}
+
+.gender {
+  flex: 1;
+  padding: $space-3 $space-4;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg-muted);
+  cursor: pointer;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: $radius-lg;
+  transition:
+    background $transition-fast,
+    border-color $transition-fast,
+    color $transition-fast;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-fg);
+      border-color: var(--color-accent-9);
+    }
+  }
+}
+
+.genderActive {
+  color: var(--color-accent-contrast);
+  background: var(--color-accent-9);
+  border-color: var(--color-accent-9);
+}

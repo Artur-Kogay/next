@@ -1,11 +1,15 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import styles from './PaymentMethodList.module.scss';
 import { type PaymentMethodListProps } from './PaymentMethodList.types';
 
 export const PaymentMethodList = ({ methods, selected, onSelect }: PaymentMethodListProps) => {
+  const t = useTranslations('checkout');
+
   if (!methods.length) {
-    return <p className={styles.emptyMethods}>Нет доступных способов оплаты</p>;
+    return <p className={styles.emptyMethods}>{t('no-methods')}</p>;
   }
 
   return (

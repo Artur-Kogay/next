@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo } from 'react';
 
 import { useAtom } from 'jotai';
 import { ShoppingCart, Trash2 } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { IoClose } from 'react-icons/io5';
 
 import { formatPrice } from '@/shared/config/currency';
@@ -16,6 +17,7 @@ import { CartTicket } from '../CartTicket/CartTicket';
 import { Timer } from '../Timer/Timer';
 
 export const CartDrawer = () => {
+  const t = useTranslations('cart-modal');
   const router = useRouter();
   const [isOpen, setIsOpen] = useAtom(isCartOpenAtom);
   const { data: cart } = useBasket();
@@ -67,10 +69,10 @@ export const CartDrawer = () => {
         <div className={styles.header}>
           <div className={styles.headerTitle}>
             <ShoppingCart size={18} aria-hidden />
-            <span>Корзина</span>
+            <span>{t('basket')}</span>
             {count > 0 ? <span className={styles.headerCount}>{count}</span> : null}
           </div>
-          <button type="button" className={styles.close} onClick={onClose} aria-label="Закрыть">
+          <button type="button" className={styles.close} onClick={onClose} aria-label={t('close')}>
             <IoClose size={24} />
           </button>
         </div>
@@ -78,10 +80,10 @@ export const CartDrawer = () => {
         {count === 0 ? (
           <div className={styles.empty}>
             <ShoppingCart size={44} className={styles.emptyIcon} aria-hidden />
-            <div className={styles.emptyText}>Корзина пуста</div>
-            <div className={styles.emptySubtext}>Здесь появятся выбранные билеты</div>
+            <div className={styles.emptyText}>{t('empty')}</div>
+            <div className={styles.emptySubtext}>{t('will-be')}</div>
             <button type="button" className={styles.emptyBtn} onClick={onGoHome}>
-              На главную
+              {t('go-home')}
             </button>
           </div>
         ) : (
@@ -98,16 +100,16 @@ export const CartDrawer = () => {
             <div className={styles.footer}>
               <div className={styles.summary}>
                 <div className={styles.summaryRow}>
-                  <span className={styles.summaryLabel}>Билетов</span>
+                  <span className={styles.summaryLabel}>{t('tickets-label')}</span>
                   <span className={styles.summaryCount}>{count}</span>
                 </div>
                 <div className={styles.summaryRow}>
-                  <span className={styles.summaryLabel}>Итого</span>
+                  <span className={styles.summaryLabel}>{t('total-label')}</span>
                   <span className={styles.summaryTotal}>{formatPrice(totalPrice)}</span>
                 </div>
               </div>
               <button type="button" className={styles.buyBtn} onClick={onPurchase}>
-                Оформить
+                {t('checkout-btn')}
               </button>
               <button
                 type="button"
@@ -115,7 +117,7 @@ export const CartDrawer = () => {
                 onClick={onClear}
                 disabled={clearBasket.isPending}
               >
-                <Trash2 size={15} aria-hidden /> Очистить корзину
+                <Trash2 size={15} aria-hidden /> {t('clear-basket')}
               </button>
             </div>
           </>

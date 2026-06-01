@@ -1,0 +1,53 @@
+@use 'abstracts' as *;
+
+.cta {
+  position: fixed;
+  bottom: calc(#{$space-5} + env(safe-area-inset-bottom));
+  left: 50%;
+  z-index: $z-sticky;
+  display: flex;
+  gap: $space-3;
+  align-items: center;
+  max-width: calc(100vw - #{$space-6});
+  padding: $space-2 $space-5 $space-2 $space-2;
+  color: var(--color-accent-contrast);
+  cursor: pointer;
+  background: var(--color-accent-9);
+  border: none;
+  border-radius: $radius-full;
+  transition: background $transition-fast;
+  transform: translateX(-50%);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--color-accent-10);
+    }
+  }
+}
+
+.count {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  color: var(--color-accent-11);
+  background: var(--color-accent-contrast);
+  border-radius: $radius-full;
+}
+
+.label {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  white-space: nowrap;
+}
+
+.total {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  white-space: nowrap;
+}

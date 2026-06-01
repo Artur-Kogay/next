@@ -18,7 +18,12 @@
   }
 }
 
-// ─── Hero ───
+.rootPinned {
+  @include media-down('md') {
+    padding-bottom: calc(#{$space-16} + #{$space-6} + env(safe-area-inset-bottom));
+  }
+}
+
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -165,6 +170,17 @@
   }
 }
 
+.buyButtonPinned {
+  @include media-down('md') {
+    position: fixed;
+    right: $space-3;
+    bottom: calc(#{$space-3} + env(safe-area-inset-bottom));
+    left: $space-3;
+    z-index: $z-sticky;
+    width: auto;
+  }
+}
+
 .badges {
   display: flex;
   flex-wrap: wrap;
@@ -184,7 +200,6 @@
   border-radius: $radius-full;
 }
 
-// ─── Dates ───
 .datesSection {
   display: flex;
   flex-direction: column;
@@ -245,7 +260,6 @@
   border-color: var(--color-accent-9);
 }
 
-// ─── Bottom 2-col ───
 .bottom {
   display: grid;
   grid-template-columns: minmax(0, 1fr);

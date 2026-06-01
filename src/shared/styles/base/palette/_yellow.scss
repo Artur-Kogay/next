@@ -38,8 +38,8 @@
   --yellow-6: #524202;
   --yellow-7: #665417;
   --yellow-8: #836a21;
-  --yellow-9: #ffe629;
-  --yellow-10: #ffff57;
+  --yellow-9: #ecb65f;
+  --yellow-10: #dede4f;
   --yellow-11: #f5e147;
   --yellow-12: #f6eeb4;
   --yellow-a1: #d1510004;
@@ -115,13 +115,21 @@
 }
 
 :root,
-:root[data-theme='light'] { @include yellow-light; }
-:root[data-theme='dark']  { @include yellow-dark; }
+:root[data-theme='light'] {
+  @include yellow-light;
+}
+:root[data-theme='dark'] {
+  @include yellow-dark;
+}
 
 @supports (color: color(display-p3 1 1 1)) {
   @media (color-gamut: p3) {
     :root,
-    :root[data-theme='light'] { @include yellow-light-p3; }
-    :root[data-theme='dark']  { @include yellow-dark-p3; }
+    :root[data-theme='light'] {
+      @include yellow-light-p3;
+    }
+    :root[data-theme='dark'] {
+      @include yellow-dark-p3;
+    }
   }
 }

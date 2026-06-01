@@ -13,7 +13,6 @@
     "duration": "{minutes} daqiqa",
     "buy": "Sotib olish"
   },
-
   "payments": {
     "not_enabled": "Hozircha to‘lov amalga oshirib bo‘lmaydi, boshqa to‘lov usulini tanlang",
     "mbank-title": "Mbank orqali to‘lov",
@@ -43,7 +42,6 @@
     "elsom-title": "Elsom orqali to‘lov",
     "elsom-confirm-order": "Buyurtma muvaffaqiyatli yaratildi. Elsom ilovasi orqali to‘lovni tasdiqlang va so‘ng pastdagi tugmani bosing"
   },
-
   "profile": {
     "orders": "Mening chiptalarim",
     "cards": "Mening kartalarim",
@@ -86,7 +84,6 @@
     "lucky-modal-desc": "Siz Omadli chipta egasiga aylandingiz! Sovrinni olish uchun biz bilan +996 700 266 933 (WhatsApp) raqami orqali bog'laning",
     "lucky-modal-button": "WhatsApp orqali yozish"
   },
-
   "meta-data": {
     "uz": {
       "title": "Qulay chipta operatori ShowGo.uz",
@@ -101,24 +98,20 @@
       "description": "Bizning ilovamiz sizning qulayligingiz uchun ishlab chiqilgan. Bir necha bosish orqali konsertlar, teatrlar va sport tadbirlariga chiptalar qo‘lingizda bo‘ladi!"
     }
   },
-
   "main-page": {
     "price-from": "{price} dan boshlab",
     "free": "Bepul",
     "buy": "Sotib olish",
     "sold-out": "Barcha chiptalar sotildi"
   },
-
   "auth": {
     "agree": "Men shartlarga roziman",
     "send-otp": "Kod yuborish",
     "input-otp": "Bir martalik kodni kiriting"
   },
-
   "errors": {
     "phone": "Telefon raqami noto‘g‘ri"
   },
-
   "not-found": {
     "category": "Bu toifada tadbirlar topilmadi",
     "cards": "Saqlangan kartalar mavjud emas",
@@ -140,7 +133,18 @@
     "out-tickets-no-session": "Chiptalar sotilgan",
     "refund-rule": "Tadbirdan oldin 3 kun ichida almashtirish va qaytarish mumkin emas.",
     "refund-label": "Qaytish cheklovlari",
-    "sold-out": "Barcha chiptalar sotildi"
+    "sold-out": "Barcha chiptalar sotildi",
+    "buy-ticket": "Chipta sotib olish",
+    "sales-ended": "Sotuv yakunlandi",
+    "other-dates": "Boshqa sanalar",
+    "description": "Tavsif",
+    "from": "dan",
+    "age-restriction": "{age} yoshdan",
+    "tickets-left": "{count} ta chipta qoldi",
+    "hours-short": "soat",
+    "minutes-short": "daqiqa",
+    "lang-ru": "ruscha",
+    "lang-en": "inglizcha"
   },
   "event-status": {
     "awaiting": "Aniqlashtirilmoqda",
@@ -211,7 +215,16 @@
     "go-home": "Bosh sahifaga",
     "total": "Umumiy to‘lov: {price}",
     "purchase": "Buyurtma berish",
-    "clear-basket": "Savatchani tozalash"
+    "clear-basket": "Savatchani tozalash",
+    "tickets-label": "Chiptalar",
+    "total-label": "Jami",
+    "go-to-checkout": "Rasmiylashtirishga o'tish",
+    "booking-time": "Bron tugashiga qadar",
+    "remove-ticket": "Chiptani o'chirish",
+    "price": "Narx",
+    "service-fee": "Xizmat haqi",
+    "checkout-btn": "Rasmiylashtirish",
+    "close": "Yopish"
   },
   "basket": {
     "costumer": "Buyurtmachi",
@@ -235,5 +248,72 @@
   },
   "order": {
     "tickets-left": "Chipta soni: {quantity}"
+  },
+  "checkout": {
+    "title": "Buyurtmani rasmiylashtirish",
+    "contact-data": "Aloqa ma'lumotlari",
+    "payment-method": "To'lov usuli",
+    "your-order": "Sizning buyurtmangiz",
+    "ticket-fallback": "Chipta",
+    "tickets-count": "{count, plural, other {# chipta}}",
+    "tickets-line": "Chiptalar ({count})",
+    "service-fee": "Xizmat haqi",
+    "discount": "Chegirma",
+    "total": "Jami",
+    "promo-placeholder": "Promokod",
+    "apply": "Qo'llash",
+    "applied": "Qo'llandi",
+    "processing": "Ishlanmoqda…",
+    "pay": "To'lash",
+    "get-tickets": "Chiptalarni olish",
+    "terms": "Tugmani bosish bilan siz chiptalarni sotib olish va qaytarish qoidalariga rozilik bildirasiz.",
+    "no-methods": "Mavjud to'lov usullari yo'q",
+    "seats-booked": "Joylar band qilindi",
+    "auth-title": "Hisobingizga kiring",
+    "auth-text": "Buyurtma berish uchun telefon raqamingiz bilan kiring.",
+    "login": "Kirish",
+    "redirecting": "To'lovga yo'naltirilmoqda…",
+    "dont-close": "Sahifani yopmang.",
+    "qr-title": "QR-kod orqali to'lov",
+    "qr-alt": "To'lov uchun QR-kod",
+    "qr-text": "Kodni bank ilovasida skanerlang. To'lovdan so'ng quyidagi tugmani bosing.",
+    "order-short": "Buyurtma №<b>{number}</b>",
+    "order-number": "Buyurtma raqami: <b>{number}</b>",
+    "paid-to-orders": "Men to'ladim — buyurtmalarga",
+    "order-created": "Buyurtma yaratildi",
+    "tickets-in-profile": "Chiptalar to'lovdan so'ng profilingizda paydo bo'ladi.",
+    "to-orders": "Buyurtmalarga o'tish",
+    "otp-title": "To'lovni tasdiqlash",
+    "greeting": "Assalomu alaykum, {name}",
+    "otp-sent": "Kod {phone} raqamiga yuborildi. To'lovni tasdiqlash uchun uni kiriting.",
+    "sms-code-placeholder": "SMS kodi",
+    "pay-within": "To'lov muddati: {time}",
+    "checking": "Tekshirilmoqda…",
+    "confirm": "Tasdiqlash",
+    "cancel": "Bekor qilish",
+    "full-name-label": "F.I.Sh.",
+    "full-name-placeholder": "Familiya Ism",
+    "email-label": "Email",
+    "email-placeholder": "Chiptalarni yuborish uchun",
+    "phone-label": "Telefon",
+    "birthday-label": "Tug'ilgan sana",
+    "gender-label": "Jins",
+    "male": "Erkak",
+    "female": "Ayol",
+    "select-method": "To'lov usulini tanlang",
+    "select-method-first": "Avval to'lov usulini tanlang",
+    "enter-name": "Ismingizni kiriting",
+    "enter-email": "Email kiriting",
+    "enter-birthday-gender": "Tug'ilgan sana va jinsni to'ldiring",
+    "enter-valid-phone": "To'g'ri telefon raqamini kiriting",
+    "enter-sms-code": "SMS dan kelgan kodni kiriting",
+    "wrong-otp": "Tasdiqlash kodi noto'g'ri",
+    "pay-error": "To'lov vaqtida xatolik yuz berdi",
+    "pay-error-short": "To'lov xatosi",
+    "time-expired": "To'lov vaqti tugadi",
+    "promo-applied": "Promokod qo'llandi",
+    "promo-invalid": "Promokod yaroqsiz yoki mos to'lov usuli tanlanmagan",
+    "phone-not-registered": "Bu raqam tizimda ro'yxatdan o'tmagan",
+    "free": "Bepul"
   }
 }

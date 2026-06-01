@@ -9,8 +9,6 @@ export interface EventDiscount {
   paymentMethod?: string;
 }
 
-// TODO: replace with real discounts from the API once available.
-// Mock example wired to the first popular event (ESCAPE FEST, event.id 1206).
 const EXAMPLE_EVENT_ID = 1206;
 
 const EXAMPLE_DISCOUNTS: EventDiscount[] = [

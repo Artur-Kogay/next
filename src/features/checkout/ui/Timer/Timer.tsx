@@ -2,12 +2,15 @@
 
 import { useEffect, useMemo, useState } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { formatCartTimer } from '@/shared/lib';
 
 import styles from './Timer.module.scss';
 import { type TimerProps } from './Timer.types';
 
 export const Timer = ({ timer }: TimerProps) => {
+  const t = useTranslations('checkout');
   const [timeLeft, setTimeLeft] = useState(timer);
 
   useEffect(() => {
@@ -28,7 +31,7 @@ export const Timer = ({ timer }: TimerProps) => {
   return (
     <div className={styles.timer}>
       <div className={styles.timerTop}>
-        <span className={styles.timerLabel}>Места забронированы</span>
+        <span className={styles.timerLabel}>{t('seats-booked')}</span>
         <span className={styles.timerTime}>{formatCartTimer(timeLeft)}</span>
       </div>
       <div className={styles.timerBar}>

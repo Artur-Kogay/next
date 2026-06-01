@@ -6,30 +6,20 @@ import Image from 'next/image';
 
 import { Map, Placemark, YMaps } from '@pbe/react-yandex-maps';
 import { CalendarDays, Clock, Globe, MapPin, Ticket } from 'lucide-react';
-import { useFormatter } from 'next-intl';
+import { useFormatter, useTranslations } from 'next-intl';
 
 import { Discounts, getEventDiscounts } from '@/entities/event';
 import { currency, IMAGES_URL } from '@/shared/config';
-import { cn } from '@/shared/lib';
+import { cn, useBrowser } from '@/shared/lib';
 import { Link } from '@/shared/lib/i18n/navigation';
 
 import styles from './SessionView.module.scss';
 import { type SessionViewProps } from './SessionView.types';
 
-const formatDuration = (raw: string | number | null | undefined): string | null => {
-  if (raw == null) return null;
-  if (typeof raw === 'number') {
-    const h = Math.floor(raw / 60);
-    const m = raw % 60;
-    if (h > 0 && m > 0) return `${h} ч ${m} мин`;
-    if (h > 0) return `${h} ч`;
-    return `${m} мин`;
-  }
-  return raw;
-};
-
 export const SessionView = ({ session }: SessionViewProps) => {
   const format = useFormatter();
+  const t = useTranslations('event');
+  const { isInstagram } = useBrowser();
 
   const title = session.event?.title ?? '';
   const posterSrc = session.event?.image_path ? IMAGES_URL + session.event.image_path : null;
@@ -40,7 +30,6 @@ export const SessionView = ({ session }: SessionViewProps) => {
   const dbLng = session.event?.theater?.address?.location_lng;
   const hasCoords = dbLat != null && dbLng != null;
   const coords: [number, number] | null = hasCoords ? [dbLng, dbLat] : null;
-  const duration = formatDuration(session.event?.duration);
   const ageRestriction = session.event?.age_restriction;
   const language = session.language;
   const description = session.event?.description;
@@ -52,6 +41,8 @@ export const SessionView = ({ session }: SessionViewProps) => {
     !['ACTIVE', 'active'].includes(session.status ?? '') ||
     ['COMPLETED', 'AWAITING_CLARIFICATION'].includes(session.event?.is_active ?? '');
   const isDisabled = isSoldOut || isInactive || !!session.is_informational;
+
+  const pinned = !isInstagram && !isDisabled;
 
   const sessionDate = useMemo(() => {
     try {
@@ -83,14 +74,35 @@ export const SessionView = ({ session }: SessionViewProps) => {
     });
   }, [session.other_sessions, session.slug, format]);
 
+  const duration = useMemo(() => {
+    const raw = session.event?.duration;
+    if (raw == null) return null;
+    if (typeof raw === 'number') {
+      const h = Math.floor(raw / 60);
+      const m = raw % 60;
+      if (h > 0 && m > 0) return `${h} ${t('hours-short')} ${m} ${t('minutes-short')}`;
+      if (h > 0) return `${h} ${t('hours-short')}`;
+      return `${m} ${t('minutes-short')}`;
+    }
+    return raw;
+  }, [session.event?.duration, t]);
+
+  const languageLabel = useMemo(() => {
+    if (!language) return null;
+    const lower = language.toLowerCase();
+    if (lower === 'ru') return t('lang-ru');
+    if (lower === 'en') return t('lang-en');
+    return language;
+  }, [language, t]);
+
   const buyLabel = useMemo(() => {
-    if (isSoldOut) return 'Билеты распроданы';
-    if (isInactive) return 'Продажа завершена';
-    return 'Купить билет';
-  }, [isSoldOut, isInactive]);
+    if (isSoldOut) return t('sold-out');
+    if (isInactive) return t('sales-ended');
+    return t('buy-ticket');
+  }, [isSoldOut, isInactive, t]);
 
   return (
-    <div className={styles.root}>
+    <div className={cn(styles.root, pinned && styles.rootPinned)}>
       <section className={styles.hero}>
         <div className={styles.posterWrap}>
           {posterSrc ? (
@@ -104,7 +116,9 @@ export const SessionView = ({ session }: SessionViewProps) => {
             />
           ) : null}
           {ageRestriction ? (
-            <span className={styles.ageBadge}>от {ageRestriction.replace('+', '')} лет</span>
+            <span className={styles.ageBadge}>
+              {t('age-restriction', { age: ageRestriction.replace('+', '') })}
+            </span>
           ) : null}
         </div>
 
@@ -134,26 +148,21 @@ export const SessionView = ({ session }: SessionViewProps) => {
           {session.left_tickets_count != null && session.left_tickets_count > 0 ? (
             <div className={styles.metaRow}>
               <Ticket size={16} className={styles.metaIcon} aria-hidden />
-              <span>Осталось {session.left_tickets_count} билетов</span>
+              <span>{t('tickets-left', { count: session.left_tickets_count })}</span>
             </div>
           ) : null}
           {language ? (
             <div className={styles.metaRow}>
               <Globe size={16} className={styles.metaIcon} aria-hidden />
               <span>
-                Язык:{' '}
-                {language.toLowerCase() === 'ru'
-                  ? 'русский'
-                  : language.toLowerCase() === 'en'
-                    ? 'английский'
-                    : language}
+                {t('lang')}: {languageLabel}
               </span>
             </div>
           ) : null}
 
           {session.min_price != null ? (
             <div className={styles.priceRow}>
-              <span className={styles.priceFrom}>от</span>
+              <span className={styles.priceFrom}>{t('from')}</span>
               <span className={styles.price}>{session.min_price.toLocaleString('ru-RU')}</span>
               <span className={styles.priceCurrency}>{currency.label}</span>
             </div>
@@ -164,7 +173,10 @@ export const SessionView = ({ session }: SessionViewProps) => {
               {buyLabel}
             </button>
           ) : (
-            <Link href={`/session/${session.slug}/order`} className={styles.buyButton}>
+            <Link
+              href={`/session/${session.slug}/order`}
+              className={cn(styles.buyButton, pinned && styles.buyButtonPinned)}
+            >
               {buyLabel}
             </Link>
           )}
@@ -175,7 +187,7 @@ export const SessionView = ({ session }: SessionViewProps) => {
 
       {otherSessions.length > 1 ? (
         <section className={styles.datesSection}>
-          <h2 className={styles.datesTitle}>Другие даты</h2>
+          <h2 className={styles.datesTitle}>{t('other-dates')}</h2>
           <div className={styles.dates}>
             {otherSessions.map((s) => (
               <Link
@@ -193,14 +205,14 @@ export const SessionView = ({ session }: SessionViewProps) => {
       <div className={styles.bottom}>
         {description ? (
           <section>
-            <h2 className={styles.sectionTitle}>Описание</h2>
+            <h2 className={styles.sectionTitle}>{t('description')}</h2>
             <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }} />
           </section>
         ) : null}
 
         {venue ? (
           <section className={styles.venueSection}>
-            <h2 className={styles.sectionTitle}>Место проведения</h2>
+            <h2 className={styles.sectionTitle}>{t('address')}</h2>
             <div className={styles.venueRow}>
               <MapPin size={16} className={styles.venueRowIcon} aria-hidden />
               <span>

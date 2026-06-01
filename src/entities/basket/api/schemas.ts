@@ -5,6 +5,9 @@ const basketEventSchema = z
     id: z.coerce.number().optional(),
     title: z.coerce.string().optional().default(''),
     is_free: z.boolean().nullable().optional(),
+    is_full_name: z.boolean().nullable().optional(),
+    is_email: z.boolean().nullable().optional(),
+    is_birthday: z.boolean().nullable().optional(),
   })
   .passthrough();
 

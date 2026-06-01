@@ -3,6 +3,7 @@
 import { useMemo } from 'react';
 
 import { ShieldCheck, Tag, Ticket } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { formatPrice } from '@/shared/config/currency';
 import { formatSessionDateTime } from '@/shared/lib';
@@ -24,31 +25,33 @@ export const OrderSummary = ({
   payPending,
   payLabel,
 }: OrderSummaryProps) => {
+  const t = useTranslations('checkout');
+
   const groups = useMemo(() => {
     const map = new Map<string, { title: string; date: string; count: number; sum: number }>();
-    basket.forEach((t) => {
-      const date = t.session?.date_time ?? '';
-      const key = `${t.event?.title ?? ''}__${date}`;
+    basket.forEach((item) => {
+      const date = item.session?.date_time ?? '';
+      const key = `${item.event?.title ?? ''}__${date}`;
       const existing = map.get(key);
       if (existing) {
         existing.count += 1;
-        existing.sum += t.price + t.service_fee;
+        existing.sum += item.price + item.service_fee;
       } else {
         map.set(key, {
-          title: t.event?.title ?? 'Билет',
+          title: item.event?.title ?? t('ticket-fallback'),
           date,
           count: 1,
-          sum: t.price + t.service_fee,
+          sum: item.price + item.service_fee,
         });
       }
     });
     return [...map.values()];
-  }, [basket]);
+  }, [basket, t]);
 
   return (
     <aside className={styles.summary}>
       <div className={styles.summaryCard}>
-        <h2 className={styles.summaryTitle}>Ваш заказ</h2>
+        <h2 className={styles.summaryTitle}>{t('your-order')}</h2>
 
         <Timer timer={timer} />
 
@@ -61,9 +64,7 @@ export const OrderSummary = ({
                 {g.date ? (
                   <div className={styles.groupMeta}>{formatSessionDateTime(g.date)}</div>
                 ) : null}
-                <div className={styles.groupMeta}>
-                  {g.count} {g.count === 1 ? 'билет' : 'билетов'}
-                </div>
+                <div className={styles.groupMeta}>{t('tickets-count', { count: g.count })}</div>
               </div>
               <div className={styles.groupPrice}>{formatPrice(g.sum)}</div>
             </div>
@@ -77,7 +78,7 @@ export const OrderSummary = ({
               className={styles.input}
               value={promo}
               onChange={(e) => onPromoChange(e.target.value)}
-              placeholder="Промокод"
+              placeholder={t('promo-placeholder')}
               disabled={promoApplied}
             />
           </div>
@@ -87,41 +88,41 @@ export const OrderSummary = ({
             onClick={onApplyPromo}
             disabled={promoPending || promoApplied || !promo.trim()}
           >
-            {promoApplied ? 'Применён' : 'Применить'}
+            {promoApplied ? t('applied') : t('apply')}
           </button>
         </div>
 
         <div className={styles.rows}>
           <div className={styles.row}>
-            <span>Билеты ({totals.count})</span>
+            <span>{t('tickets-line', { count: totals.count })}</span>
             <span>{formatPrice(totals.ticketsSum)}</span>
           </div>
           {totals.serviceFeeSum > 0 ? (
             <div className={styles.row}>
-              <span>Сервисный сбор</span>
+              <span>{t('service-fee')}</span>
               <span>{formatPrice(totals.serviceFeeSum)}</span>
             </div>
           ) : null}
           {totals.discount > 0 ? (
             <div className={`${styles.row} ${styles.rowDiscount}`}>
-              <span>Скидка</span>
+              <span>{t('discount')}</span>
               <span>−{formatPrice(totals.discount)}</span>
             </div>
           ) : null}
         </div>
 
         <div className={styles.totalRow}>
-          <span>Итого</span>
+          <span>{t('total')}</span>
           <span className={styles.totalValue}>{formatPrice(totals.total)}</span>
         </div>
 
         <button type="button" className={styles.payBtn} onClick={onPay} disabled={payPending}>
-          {payPending ? 'Обработка…' : payLabel}
+          {payPending ? t('processing') : payLabel}
         </button>
 
         <p className={styles.terms}>
           <ShieldCheck size={14} aria-hidden />
-          Нажимая кнопку, вы соглашаетесь с правилами покупки и возврата билетов.
+          {t('terms')}
         </p>
       </div>
     </aside>
