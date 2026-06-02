@@ -42,6 +42,7 @@ export interface PayInput {
   phone_number?: string;
   redirect_url?: string;
   comment?: string;
+  type?: string;
   user_info?: {
     full_name?: string;
     birthday?: string;

@@ -1,7 +1,7 @@
-import { Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
+import { LifeBuoy, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { brand } from '@/shared/config';
+import { brand, env } from '@/shared/config';
 import { Link } from '@/shared/lib/i18n/navigation';
 import { ThemeToggle } from '@/shared/ui';
 
@@ -11,6 +11,7 @@ import { NAV_GROUPS } from './Footer.types';
 export const Footer = () => {
   const t = useTranslations('footer');
   const year = new Date().getFullYear();
+  const country = env.NEXT_PUBLIC_COUNTRY_CODE;
 
   return (
     <footer className={styles.root}>
@@ -72,20 +73,26 @@ export const Footer = () => {
             </div>
           </div>
 
-          {NAV_GROUPS.map((group) => (
-            <div key={group.title} className={styles.col}>
-              <h3 className={styles.colTitle}>{t(group.title)}</h3>
-              <ul className={styles.linkList}>
-                {group.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className={styles.link}>
-                      {t(link.labelKey)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {NAV_GROUPS.map((group) => {
+            const links = group.links
+              .map((l) => ({ href: l.href[country], labelKey: l.labelKey }))
+              .filter((l): l is { href: string; labelKey: string } => !!l.href);
+            if (!links.length) return null;
+            return (
+              <div key={group.title} className={styles.col}>
+                <h3 className={styles.colTitle}>{t(group.title)}</h3>
+                <ul className={styles.linkList}>
+                  {links.map((link) => (
+                    <li key={link.labelKey}>
+                      <Link href={link.href} className={styles.link}>
+                        {t(link.labelKey)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
 
           <div className={styles.col}>
             <h3 className={styles.colTitle}>{t('contacts')}</h3>
@@ -108,6 +115,19 @@ export const Footer = () => {
                   {brand.email}
                 </a>
               </li>
+              {brand.support ? (
+                <li className={styles.contactItem}>
+                  <LifeBuoy size={16} aria-hidden />
+                  <a
+                    href={brand.support}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.link}
+                  >
+                    {t('support')}
+                  </a>
+                </li>
+              ) : null}
             </ul>
             <div className={styles.themeWrapper}>
               <ThemeToggle />

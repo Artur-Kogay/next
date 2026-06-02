@@ -170,14 +170,29 @@
   }
 }
 
-.buyButtonPinned {
+.buyDock {
+  display: contents;
+
   @include media-down('md') {
     position: fixed;
-    right: $space-3;
-    bottom: calc(#{$space-3} + env(safe-area-inset-bottom));
-    left: $space-3;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: $z-sticky;
-    width: auto;
+    display: flex;
+    justify-content: center;
+    padding: $space-3;
+    padding-bottom: calc(#{$space-2} + env(safe-area-inset-bottom));
+    background: var(--color-bg);
+  }
+}
+
+.buyButtonPinned {
+  @include media-down('md') {
+    max-width: 360px;
+    padding: $space-3;
+    font-size: $font-size-base;
+    border-radius: $radius-md;
   }
 }
 

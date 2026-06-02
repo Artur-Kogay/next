@@ -29,10 +29,28 @@ const LOGOS_BY_COUNTRY: Record<string, LogoConfig> = {
   },
 };
 
-const pickLogo = (): LogoConfig => {
+const WEBVIEW_LOGOS: Record<string, Set<string>> = {
+  kg: new Set(['bakai', 'megapay', 'demir_webhook', 'kicb_webhook', 'kompanion']),
+  uz: new Set(['demir_webhook', 'kicb_webhook']),
+  tj: new Set(),
+};
+
+const resolveCountry = (): string => {
   const code = env.NEXT_PUBLIC_COUNTRY_CODE;
-  const resolved = COUNTRY_ALIASES[code] ?? code;
-  return LOGOS_BY_COUNTRY[resolved] ?? LOGOS_BY_COUNTRY.kg!;
+  return COUNTRY_ALIASES[code] ?? code;
+};
+
+const pickLogo = (): LogoConfig => {
+  const country = resolveCountry();
+  return LOGOS_BY_COUNTRY[country] ?? LOGOS_BY_COUNTRY.kg!;
 };
 
 export const logo: LogoConfig = pickLogo();
+
+export const getWebviewLogo = (webview: string | null | undefined): string | null => {
+  if (!webview) return null;
+  const country = resolveCountry();
+  const supported = WEBVIEW_LOGOS[country];
+  if (!supported?.has(webview)) return null;
+  return `/images/logos/${country}/${webview}/headerLogo.svg`;
+};

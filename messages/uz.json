@@ -180,7 +180,10 @@
     "controlPanel": "Boshqaruv paneli",
     "changeCountry": "Mamlakatni o‘zgartirish",
     "refund": "Qaytarish",
-    "exchange": "Almashtirish"
+    "exchange": "Almashtirish",
+    "ticketsRules": "Chiptalardan foydalanish qoidalari",
+    "checkTicket": "Chiptani tekshirish",
+    "support": "Yordam xizmati"
   },
   "organizers": {
     "buisnessApp": "Tashkilotchilar uchun biznes ilovasi, chipta nazorati va sotuv tahlili",
@@ -315,5 +318,12 @@
     "promo-invalid": "Promokod yaroqsiz yoki mos to'lov usuli tanlanmagan",
     "phone-not-registered": "Bu raqam tizimda ro'yxatdan o'tmagan",
     "free": "Bepul"
+  },
+  "scan": {
+    "title": "Chiptani tekshirish",
+    "order-number": "Buyurtma №{number}",
+    "serial": "Chiptaning seriya raqami: {serial}",
+    "scan-count": "Skanerlash soni: {count}",
+    "invalid": "Chipta yaroqsiz"
   }
 }

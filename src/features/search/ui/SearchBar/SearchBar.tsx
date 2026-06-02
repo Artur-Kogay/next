@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 
 import { EventCard, useSearchSessions } from '@/entities/event';
 import { useClickOutside, useDebounce } from '@/shared/lib';
+import { usePathname } from '@/shared/lib/i18n/navigation';
 import { Loader } from '@/shared/ui';
 
 import styles from './SearchBar.module.scss';
@@ -15,10 +16,16 @@ import { type SearchBarProps } from './SearchBar.types';
 export const SearchBar = ({ placeholder }: SearchBarProps) => {
   const t = useTranslations('common');
   const containerRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const debounced = useDebounce(query.trim(), 350);
+
+  useEffect(() => {
+    setIsOpen(false);
+    setQuery('');
+  }, [pathname]);
 
   const { data, isFetching, isError } = useSearchSessions(debounced);
 

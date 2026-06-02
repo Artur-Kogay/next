@@ -51,11 +51,13 @@ export const EventCard = ({ session, priority = false }: EventCardProps) => {
           <div className={styles.imagePlaceholder} aria-hidden />
         )}
 
-        <div className={styles.badges}>
+        {event.is_pinned ? <span className={styles.pinBadge}>{t('hit')}</span> : null}
+
+        <div className={styles.priceCluster}>
           {discountPercent != null ? (
             <span className={styles.discountBadge}>−{discountPercent}%</span>
           ) : null}
-          {event.is_pinned ? <span className={styles.pinBadge}>{t('hit')}</span> : null}
+          <span className={priceClass}>{priceLabel}</span>
         </div>
       </div>
 
@@ -67,8 +69,6 @@ export const EventCard = ({ session, priority = false }: EventCardProps) => {
         <time className={styles.date} dateTime={date_time}>
           {weekday}, {dayMonth} {time}
         </time>
-
-        <span className={priceClass}>{priceLabel}</span>
       </div>
     </Link>
   );

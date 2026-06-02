@@ -10,6 +10,7 @@
   align-items: center;
   max-width: calc(100vw - #{$space-6});
   padding: $space-2 $space-5 $space-2 $space-2;
+  overflow: hidden;
   color: var(--color-accent-contrast);
   cursor: pointer;
   background: var(--color-accent-9);
@@ -18,10 +19,37 @@
   transition: background $transition-fast;
   transform: translateX(-50%);
 
+  &::after {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    content: '';
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      rgb(255 255 255 / 0.5) 50%,
+      transparent 70%
+    );
+    transform: translateX(-120%);
+    animation: cta-shine 3.5s ease-in-out infinite;
+  }
+
   @media (hover: hover) {
     &:hover {
       background: var(--color-accent-10);
     }
+  }
+}
+
+@keyframes cta-shine {
+  0%,
+  70% {
+    transform: translateX(-120%);
+  }
+
+  90%,
+  100% {
+    transform: translateX(120%);
   }
 }
 

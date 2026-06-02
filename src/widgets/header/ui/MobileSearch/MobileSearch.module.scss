@@ -1,7 +1,7 @@
 @use 'abstracts' as *;
 
 .root {
-  padding: $space-2 $space-3 0;
+  padding: $space-2 0 0;
   background: var(--color-bg);
 
   @include media-up('md') {

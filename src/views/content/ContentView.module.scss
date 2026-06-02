@@ -1,0 +1,166 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  max-width: 920px;
+  padding: $space-4;
+  margin: 0 auto;
+
+  @include media-up('md') {
+    padding: $space-6;
+  }
+
+  @include media-up('lg') {
+    padding: $space-8;
+  }
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: var(--color-fg);
+
+  @include media-up('md') {
+    font-size: $font-size-3xl;
+  }
+}
+
+.content {
+  font-size: $font-size-base;
+  line-height: $line-height-relaxed;
+  color: var(--color-fg);
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin-top: $space-6;
+    margin-bottom: $space-3;
+    font-weight: $font-weight-bold;
+    color: var(--color-fg);
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  h1 {
+    font-size: $font-size-2xl;
+  }
+
+  h2 {
+    font-size: $font-size-xl;
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+  }
+
+  h4 {
+    font-size: $font-size-base;
+  }
+
+  p {
+    margin-bottom: $space-3;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: var(--color-accent-11);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+
+    @media (hover: hover) {
+      &:hover {
+        color: var(--color-accent-10);
+      }
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: $space-5;
+    margin-bottom: $space-3;
+  }
+
+  li {
+    margin-bottom: $space-1;
+  }
+
+  strong,
+  b {
+    font-weight: $font-weight-bold;
+  }
+
+  em,
+  i {
+    font-style: italic;
+  }
+
+  blockquote {
+    padding: $space-3 $space-4;
+    margin: $space-4 0;
+    color: var(--color-fg-muted);
+    background: var(--color-bg-subtle);
+    border-left: 3px solid var(--color-accent-9);
+    border-radius: $radius-md;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: $space-3 0;
+    border-radius: $radius-lg;
+  }
+
+  table {
+    width: 100%;
+    margin: $space-3 0;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    padding: $space-2 $space-3;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  th {
+    font-weight: $font-weight-bold;
+    color: var(--color-fg);
+  }
+
+  hr {
+    margin: $space-5 0;
+    border: none;
+    border-top: 1px solid var(--color-border);
+  }
+
+  code {
+    padding: 2px $space-1;
+    font-family: monospace;
+    font-size: 0.9em;
+    background: var(--color-bg-subtle);
+    border-radius: $radius-sm;
+  }
+
+  pre {
+    padding: $space-3;
+    margin: $space-3 0;
+    overflow-x: auto;
+    background: var(--color-bg-subtle);
+    border-radius: $radius-md;
+
+    code {
+      padding: 0;
+      background: none;
+    }
+  }
+}

@@ -8,6 +8,16 @@ import { useTranslations } from 'next-intl';
 import toast from 'react-hot-toast';
 
 import { useBasket } from '@/entities/basket';
+import {
+  bakaiDataAtom,
+  demirDataAtom,
+  elsomDataAtom,
+  isWebviewLoadingAtom,
+  kicbDataAtom,
+  kompanionDataAtom,
+  megapayDataAtom,
+  webviewTypeAtom,
+} from '@/features/webview';
 import { useRouter } from '@/shared/lib/i18n/navigation';
 import { isAuthAtom } from '@/shared/model';
 import { Loader } from '@/shared/ui';
@@ -39,6 +49,41 @@ export const Checkout = ({ paymentMethods }: CheckoutProps) => {
   const [mounted, setMounted] = useState(false);
   const isAuth = useAtomValue(isAuthAtom);
 
+  const webviewType = useAtomValue(webviewTypeAtom);
+  const webviewLoading = useAtomValue(isWebviewLoadingAtom);
+  const bakaiData = useAtomValue(bakaiDataAtom);
+  const megapayData = useAtomValue(megapayDataAtom);
+  const demirData = useAtomValue(demirDataAtom);
+  const kicbData = useAtomValue(kicbDataAtom);
+  const kompanionData = useAtomValue(kompanionDataAtom);
+  const elsomData = useAtomValue(elsomDataAtom);
+
+  const webviewPrefill = useMemo(() => {
+    switch (webviewType) {
+      case 'bakai':
+        return bakaiData ? { phone: bakaiData.phone, name: '' } : null;
+      case 'megapay':
+        return megapayData ? { phone: megapayData.phone, name: megapayData.fullName } : null;
+      case 'demir_webhook':
+        return demirData ? { phone: demirData.phone, name: demirData.fullName } : null;
+      case 'kicb_webhook':
+        return kicbData ? { phone: kicbData.phone, name: kicbData.fullName } : null;
+      case 'kompanion':
+        return kompanionData ? { phone: kompanionData.phone, name: kompanionData.fullName } : null;
+      case 'elsom':
+        return elsomData
+          ? {
+              phone: elsomData.phone,
+              name: [elsomData.lastName, elsomData.firstName, elsomData.middleName]
+                .filter(Boolean)
+                .join(' '),
+            }
+          : null;
+      default:
+        return null;
+    }
+  }, [webviewType, bakaiData, megapayData, demirData, kicbData, kompanionData, elsomData]);
+
   const { data: cart } = useBasket();
   const { data: user } = useCheckoutUser(mounted && isAuth);
   const pay = usePay();
@@ -52,8 +97,15 @@ export const Checkout = ({ paymentMethods }: CheckoutProps) => {
 
   const methods = useMemo(() => {
     if (isFreeOrder) return [{ ...FREE_METHOD, title: t('free') }];
-    return paymentMethods.filter((m) => m.is_enabled !== false && m.country?.is_enabled !== false);
-  }, [paymentMethods, isFreeOrder, t]);
+    const enabled = paymentMethods.filter(
+      (m) => m.is_enabled !== false && m.country?.is_enabled !== false,
+    );
+    if (webviewType) {
+      const match = enabled.filter((m) => m.code === webviewType);
+      if (match.length) return match;
+    }
+    return enabled;
+  }, [paymentMethods, isFreeOrder, t, webviewType]);
 
   const [customer, setCustomer] = useState<Customer>(EMPTY_CUSTOMER);
   const [methodCode, setMethodCode] = useState('');
@@ -77,10 +129,25 @@ export const Checkout = ({ paymentMethods }: CheckoutProps) => {
   }, [user]);
 
   useEffect(() => {
-    if (mounted && !isAuth) {
+    if (!webviewPrefill) return;
+    setCustomer((prev) => ({
+      ...prev,
+      name: prev.name || webviewPrefill.name,
+      phone: prev.phone || webviewPrefill.phone,
+    }));
+  }, [webviewPrefill]);
+
+  useEffect(() => {
+    if (webviewType && methods.some((m) => m.code === webviewType)) {
+      setMethodCode(webviewType);
+    }
+  }, [webviewType, methods]);
+
+  useEffect(() => {
+    if (mounted && !webviewLoading && !isAuth) {
       router.replace('/auth?redirect=/basket/checkout');
     }
-  }, [mounted, isAuth, router]);
+  }, [mounted, webviewLoading, isAuth, router]);
 
   useEffect(() => {
     if (mounted && isAuth && !result && cart && basket.length === 0) {
@@ -209,6 +276,7 @@ export const Checkout = ({ paymentMethods }: CheckoutProps) => {
             typeof window !== 'undefined'
               ? `${window.location.origin}/profile?orderNumber=`
               : undefined,
+          ...(webviewType ? { type: 'webview' as const } : {}),
           user_info: {
             full_name: customer.name.trim(),
             birthday: showBirthday ? customer.birthday : '',
@@ -249,7 +317,18 @@ export const Checkout = ({ paymentMethods }: CheckoutProps) => {
     } catch (err) {
       handlePayError(err, t('pay-error-short'));
     }
-  }, [selectedMethod, customer, showName, showEmail, showBirthday, pay, finish, handlePayError, t]);
+  }, [
+    selectedMethod,
+    customer,
+    showName,
+    showEmail,
+    showBirthday,
+    pay,
+    finish,
+    handlePayError,
+    t,
+    webviewType,
+  ]);
 
   const onConfirmOtp = useCallback(
     async (otp: string) => {

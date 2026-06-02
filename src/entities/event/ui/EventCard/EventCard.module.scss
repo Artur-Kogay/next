@@ -27,28 +27,43 @@
   background: linear-gradient(135deg, var(--color-bg-subtle), var(--color-panel));
 }
 
-.badges {
+.pinBadge {
   position: absolute;
   top: $space-2;
   left: $space-2;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: flex-start;
-}
-
-.pinBadge {
   display: inline-flex;
   align-items: center;
   height: 18px;
   padding: 0 6px;
+  overflow: hidden;
   font-size: 10px;
   font-weight: $font-weight-bold;
-  color: var(--color-accent-contrast);
+  color: #fff;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  background: var(--color-accent-9);
+  background: linear-gradient(100deg, #fde047 0%, #f97316 40%, #ef4444 70%, #f97316 100%);
+  background-size: 220% 100%;
   border-radius: var(--radius-sm);
+  animation: pin-badge-flow 4s linear infinite;
+}
+
+@keyframes pin-badge-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.priceCluster {
+  position: absolute;
+  top: $space-2;
+  right: $space-2;
+  display: inline-flex;
+  gap: $space-1;
+  align-items: center;
 }
 
 .discountBadge {
@@ -69,22 +84,13 @@
 .priceBadgeMuted {
   display: inline-flex;
   align-items: center;
-  align-self: flex-start;
   height: 22px;
   padding: 0 $space-2;
-  margin-top: $space-1;
   font-size: 11px;
   font-weight: $font-weight-semibold;
   white-space: nowrap;
+  backdrop-filter: blur(8px);
   border-radius: var(--radius-sm);
-
-  @include media-up('md') {
-    position: absolute;
-    top: $space-2;
-    right: $space-2;
-    margin-top: 0;
-    backdrop-filter: blur(8px);
-  }
 }
 
 .priceBadge {

@@ -172,11 +172,17 @@ export const SessionView = ({ session }: SessionViewProps) => {
             <button type="button" className={styles.buyButton} disabled>
               {buyLabel}
             </button>
+          ) : pinned ? (
+            <div className={styles.buyDock}>
+              <Link
+                href={`/session/${session.slug}/order`}
+                className={cn(styles.buyButton, styles.buyButtonPinned)}
+              >
+                {buyLabel}
+              </Link>
+            </div>
           ) : (
-            <Link
-              href={`/session/${session.slug}/order`}
-              className={cn(styles.buyButton, pinned && styles.buyButtonPinned)}
-            >
+            <Link href={`/session/${session.slug}/order`} className={styles.buyButton}>
               {buyLabel}
             </Link>
           )}

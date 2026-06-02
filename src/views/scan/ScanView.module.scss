@@ -1,0 +1,32 @@
+@use 'abstracts' as *;
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  max-width: 720px;
+  padding: $space-4;
+  margin: 0 auto;
+
+  @include media-up('md') {
+    padding: $space-6;
+  }
+}
+
+.title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: var(--color-fg);
+  text-align: center;
+
+  @include media-up('md') {
+    font-size: $font-size-3xl;
+  }
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+}

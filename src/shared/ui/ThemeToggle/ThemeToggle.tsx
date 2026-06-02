@@ -3,12 +3,23 @@
 import { useEffect, useState } from 'react';
 
 import { useAtom } from 'jotai';
-import { Moon, Sun } from 'lucide-react';
+import { Monitor, Moon, Sun } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { themeAtom } from '@/shared/model/theme';
+import { cn } from '@/shared/lib';
+import { themeAtom, type Theme } from '@/shared/model/theme';
 
 import styles from './ThemeToggle.module.scss';
+
+const OPTIONS: {
+  value: Theme;
+  Icon: typeof Sun;
+  labelKey: 'themeLight' | 'themeSystem' | 'themeDark';
+}[] = [
+  { value: 'light', Icon: Sun, labelKey: 'themeLight' },
+  { value: 'system', Icon: Monitor, labelKey: 'themeSystem' },
+  { value: 'dark', Icon: Moon, labelKey: 'themeDark' },
+];
 
 export const ThemeToggle = () => {
   const t = useTranslations('common');
@@ -19,17 +30,24 @@ export const ThemeToggle = () => {
     setMounted(true);
   }, []);
 
-  const isDark = mounted && theme === 'dark';
-
   return (
-    <button
-      type="button"
-      onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      className={styles.root}
-      aria-label={t('switchTheme')}
-      aria-pressed={isDark}
-    >
-      {isDark ? <Sun size={16} aria-hidden /> : <Moon size={16} aria-hidden />}
-    </button>
+    <div className={styles.root} role="radiogroup" aria-label={t('switchTheme')}>
+      {OPTIONS.map(({ value, Icon, labelKey }) => {
+        const active = mounted && theme === value;
+        return (
+          <button
+            key={value}
+            type="button"
+            role="radio"
+            aria-checked={active}
+            aria-label={t(labelKey)}
+            className={cn(styles.option, active && styles.optionActive)}
+            onClick={() => setTheme(value)}
+          >
+            <Icon size={16} aria-hidden />
+          </button>
+        );
+      })}
+    </div>
   );
 };

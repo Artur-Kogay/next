@@ -267,7 +267,10 @@
     "controlPanel": "Control panel",
     "changeCountry": "Change country",
     "refund": "Refund",
-    "exchange": "Exchange"
+    "exchange": "Exchange",
+    "ticketsRules": "Ticket usage rules",
+    "checkTicket": "Check ticket",
+    "support": "Support"
   },
   "organizers": {
     "buisnessApp": "Business app for organizers, ticket control and sales analytics",
@@ -447,5 +450,12 @@
     "promo-invalid": "Invalid promo code or no suitable payment method selected",
     "phone-not-registered": "This number is not registered in the system",
     "free": "Free"
+  },
+  "scan": {
+    "title": "Ticket check",
+    "order-number": "Order #{number}",
+    "serial": "Ticket serial number: {serial}",
+    "scan-count": "Scan count: {count}",
+    "invalid": "Ticket is not valid"
   }
 }
