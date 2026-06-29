@@ -458,5 +458,33 @@
     "serial": "Серийный номер билета: {serial}",
     "scan-count": "Количество сканирований: {count}",
     "invalid": "Билет не действителен"
-  }
+  },
+  "appHeader": {
+    "main": "Звезды",
+    "catalog": "Каталог"
+  },
+  "filterLinks": {
+    "all": "Все",
+    "artists": "Артисты",
+    "singers": "Певцы",
+    "comedians": "Комики"
+  },
+  "productsTitle": "Товары",
+  "artistsTitle": "Звезды",
+  "catalogPageTitle": "Каталог товаров",
+  "catalogPageSubtitle": "Все товары наших артистов в одном месте",
+  "artistsProductsTitle": "Товары артиста",
+  "description": "Описание",
+  "search": "Поиск",
+  "buy": "Купить",
+  "pay": "Оплатить",
+  "checkoutTitle": "Оформление заказа",
+  "checkoutSubtitle": "Заполните данные, чтобы перейти к оплате",
+  "fullName": "ФИО",
+  "phoneNumber": "Номер телефона",
+  "totalToPay": "К оплате",
+  "navigation": "Навигация",
+  "contacts": "Контакты",
+  "help": "Помощь",
+  "newProductBadge": "Новинка"
 }

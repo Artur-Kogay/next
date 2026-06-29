@@ -1,0 +1,44 @@
+.label {
+  font-weight: 500;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 2px;
+  border: 2px solid lab(79.2667 9.96342 51.0155);
+  border-radius: 8px;
+  padding: 10px 10px;
+  color: grey;
+
+  :global([data-theme='dark']) & {
+    background: rgb(22, 26, 31);
+    border: 1px solid lab(79.2667 9.96342 51.0155);
+  }
+
+  .labelInput {
+    transition: 0.1s;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    color: black !important;
+    border: none;
+
+    :global([data-theme='dark']) & {
+      color: white !important;
+      background: rgb(22, 26, 31);
+    }
+  }
+}
+
+.labelInput:focus {
+  scale: 1.02;
+}
+
+.errorMessage {
+  color: #FF6B6B;
+  font-size: 14px;
+}
+
+.errorInput {
+  border: 1px solid #FF6B6B !important;
+}

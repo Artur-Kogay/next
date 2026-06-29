@@ -1,0 +1,1 @@
+export {default as FormSendDataUserForPay} from './ui/FormSendDataUserForPay'

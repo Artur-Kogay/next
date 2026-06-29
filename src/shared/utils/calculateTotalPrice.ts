@@ -1,0 +1,1 @@
+export const calculateTotalPrice = (countItems: number | string, price: number | string) => Number(countItems) * Number(price)

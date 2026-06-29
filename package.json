@@ -48,6 +48,7 @@
     "react-tooltip": "^6.0.5",
     "react-zoom-pan-pinch": "^4.0.3",
     "server-only": "^0.0.1",
+    "swiper": "^14.0.0",
     "zod": "^3.23.0"
   },
   "devDependencies": {

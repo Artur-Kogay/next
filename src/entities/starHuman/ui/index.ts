@@ -1,0 +1,1 @@
+export {default as StarHumanCard} from './starHumanCard/StarHumanCard'

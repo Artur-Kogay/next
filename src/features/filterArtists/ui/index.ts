@@ -1,0 +1,1 @@
+export {default as FilterArtistsList} from './filterArtistsList/FilterArtistsList'

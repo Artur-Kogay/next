@@ -1,20 +1,19 @@
 'use client';
 
-import { Phone } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { SearchBar } from '@/features/search';
 import { brand } from '@/shared/config';
-import { Link } from '@/shared/lib/i18n/navigation';
+import { Link, usePathname } from '@/shared/lib/i18n/navigation';
 
 import styles from './Header.module.scss';
-import { CartButton } from '../CartButton/CartButton';
 import { LocaleSwitcher } from '../LocaleSwitcher/LocaleSwitcher';
 import { Logo } from '../Logo/Logo';
-import { ProfileButton } from '../ProfileButton/ProfileButton';
+
 
 export const Header = () => {
   const t = useTranslations('common');
+  const pathname = usePathname();
 
   return (
     <header className={styles.root}>
@@ -27,14 +26,17 @@ export const Header = () => {
           <SearchBar placeholder={t('searchPlaceholder')} />
         </div>
 
+        <div className={styles.links}>
+          <Link className={pathname === '/' ? styles.activeLink : ''} href={'/'}>
+            Звезды
+          </Link>
+          <Link className={pathname === '/catalog' ? styles.activeLink : ''} href={'/catalog'}>
+            Каталог
+          </Link>
+        </div>
+
         <div className={styles.actions}>
-          <a className={styles.phone} href={`tel:${brand.phone.replace(/\s+/g, '')}`}>
-            <Phone size={14} aria-hidden />
-            <span>{brand.phone}</span>
-          </a>
           <LocaleSwitcher />
-          <CartButton />
-          <ProfileButton />
         </div>
       </div>
     </header>

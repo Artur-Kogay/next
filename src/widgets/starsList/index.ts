@@ -1,0 +1,1 @@
+export {default as StarsList} from './ui/StarsList'

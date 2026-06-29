@@ -110,7 +110,7 @@ export const SessionView = ({ session }: SessionViewProps) => {
               src={posterSrc}
               alt={title}
               width={600}
-              height={800}
+              height={500}
               className={styles.poster}
               priority
             />

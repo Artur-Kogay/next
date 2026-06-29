@@ -57,6 +57,7 @@
     "elsom-confirm-order": "The order was successfully created. Confirm the payment through the Elsom app, then click the button below",
     "kompanion-title": "Payment via Kompanion"
   },
+
   "profile": {
     "title": "My account",
     "subtitle": "Manage your profile, tickets and settings",
@@ -457,5 +458,33 @@
     "serial": "Ticket serial number: {serial}",
     "scan-count": "Scan count: {count}",
     "invalid": "Ticket is not valid"
-  }
+  },
+  "appHeader": {
+    "main": "Stars",
+    "catalog": "Catalog"
+  },
+  "filterLinks": {
+    "all": "All",
+    "artists": "Artists",
+    "singers": "Singers",
+    "comedians": "Comedians"
+  },
+  "productsTitle": "Products",
+  "artistsTitle": "Stars",
+  "catalogPageTitle": "Product catalog",
+  "catalogPageSubtitle": "All products of our artists in one place",
+  "artistsProductsTitle": "Artist's products",
+  "description": "Description",
+  "search": "Search",
+  "buy": "Buy",
+  "pay": "Pay",
+  "checkoutTitle": "Checkout",
+  "checkoutSubtitle": "Fill in the details to proceed to payment",
+  "fullName": "Full Name",
+  "phoneNumber": "Phone Number",
+  "totalToPay": "Total to pay",
+  "navigation": "Navigation",
+  "contacts": "Contacts",
+  "help": "Help",
+  "newProductBadge": "New"
 }

@@ -1,0 +1,106 @@
+@use 'abstracts' as *;
+
+.root {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition:
+          border-color var(--transition-fast),
+          background var(--transition-fast);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.2;
+}
+
+.image {
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+}
+
+.imagePlaceholder {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-bg-subtle), var(--color-panel));
+}
+
+.pinBadge {
+  position: absolute;
+  top: $space-2;
+  left: $space-2;
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 6px;
+  overflow: hidden;
+  font-size: 10px;
+  font-weight: $font-weight-bold;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: linear-gradient(100deg, #fde047 0%, #f97316 40%, #ef4444 70%, #f97316 100%);
+  background-size: 220% 100%;
+  border-radius: var(--radius-sm);
+  animation: pin-badge-flow 4s linear infinite;
+}
+
+@keyframes pin-badge-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.priceCluster {
+  position: absolute;
+  top: $space-2;
+  right: $space-2;
+  display: inline-flex;
+  gap: $space-1;
+  align-items: center;
+}
+
+.priceBadge {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 $space-2;
+  font-size: 11px;
+  font-weight: $font-weight-semibold;
+  color: var(--color-fg);
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--color-panel-solid) 92%, transparent);
+  border-radius: var(--radius-sm);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  padding: $space-3 0;
+}
+
+.title {
+  display: -webkit-box;
+  overflow: hidden;
+  font-size: $font-size-lg;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: var(--color-fg);
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.date {
+  font-size: $font-size-sm;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-fg-muted);
+}

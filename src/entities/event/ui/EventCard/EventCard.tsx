@@ -65,9 +65,8 @@ export const EventCard = ({ session, priority = false }: EventCardProps) => {
         <h3 className={styles.title} title={event.title}>
           {event.title}
         </h3>
-
         <time className={styles.date} dateTime={date_time}>
-          {weekday}, {dayMonth} {time}
+          Egor Kreed
         </time>
       </div>
     </Link>
