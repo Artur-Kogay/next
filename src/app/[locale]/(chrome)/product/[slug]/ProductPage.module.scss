@@ -26,29 +26,18 @@
 
 .hero {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: $space-6;
+  grid-template-columns: minmax(0, 1fr);
+  gap: $space-5;
 
-  @media screen and (max-width: bp('md')) {
-    grid-template-columns: 1fr;
+  @include media-up('md') {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
     gap: $space-6;
   }
+
+  @include media-up('lg') {
+    gap: $space-8;
+  }
 }
-
-// .hero {
-//   display: grid;
-//   grid-template-columns: minmax(0, 1fr);
-//   gap: $space-5;
-
-//   @include media-up('md') {
-//     grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-//     gap: $space-6;
-//   }
-
-//   @include media-up('lg') {
-//     gap: $space-8;
-//   }
-// }
 
 .posterWrap {
   display: grid;

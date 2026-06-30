@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 
-import Image from 'next/image';
-
 import { Crown, Package, Shirt, Banknote } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
+import { ProductSlider } from '@/entities/banner';
 import { Counter } from '@/features/counter';
 import { AsideBar } from '@/widgets/asideBar';
 
@@ -41,18 +40,7 @@ const ProductPage = ({
       />
 
       <section className={styles.hero}>
-        <div className={styles.posterWrap}>
-          {MOCK_DATAS.map((image) => (
-            <Image
-              key={image}
-              className={styles.poster}
-              src={image}
-              width={500}
-              height={500}
-              alt="image"
-            />
-          ))}
-        </div>
+        <ProductSlider images={MOCK_DATAS} />
 
         <div className={styles.info}>
           <h1 className={styles.title}>{title}</h1>
