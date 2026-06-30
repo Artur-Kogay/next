@@ -198,3 +198,13 @@ input[type='search'] {
     scroll-behavior: auto !important;
   }
 }
+
+:root,
+[data-theme='light'] {
+  --color-accent-9: color(display-p3 0.541 0.396 0) !important;
+}
+
+:root,
+[data-theme='dark'] {
+  --color-accent-9: color(display-p3 0.973 0.796 0.184) !important;
+}
