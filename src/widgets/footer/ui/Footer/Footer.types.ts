@@ -12,7 +12,7 @@ export interface FooterGroup {
 
 export const NAV_GROUPS: readonly FooterGroup[] = [
   {
-    title: 'navigation',
+    title: 'aboutCompany',
     links: [
       {
         href: {
@@ -21,25 +21,34 @@ export const NAV_GROUPS: readonly FooterGroup[] = [
           tj: '/',
           ru: '/',
         },
-        labelKey: 'main',
+        labelKey: 'aboutProject',
       },
       {
         href: {
-          kg: '/allStars',
-          uz: '/allStars',
-          tj: '/allStars',
-          ru: '/allStars',
+          kg: '/',
+          uz: '/',
+          tj: '/',
+          ru: '/',
         },
-        labelKey: 'stars',
+        labelKey: 'partners',
       },
       {
         href: {
-          kg: '/catalog',
-          uz: '/catalog',
-          tj: '/catalog',
-          ru: '/catalog',
+          kg: '/',
+          uz: '/',
+          tj: '/',
+          ru: '/',
         },
-        labelKey: 'catalog',
+        labelKey: 'public',
+      },
+      {
+        href: {
+          kg: '/',
+          uz: '/',
+          tj: '/',
+          ru: '/',
+        },
+        labelKey: 'logo',
       },
     ],
   },
