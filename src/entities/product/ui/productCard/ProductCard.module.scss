@@ -6,8 +6,8 @@
   flex-direction: column;
   overflow: hidden;
   transition:
-          border-color var(--transition-fast),
-          background var(--transition-fast);
+    border-color var(--transition-fast),
+    background var(--transition-fast);
 }
 
 .imageWrap {
@@ -98,8 +98,11 @@
 }
 
 .priceBadge {
-  color: var(--color-fg);
-  background: color-mix(in srgb, var(--color-panel-solid) 92%, transparent);
+  font-weight: 700;
+  color: #fff;
+  text-transform: none;
+  background: linear-gradient(135deg, #e65100 0%, #f57c00 100%);
+  box-shadow: 0 2px 8px rgb(230 81 0 / 0.3);
 }
 
 .priceBadgeFree {
