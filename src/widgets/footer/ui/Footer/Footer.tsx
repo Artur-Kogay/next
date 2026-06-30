@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { LifeBuoy, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
-import { brand, env } from '@/shared/config';
+import { brand } from '@/shared/config';
 import { Link } from '@/shared/lib/i18n/navigation';
 import { ThemeToggle } from '@/shared/ui';
 
@@ -13,7 +13,6 @@ import { NAV_GROUPS } from './Footer.types';
 export const Footer = () => {
   const t = useTranslations('footer');
   const year = new Date().getFullYear();
-  const country = env.NEXT_PUBLIC_COUNTRY_CODE;
 
   return (
     <footer className={styles.root}>
@@ -34,7 +33,6 @@ export const Footer = () => {
                   className={styles.socialBtn}
                   aria-label="Instagram"
                 >
-                  {}
                   <svg
                     width={18}
                     height={18}
@@ -78,9 +76,7 @@ export const Footer = () => {
           </div>
 
           {NAV_GROUPS.map((group) => {
-            const links = group.links
-              .map((l) => ({ href: l.href[country], labelKey: l.labelKey }))
-              .filter((l): l is { href: string; labelKey: string } => !!l.href);
+            const links = group.links.filter((l) => !!l.href);
             if (!links.length) return null;
             return (
               <div key={group.title} className={styles.col}>

@@ -17,12 +17,13 @@
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: $space-8;
 
   @include media-up('md') {
-    grid-template-columns: 1.5fr repeat(3, 1fr);
+    flex-direction: row;
+    justify-content: space-between;
   }
 }
 
