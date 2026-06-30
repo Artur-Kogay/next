@@ -459,8 +459,9 @@
     "invalid": "Ticket is not valid"
   },
   "appHeader": {
-    "main": "Stars",
-    "catalog": "Catalog"
+    "main": "Main",
+    "catalog": "Catalog",
+    "stars": "Stars"
   },
   "filterLinks": {
     "all": "All",
@@ -468,9 +469,14 @@
     "singers": "Singers",
     "comedians": "Comedians"
   },
+  "homePage": {
+    "products": "Products",
+    "stars": "Stars"
+  },
   "productsTitle": "Products",
   "artistsTitle": "Stars",
   "catalogPageTitle": "Product catalog",
+  "allStarsPageTitle": "All stars",
   "catalogPageSubtitle": "All products of our artists in one place",
   "artistsProductsTitle": "Stars's products",
   "description": "Description",

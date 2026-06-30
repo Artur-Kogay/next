@@ -27,8 +27,8 @@ export const Header = () => {
         </div>
 
         <div className={styles.links}>
-          <Link className={pathname === '/' ? styles.activeLink : ''} href={'/'}>
-            {t('appHeader.main')}
+          <Link className={pathname === '/allStars' ? styles.activeLink : ''} href={'/allStars'}>
+            {t('appHeader.stars')}
           </Link>
           <Link className={pathname === '/catalog' ? styles.activeLink : ''} href={'/catalog'}>
             {t('appHeader.catalog')}

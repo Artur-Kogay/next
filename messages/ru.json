@@ -460,8 +460,9 @@
     "invalid": "Билет не действителен"
   },
   "appHeader": {
-    "main": "Звезды",
-    "catalog": "Каталог"
+    "stars": "Звезды",
+    "catalog": "Каталог",
+    "main": "Главная"
   },
   "filterLinks": {
     "all": "Все",
@@ -469,10 +470,15 @@
     "singers": "Певцы",
     "comedians": "Комики"
   },
+  "homePage": {
+    "products": "Товары",
+    "stars": "Звезды"
+  },
   "productsTitle": "Каталог",
   "artistsTitle": "Звезды",
   "catalogPageTitle": "Каталог товаров",
   "catalogPageSubtitle": "Все товары наших артистов в одном месте",
+  "allStarsPageTitle": "Все звезды",
   "artistsProductsTitle": "Товары звезды",
   "description": "Описание",
   "search": "Поиск",
