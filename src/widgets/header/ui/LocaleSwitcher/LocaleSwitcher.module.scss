@@ -59,4 +59,8 @@
     color: var(--color-accent-contrast);
     background: var(--color-accent-9);
   }
+
+  :global([data-theme='dark']) & {
+    color: white;
+  }
 }

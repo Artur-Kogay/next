@@ -1,24 +1,24 @@
 .cell {
-  padding: 0 16px;
-  background: color(display-p3 0.939 0.939 0.939);
-  border-radius: 16px;
   height: 38px;
-  border: 1px solid color(display-p3 0.849 0.849 0.849);
-  transition: 0.2s;
+  padding: 0 16px;
   cursor: pointer;
+  background: color(display-p3 0.939 0.939 0.939);
+  border: 1px solid color(display-p3 0.849 0.849 0.849);
+  border-radius: 16px;
+  transition: 0.2s;
 
   &:hover {
     background: color(display-p3 0.973 0.796 0.184);
   }
 
   :global([data-theme='dark']) & {
+    color: #fff;
     background-color: color(display-p3 0.098 0.098 0.098);
-    color: #ffffff;
     border: 1px solid color(display-p3 0.228 0.228 0.228);
 
     &:hover {
-      background: color(display-p3 .973 .796 .184);
       color: black;
+      background: color(display-p3 0.973 0.796 0.184);
     }
   }
 
@@ -32,8 +32,8 @@
   background: color(display-p3 0.973 0.796 0.184);
 
   :global([data-theme='dark']) & {
-    background: color(display-p3 .973 .796 .184);
     color: black;
+    background: color(display-p3 0.973 0.796 0.184);
     border: 1px solid color(display-p3 0.228 0.228 0.228);
   }
 }

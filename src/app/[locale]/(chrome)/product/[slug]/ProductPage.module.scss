@@ -26,35 +26,50 @@
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: $space-5;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: $space-6;
 
-  @include media-up('md') {
-    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  @media screen and (max-width: bp('md')) {
+    grid-template-columns: 1fr;
     gap: $space-6;
-  }
-
-  @include media-up('lg') {
-    gap: $space-8;
   }
 }
 
+// .hero {
+//   display: grid;
+//   grid-template-columns: minmax(0, 1fr);
+//   gap: $space-5;
+
+//   @include media-up('md') {
+//     grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+//     gap: $space-6;
+//   }
+
+//   @include media-up('lg') {
+//     gap: $space-8;
+//   }
+// }
+
 .posterWrap {
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
   width: 100%;
   overflow: hidden;
   border-radius: $radius-xl;
+
+  @media screen and (max-width: bp('md')) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .poster {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 3/4;
   object-fit: cover;
   border-radius: $radius-xl;
 }
-
-
 
 .ageBadge {
   position: absolute;
@@ -100,12 +115,13 @@
   font-size: $font-size-sm;
   color: var(--color-fg-muted);
 
-    svg {
-        color: var(--color-accent-11);
-        :global([data-theme='dark']) & {
-          color: var(--color-accent-9) !important;
-        }
+  svg {
+    color: var(--color-accent-11);
+
+    :global([data-theme='dark']) & {
+      color: var(--color-accent-9) !important;
     }
+  }
 }
 
 .count {
@@ -114,8 +130,10 @@
   align-items: center;
   font-size: $font-size-sm;
   color: var(--color-fg-muted);
+
   svg {
     color: var(--color-accent-11);
+
     :global([data-theme='dark']) & {
       color: var(--color-accent-9) !important;
     }
@@ -126,15 +144,20 @@
   display: flex;
   gap: $space-2;
   align-items: end;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  line-height: 1;
+  color: var(--color-fg);
 
   span {
-    color: var(--color-fg-muted);
     font-size: 1.125rem;
     font-weight: 500;
+    color: var(--color-fg-muted);
   }
 
   svg {
     color: var(--color-accent-11);
+
     :global([data-theme='dark']) & {
       color: var(--color-accent-9) !important;
     }
@@ -142,8 +165,8 @@
 
   &_money {
     font-size: 2.25rem !important;
-    color: black !important;
     font-weight: 700 !important;
+    color: black !important;
 
     :global([data-theme='dark']) & {
       color: white !important;
@@ -160,6 +183,7 @@
 
   svg {
     color: var(--color-accent-11);
+
     :global([data-theme='dark']) & {
       color: var(--color-accent-9) !important;
     }
@@ -181,13 +205,6 @@
   display: flex;
   gap: $space-2;
   align-items: baseline;
-}
-
-.price {
-  font-size: $font-size-4xl;
-  font-weight: $font-weight-bold;
-  line-height: 1;
-  color: var(--color-fg);
 }
 
 .priceCurrency {
@@ -320,8 +337,8 @@
   border: 1px solid var(--color-border);
   border-radius: $radius-lg;
   transition:
-          border-color var(--transition-fast),
-          color var(--transition-fast);
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 
   @media (hover: hover) {
     &:hover {
@@ -359,9 +376,9 @@
 
 .description {
   font-size: $font-size-base;
+  font-weight: 700;
   line-height: $line-height-relaxed;
   color: var(--color-fg);
-  font-weight: 700;
 
   p {
     margin-bottom: $space-3;
@@ -389,14 +406,30 @@
 
 .btns {
   display: flex;
-  align-items: center;
-  gap: $space-2;
+  flex-direction: column;
+  gap: $space-5;
   margin-top: 20px;
 
   @media screen and (max-width: bp('sm')) {
     flex-direction: column;
     align-items: start;
   }
+
+  &_actions {
+    display: flex;
+    gap: $space-3;
+    width: 100%;
+  }
+}
+
+.select {
+  max-width: 200px;
+  padding: 5px;
+  font-size: $font-size-base;
+  color: black;
+  background-color: var(--color-accent-9);
+  border: none;
+  border-radius: 10px;
 }
 
 .venueSection {

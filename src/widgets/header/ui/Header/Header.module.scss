@@ -23,6 +23,13 @@
     gap: $space-1;
     font-size: $font-size-sm;
 
+    @media screen and (max-width: bp('md')) {
+      gap: $space-3;
+    }
+
+    @media screen and (max-width: bp('sm')) {
+      display: none;
+    }
   }
 
   @include media-up('md') {
@@ -55,6 +62,10 @@
   display: inline-flex;
   gap: $space-2;
   align-items: center;
+
+  @media screen and (max-width: bp('sm')) {
+    display: none;
+  }
 }
 
 .activeLink {

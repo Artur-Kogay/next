@@ -2,25 +2,24 @@
 
 import { type Dispatch, type SetStateAction } from 'react';
 
-import Image from "next/image";
+import Image from 'next/image';
 
-import { ReceiptText, UserRound } from "lucide-react";
-import {useTranslations} from "next-intl";
+import { ReceiptText, UserRound } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { IoClose } from 'react-icons/io5';
 
-import {FormSendDataUserForPay} from "@/features/sendDataUserForPay";
-import {calculateTotalPrice} from '@/shared/utils';
+import { FormSendDataUserForPay } from '@/features/sendDataUserForPay';
+import { calculateTotalPrice } from '@/shared/utils';
 
 import styles from './AsideBar.module.scss';
 
-
 interface AsideBarProps {
-    productName: string,
-    productCount: string | number,
-    productPrice: string | number,
-    productSize?: string
-    setIsAsideOpen: Dispatch<SetStateAction<boolean>>
-    isAsideOpen: boolean
+  productName: string;
+  productCount: string | number;
+  productPrice: string | number;
+  productSize?: string;
+  setIsAsideOpen: Dispatch<SetStateAction<boolean>>;
+  isAsideOpen: boolean;
 }
 
 const AsideBar = ({
@@ -29,14 +28,14 @@ const AsideBar = ({
   productCount,
   productSize,
   setIsAsideOpen,
-  isAsideOpen
+  isAsideOpen,
 }: AsideBarProps) => {
   const localizer = useTranslations();
   const onClose = () => setIsAsideOpen(false);
 
   return (
     <>
-      <div
+      <button
         className={`${styles.overlay} ${isAsideOpen ? styles.overlayOpen : ''}`}
         onClick={onClose}
       />
@@ -65,10 +64,16 @@ const AsideBar = ({
             />
             <div className={styles.productInfo_textInfo}>
               <h4>{productName}</h4>
-              <p>{productPrice} сом</p>
+              <p>
+                {productPrice} {localizer('som')}
+              </p>
               <div>
-                <p>Размер: {productSize}</p>
-                <p>Количество: {productCount}шт.</p>
+                <p>
+                  {localizer('sizes')}: {productSize}
+                </p>
+                <p>
+                  {localizer('count')}: {productCount}шт.
+                </p>
               </div>
             </div>
           </div>
@@ -77,7 +82,7 @@ const AsideBar = ({
         <section className={styles.form}>
           <div className={styles.form_title}>
             <UserRound size={18} color={'lab(79.2667 9.96342 51.0155)'} />
-            <h2>Контактные данные</h2>
+            <h2>{localizer('contactDetails')}</h2>
           </div>
           <div className={styles.body}>
             <FormSendDataUserForPay />
@@ -90,7 +95,9 @@ const AsideBar = ({
               <ReceiptText size={18} color={'lab(79.2667 9.96342 51.0155)'} />
               <h3>{localizer('totalToPay')}</h3>
             </div>
-            <h2>{calculateTotalPrice(productCount, productPrice)} сом</h2>
+            <h2>
+              {calculateTotalPrice(productCount, productPrice)} {localizer('som')}
+            </h2>
           </div>
           <div className={styles.footer_btns}>
             <button className={styles.payBtn} form={'payment-form'}>
@@ -103,4 +110,4 @@ const AsideBar = ({
   );
 };
 
- export default AsideBar;
+export default AsideBar;

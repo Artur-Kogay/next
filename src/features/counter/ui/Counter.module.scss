@@ -4,20 +4,20 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 20px;
-  border: 1px solid black;
-  padding: 10px;
   min-width: 120px;
   height: 48px;
-  color: black;
+  padding: 10px;
   font-weight: 500;
+  color: black;
   background: var(--color-accent-9);
+  border: 1px solid black;
   border: none;
+  border-radius: 20px;
 
   :global([data-theme='dark']) & {
-    background: var(--color-accent-9);
-    border: 1px solid lab(94.2766 0.635952 7.66994 / 0.12);
     color: black;
+    background: var(--color-accent-9);
+    border: 1px solid lab(94.2766% 0.635952 7.66994 / 0.12);
   }
 
   button {
@@ -26,6 +26,7 @@
 
     svg {
       color: black;
+
       :global([data-theme='dark']) & {
         color: black;
       }

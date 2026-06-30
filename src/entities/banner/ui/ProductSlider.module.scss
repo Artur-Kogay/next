@@ -4,16 +4,16 @@
 }
 
 .slider_slide {
-  aspect-ratio: 3 / 4;
-  max-height: 500px;
   position: relative;
+  max-height: 500px;
+  aspect-ratio: 3 / 4;
   border-radius: 20px;
 }
 
 .pagination {
   display: flex;
-  justify-content: center;
   gap: 6px;
+  justify-content: center;
   margin-top: 10px;
   overflow-x: scroll;
 }
@@ -21,17 +21,17 @@
 .bullet {
   width: 8px;
   height: 8px;
-  border-radius: 50%;
-  transition: 0.3s;
-  border: none;
   padding: 0;
   background: var(--color-border-strong);
+  border: none;
+  border-radius: 50%;
+  transition: 0.3s;
 }
 
 .active {
   width: 24px;
   height: 8px;
-  border-radius: 10px;
   background: var(--color-accent-9) !important;
   background: #000;
+  border-radius: 10px;
 }

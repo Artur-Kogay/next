@@ -7,12 +7,12 @@ import { brand } from '@/shared/config';
 import { Link, usePathname } from '@/shared/lib/i18n/navigation';
 
 import styles from './Header.module.scss';
+import { Burger } from '../burger';
 import { LocaleSwitcher } from '../LocaleSwitcher/LocaleSwitcher';
 import { Logo } from '../Logo/Logo';
 
-
 export const Header = () => {
-  const t = useTranslations('common');
+  const t = useTranslations();
   const pathname = usePathname();
 
   return (
@@ -23,17 +23,19 @@ export const Header = () => {
         </Link>
 
         <div className={styles.searchSlot}>
-          <SearchBar placeholder={t('searchPlaceholder')} />
+          <SearchBar placeholder={t('common.searchPlaceholder')} />
         </div>
 
         <div className={styles.links}>
           <Link className={pathname === '/' ? styles.activeLink : ''} href={'/'}>
-            Звезды
+            {t('appHeader.main')}
           </Link>
           <Link className={pathname === '/catalog' ? styles.activeLink : ''} href={'/catalog'}>
-            Каталог
+            {t('appHeader.catalog')}
           </Link>
         </div>
+
+        <Burger />
 
         <div className={styles.actions}>
           <LocaleSwitcher />

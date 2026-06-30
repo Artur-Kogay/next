@@ -469,11 +469,11 @@
     "singers": "Певцы",
     "comedians": "Комики"
   },
-  "productsTitle": "Товары",
+  "productsTitle": "Каталог",
   "artistsTitle": "Звезды",
   "catalogPageTitle": "Каталог товаров",
   "catalogPageSubtitle": "Все товары наших артистов в одном месте",
-  "artistsProductsTitle": "Товары артиста",
+  "artistsProductsTitle": "Товары звезды",
   "description": "Описание",
   "search": "Поиск",
   "buy": "Купить",
@@ -486,5 +486,12 @@
   "navigation": "Навигация",
   "contacts": "Контакты",
   "help": "Помощь",
-  "newProductBadge": "Новинка"
+  "newProductBadge": "Новинка",
+  "products": "товаров",
+  "subscribes": "подписчиков",
+  "sizes": "Размеры",
+  "left": "Осталось",
+  "som": "сом",
+  "contactDetails": "Контактные данные",
+  "count": "Количество"
 }

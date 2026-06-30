@@ -1,22 +1,16 @@
-'use client'
+'use client';
 
 import Image from 'next/image';
 
-import { ProductsList } from '@/widgets/productsList';
+import { Crown, Package, Users } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
-import { Crown, Package, Users, BookText } from 'lucide-react';
+import { ProductsList } from '@/widgets/productsList';
 
 import styles from './StarPage.module.scss';
 
-const Page = ({
-                           name,
-                            }: {
-  type: 'artist';
-  name: string;
-  description: string;
-  image?: string;
-  slug: string;
-}) => {
+const Page = () => {
+  const t = useTranslations();
 
   return (
     <div className={styles.root}>
@@ -24,7 +18,7 @@ const Page = ({
         <div className={styles.posterWrap}>
           <Image
             src={'/images/ex5.jpg'}
-            alt={name}
+            alt={'image'}
             width={600}
             height={500}
             className={styles.poster}
@@ -42,11 +36,11 @@ const Page = ({
 
           <div className={styles.products}>
             <Package size={18} />
-            19 товаров
+            19 {t('products')}
           </div>
 
           <div className={styles.subscribes}>
-            <Users size={18} /> 200000 подписчиков
+            <Users size={18} /> 200000 {t('subscribes')}
           </div>
 
           <div className={styles.description}>
@@ -58,7 +52,7 @@ const Page = ({
           </div>
         </div>
       </section>
-      <h2 className={styles.title}>Товары звезды</h2>
+      <h2 className={styles.title}>{t('artistsProductsTitle')}</h2>
       <ProductsList />
     </div>
   );

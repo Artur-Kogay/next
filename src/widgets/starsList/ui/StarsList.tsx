@@ -2,17 +2,16 @@
 
 import { useAtomValue } from 'jotai';
 
-import { StarHumanCard ,artistsAtom} from '@/entities/starHuman';
+import { StarHumanCard, artistsAtom } from '@/entities/starHuman';
 import { selectedArtistCategoryAtom } from '@/shared/model';
 
 import styles from './StarsList.module.scss';
 
 interface ContentSectionProps {
   title?: string;
-  searchQuery?: string;
 }
 
-const StarsList = ({ title, searchQuery }: ContentSectionProps) => {
+const StarsList = ({ title }: ContentSectionProps) => {
   const artists = useAtomValue(artistsAtom);
   const selectedCategory = useAtomValue(selectedArtistCategoryAtom);
 

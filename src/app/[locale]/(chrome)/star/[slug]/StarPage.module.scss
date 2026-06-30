@@ -46,10 +46,10 @@
   border-radius: $radius-xl;
 }
 
-.typeBadge  {
+.typeBadge {
   display: flex;
-  align-items: center;
   gap: $space-2;
+  align-items: center;
   font-size: $font-size-sm;
   color: var(--color-fg-muted);
 
@@ -62,10 +62,10 @@
   }
 }
 
-.products  {
+.products {
   display: flex;
-  align-items: center;
   gap: $space-2;
+  align-items: center;
   font-size: $font-size-sm;
   color: var(--color-fg-muted);
 
@@ -78,10 +78,10 @@
   }
 }
 
-.subscribes  {
+.subscribes {
   display: flex;
-  align-items: center;
   gap: $space-2;
+  align-items: center;
   font-size: $font-size-sm;
   color: var(--color-fg-muted);
 
@@ -301,8 +301,8 @@
   border: 1px solid var(--color-border);
   border-radius: $radius-lg;
   transition:
-          border-color var(--transition-fast),
-          color var(--transition-fast);
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 
   @media (hover: hover) {
     &:hover {

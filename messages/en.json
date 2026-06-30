@@ -57,7 +57,6 @@
     "elsom-confirm-order": "The order was successfully created. Confirm the payment through the Elsom app, then click the button below",
     "kompanion-title": "Payment via Kompanion"
   },
-
   "profile": {
     "title": "My account",
     "subtitle": "Manage your profile, tickets and settings",
@@ -473,7 +472,7 @@
   "artistsTitle": "Stars",
   "catalogPageTitle": "Product catalog",
   "catalogPageSubtitle": "All products of our artists in one place",
-  "artistsProductsTitle": "Artist's products",
+  "artistsProductsTitle": "Stars's products",
   "description": "Description",
   "search": "Search",
   "buy": "Buy",
@@ -486,5 +485,12 @@
   "navigation": "Navigation",
   "contacts": "Contacts",
   "help": "Help",
-  "newProductBadge": "New"
+  "newProductBadge": "New",
+  "products": "products",
+  "subscribes": "subscribes",
+  "sizes": "Sizes",
+  "left": "Left",
+  "som": "som",
+  "contactDetails": "Contanct details",
+  "count": "Count"
 }
