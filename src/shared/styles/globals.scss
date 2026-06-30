@@ -202,9 +202,11 @@ input[type='search'] {
 :root,
 [data-theme='light'] {
   --color-accent-9: color(display-p3 0.541 0.396 0) !important;
+  --color-accent-11: color(display-p3 0.541 0.396 0);
 }
 
 :root,
 [data-theme='dark'] {
   --color-accent-9: color(display-p3 0.973 0.796 0.184) !important;
+  --color-accent-11: color(display-p3 0.541 0.396 0) !important;
 }
