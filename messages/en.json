@@ -270,7 +270,13 @@
     "exchange": "Exchange",
     "ticketsRules": "Ticket usage rules",
     "checkTicket": "Check ticket",
-    "support": "Support"
+    "support": "Support",
+    "rules": "Terms and conditions",
+    "userAgreement": "User agreement",
+    "returnPolicy": "Return policy",
+    "delivery": "Delivery",
+    "forHolders": "Information for rights holders",
+    "privacyPolicy": "Privacy policy"
   },
   "organizers": {
     "buisnessApp": "Business app for organizers, ticket control and sales analytics",
