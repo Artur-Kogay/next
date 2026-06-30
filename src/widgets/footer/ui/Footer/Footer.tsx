@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { LifeBuoy, Mail, MapPin, MessageCircle, Phone, Send } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -18,7 +20,9 @@ export const Footer = () => {
       <div className={styles.inner}>
         <div className={styles.grid}>
           <div className={styles.brandCol}>
-            <span className={styles.brandName}>{brand.appName}</span>
+            <span className={styles.brandName}>
+              <Image src={'/images/logos/kg/headerLogo.svg'} width={124} height={36} alt="logo" />
+            </span>
             <p className={styles.tagline}>{t('title')}</p>
 
             <div className={styles.socials}>

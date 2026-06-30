@@ -360,13 +360,13 @@
 .sectionTitle {
   margin-bottom: $space-3;
   font-size: $font-size-lg;
-  font-weight: $font-weight-bold;
+  font-weight: 500;
   color: var(--color-fg);
 }
 
 .description {
   font-size: $font-size-base;
-  font-weight: 700;
+  font-weight: 300;
   line-height: $line-height-relaxed;
   color: var(--color-fg);
 
