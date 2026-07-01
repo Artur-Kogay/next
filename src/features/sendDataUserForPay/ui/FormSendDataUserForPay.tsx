@@ -75,10 +75,14 @@ function FormSendDataUserForPay() {
       />
 
       <div className={styles.public}>
-        <input type="checkbox" {...register('check')} className={styles.checkbox} />
-        <Link href="/">
-          Я ознакомлен(а) и согласен(а) с условиями публичной оферты и обработки персональных данных
-        </Link>
+        {errors.check && <span className={styles.errorMessage}>{errors.check.message}</span>}
+        <div className={styles.public_inputs}>
+          <input type="checkbox" {...register('check')} className={styles.checkbox} />
+          <Link href="/">
+            Я ознакомлен(а) и согласен(а) с условиями публичной оферты и обработки персональных
+            данных
+          </Link>
+        </div>
       </div>
     </form>
   );

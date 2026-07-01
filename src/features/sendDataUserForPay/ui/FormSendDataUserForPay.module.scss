@@ -8,14 +8,28 @@
 
 .public {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 5px;
   align-items: center;
-  font-size: 0.8rem;
-  font-weight: 200;
-  line-height: normal;
-  text-decoration: underline;
+
+  a {
+    font-size: 0.8rem;
+    font-weight: 200;
+    line-height: normal;
+    text-decoration: underline;
+  }
+
+  &_inputs {
+    display: flex;
+    gap: 10px;
+  }
 }
 
 .checkbox:checked {
   accent-color: #ffd54a;
+}
+
+.errorMessage {
+  font-size: 12px;
+  color: #ff6b6b;
 }
